@@ -1,0 +1,1210 @@
+# Translations template for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-12-14 23:05-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: apps/routes/administrador/routes.py:23 apps/routes/docente/routes.py:17
+#: apps/routes/estudiante/routes.py:17
+msgid "✅ Accediendo a la página principal del dashboard"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:35
+msgid "✅ Accediendo a la página de creación de usuarios"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:63
+msgid "Estudiante creado exitosamente"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:68
+msgid "Error al crear estudiante: {}"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:93
+msgid "Docente creado exitosamente"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:98
+msgid "Error al crear docente: {}"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:120
+msgid "Administrador creado exitosamente"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:125
+msgid "Error al crear administrador: {}"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:136
+#: apps/routes/administrador/routes.py:221
+msgid "No se encontró el archivo"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:140
+#: apps/routes/administrador/routes.py:225
+msgid "No se seleccionó ningún archivo"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:153
+#: apps/routes/administrador/routes.py:238
+msgid "El archivo no tiene el formato correcto"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:203
+msgid "Estudiantes importados exitosamente"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:210
+#: apps/routes/administrador/routes.py:295
+msgid "Error al procesar el archivo: {}"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:288
+msgid "Docentes importados exitosamente"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:49
+msgid "Invalid JSON request"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:53
+msgid "No JSON data provided"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:57
+msgid "ID token not provided"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:63
+msgid "Authentication error"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:75
+msgid "You have successfully logged out"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:100
+msgid "Ya tienes credenciales válidas para Google Forms"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:128
+msgid "Autenticación con Google Forms completada exitosamente"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:143
+msgid "Unauthorized access. Please log in."
+msgstr ""
+
+#: apps/routes/authentication/routes.py:150
+msgid "Access forbidden. You do not have permission to access this page."
+msgstr ""
+
+#: apps/routes/authentication/services.py:21
+msgid "Invalid user information"
+msgstr ""
+
+#: apps/routes/authentication/services.py:36
+msgid "User not found in database"
+msgstr ""
+
+#: apps/routes/authentication/services.py:40
+msgid "Invalid user data"
+msgstr ""
+
+#: apps/routes/authentication/services.py:78
+msgid "Email is not registered."
+msgstr ""
+
+#: apps/routes/authentication/services.py:80
+#: apps/templates/accounts/login.html:272
+msgid "Incorrect password. Please try again."
+msgstr ""
+
+#: apps/routes/home/routes.py:22
+msgid "User {} accessing home page"
+msgstr ""
+
+#: apps/routes/home/routes.py:42 apps/routes/home/routes.py:83
+msgid "Profile updated successfully"
+msgstr ""
+
+#: apps/routes/home/routes.py:44 apps/routes/home/routes.py:48
+#: apps/routes/home/routes.py:85
+msgid "Error updating profile: {}"
+msgstr ""
+
+#: apps/routes/home/routes.py:49
+msgid "Error updating profile"
+msgstr ""
+
+#: apps/routes/home/routes.py:52
+msgid "User {} accessing their profile"
+msgstr ""
+
+#: apps/routes/home/routes.py:63
+msgid "Layout updated successfully"
+msgstr ""
+
+#: apps/routes/home/routes.py:65 apps/routes/home/routes.py:68
+msgid "Error updating layout: {}"
+msgstr ""
+
+#: apps/routes/home/routes.py:69
+msgid "Error updating layout"
+msgstr ""
+
+#: apps/routes/home/routes.py:109
+msgid "Template not found: {}"
+msgstr ""
+
+#: apps/routes/home/routes.py:112
+msgid "Error rendering template {}: {}"
+msgstr ""
+
+#: apps/routes/home/routes.py:122
+msgid "Error getting segment: {}"
+msgstr ""
+
+#: apps/templates/accounts/login.html:3 apps/templates/accounts/login.html:21
+#: apps/templates/accounts/login.html:75
+#: apps/templates/accounts/register.html:80 apps/templates/errors/401.html:29
+#: apps/templates/errors/401.html:52 apps/templates/errors/403.html:51
+msgid "Login"
+msgstr ""
+
+#: apps/templates/accounts/login.html:12
+msgid "Welcome Back!"
+msgstr ""
+
+#: apps/templates/accounts/login.html:13
+msgid "Sign in to your account and explore the Flask Gradient."
+msgstr ""
+
+#: apps/templates/accounts/login.html:14
+msgid "If you need view the components for usin in this template, click here."
+msgstr ""
+
+#: apps/templates/accounts/login.html:15
+msgid "View Components"
+msgstr ""
+
+#: apps/templates/accounts/login.html:25
+#: apps/templates/accounts/register.html:26
+msgid "Loading..."
+msgstr ""
+
+#: apps/templates/accounts/login.html:27
+msgid "Logging in..."
+msgstr ""
+
+#: apps/templates/accounts/login.html:33
+msgid "Sign in with Google"
+msgstr ""
+
+#: apps/templates/accounts/login.html:37
+msgid "or"
+msgstr ""
+
+#: apps/templates/accounts/login.html:47
+#: apps/templates/accounts/profile/modals/edit_profile.html:51
+#: apps/templates/accounts/profile/modals/edit_profile.html:107
+#: apps/templates/accounts/profile/profile.html:121
+#: apps/templates/accounts/register.html:48
+msgid "Email"
+msgstr ""
+
+#: apps/templates/accounts/login.html:57
+#: apps/templates/accounts/register.html:58 apps/templates/errors/401.html:48
+msgid "Password"
+msgstr ""
+
+#: apps/templates/accounts/login.html:71
+msgid "Remember Me"
+msgstr ""
+
+#: apps/templates/accounts/login.html:79
+msgid "Forgot your password?"
+msgstr ""
+
+#: apps/templates/accounts/login.html:79
+#: apps/templates/accounts/profile/layouts_config.html:17
+msgid "Reset"
+msgstr ""
+
+#: apps/templates/accounts/login.html:187
+#: apps/templates/accounts/login.html:236
+msgid "Login successful"
+msgstr ""
+
+#: apps/templates/accounts/login.html:192
+#: apps/templates/accounts/login.html:241
+#: apps/templates/accounts/register.html:231
+msgid "Unknown error"
+msgstr ""
+
+#: apps/templates/accounts/login.html:253
+msgid "Google Sign-In Required"
+msgstr ""
+
+#: apps/templates/accounts/login.html:254
+msgid ""
+"This account is now linked to Google. Please use the Google Sign-In "
+"button above."
+msgstr ""
+
+#: apps/templates/accounts/login.html:255
+msgid "Use Google Sign-In"
+msgstr ""
+
+#: apps/templates/accounts/login.html:268
+msgid "An error occurred during login. Please try again."
+msgstr ""
+
+#: apps/templates/accounts/login.html:270
+msgid "No account found with this email."
+msgstr ""
+
+#: apps/templates/accounts/register.html:3
+#: apps/templates/accounts/register.html:22
+#: apps/templates/accounts/register.html:76 apps/templates/errors/401.html:62
+msgid "Register"
+msgstr ""
+
+#: apps/templates/accounts/register.html:12
+msgid "Welcome to Flask Gradient!"
+msgstr ""
+
+#: apps/templates/accounts/register.html:13
+msgid ""
+"Create your account and start using the Flask Gradient. \n"
+"                This is a template that you can use as a starting point "
+"for your own web application. <br>\n"
+"                Already have an account? <a href=\"/auth-login.html\" "
+"class=\"text-white f-w-400\">Login</a>\n"
+"                "
+msgstr ""
+
+#: apps/templates/accounts/register.html:28
+msgid "Processing registration..."
+msgstr ""
+
+#: apps/templates/accounts/register.html:38 apps/templates/errors/401.html:38
+msgid "Username"
+msgstr ""
+
+#: apps/templates/accounts/register.html:72
+msgid "I accept the"
+msgstr ""
+
+#: apps/templates/accounts/register.html:72
+msgid "terms and conditions"
+msgstr ""
+
+#: apps/templates/accounts/register.html:80
+msgid "Already have an account?"
+msgstr ""
+
+#: apps/templates/accounts/register.html:101
+msgid "An error occurred during registration. Please try again later."
+msgstr ""
+
+#: apps/templates/accounts/register.html:104
+msgid "This email is already in use. Please use another one or login."
+msgstr ""
+
+#: apps/templates/accounts/register.html:106
+msgid "Invalid email. Please verify and try again."
+msgstr ""
+
+#: apps/templates/accounts/register.html:108
+msgid "Password is too weak. Please choose a stronger password."
+msgstr ""
+
+#: apps/templates/accounts/register.html:149
+msgid "Only @unl.edu.ec email addresses are allowed."
+msgstr ""
+
+#: apps/templates/accounts/register.html:166
+msgid "You must accept the terms and conditions to continue."
+msgstr ""
+
+#: apps/templates/accounts/profile/dropdown-user.html:14
+msgid "Logout"
+msgstr ""
+
+#: apps/templates/accounts/profile/dropdown-user.html:19
+msgid "Profile"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:4
+msgid "Appearance"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:9
+msgid "Layouts"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:12
+msgid "Default Layout"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:14
+msgid "Light"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:16
+msgid "Dark"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:21
+msgid "Header background color"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:42
+msgid "RTL"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:50
+msgid "Sidebar Fixed"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:58
+msgid "Header Fixed"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:66
+msgid "Box Layouts"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:74
+msgid "Breadcrumb sticky"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:3
+msgid "My Profile"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:38
+msgid "Imagen de Perfil"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:69
+msgid "Autenticar Google Forms"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:91
+#: apps/templates/accounts/profile/profile.html:73
+#: apps/templates/accounts/profile/profile.html:171
+msgid "Language"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:74
+#: apps/templates/accounts/profile/profile.html:163
+msgid "Not set"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:83
+msgid "Overview"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:90
+msgid "Appearance "
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:107
+msgid "Personal Information and Settings"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:110
+msgid "Edit"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:115
+msgid "Personal Information"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:62
+#: apps/templates/accounts/profile/profile.html:130
+msgid "Phone"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:139
+msgid "Registration Date"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:148
+msgid "Last Access"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:156
+#: apps/templates/includes/side_bar.html:141
+#: apps/templates/includes/side_bars/side_bar_docente.html:141
+msgid "Settings"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:78
+#: apps/templates/accounts/profile/profile.html:162
+msgid "Time Zone"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:172
+msgid ""
+"Not\n"
+"                                            set"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:7
+msgid "Edit Profile"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:23
+msgid "Basic Info"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:28
+msgid "Preferences"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:42
+msgid "Display Name"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:57
+msgid "Email cannot be changed"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:103
+#: apps/templates/includes/side_bar.html:77
+#: apps/templates/includes/side_bar.html:146
+#: apps/templates/includes/side_bars/side_bar_docente.html:77
+#: apps/templates/includes/side_bars/side_bar_docente.html:146
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:75
+msgid "Notifications"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:112
+msgid "Push"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:123
+#: apps/templates/errors/500.html:143
+msgid "Cancel"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:126
+msgid "Save Changes"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:3
+msgid "Crear Test de Estrés"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:15
+msgid "Crear Nuevo Test de Estrés"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:16
+msgid ""
+"Cada pregunta tendrá 4 opciones que representan diferentes niveles de "
+"estrés"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:21
+msgid "Descripción del Test"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:24
+msgid ""
+"Ejemplo: Test para evaluar el nivel de estrés en estudiantes "
+"universitarios"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:28
+msgid "Fecha"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:34
+msgid "Estado"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:37
+msgid "Activo"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:38
+msgid "Inactivo"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:46
+msgid "Preguntas del Test"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:47
+msgid ""
+"Cada pregunta debe tener 4 opciones de respuesta que indiquen diferentes "
+"niveles de estrés"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:55
+msgid "Agregar Pregunta"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:63
+msgid "Guardar Test"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:89
+msgid "Pregunta"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:92
+msgid ""
+"Ejemplo: ¿Con qué frecuencia te sientes abrumado por tus "
+"responsabilidades académicas?"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:96
+msgid "Eliminar"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:104
+msgid "Nivel 1 - Poco o Nada"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:107
+msgid "Ejemplo: Nunca me siento abrumado"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:114
+msgid "Nivel 2 - Leve"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:117
+msgid "Ejemplo: Ocasionalmente me siento abrumado"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:124
+msgid "Nivel 3 - Moderado"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:127
+msgid "Ejemplo: Frecuentemente me siento abrumado"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:134
+msgid "Nivel 4 - Severo"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:137
+msgid "Ejemplo: Constantemente me siento abrumado"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:3
+#: apps/templates/administrador/crear_usuario.html:26
+msgid "Crear Usuario"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:20
+msgid "Creación de Usuarios"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:25
+#: apps/templates/includes/side_bars/side_bar_administrador.html:72
+msgid "Configuraciones"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:38
+msgid "Gestión de Usuarios"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:45
+#: apps/templates/administrador/crear_usuario.html:96
+msgid "Crear Estudiante"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:50
+#: apps/templates/administrador/crear_usuario.html:159
+msgid "Crear Docente"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:55
+#: apps/templates/administrador/crear_usuario.html:222
+msgid "Crear Administrador"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:69
+#: apps/templates/administrador/crear_usuario.html:132
+#: apps/templates/administrador/crear_usuario.html:195
+msgid "Correo Electrónico"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:73
+#: apps/templates/administrador/crear_usuario.html:136
+#: apps/templates/administrador/crear_usuario.html:199
+msgid "Cédula"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:77
+#: apps/templates/administrador/crear_usuario.html:140
+#: apps/templates/administrador/crear_usuario.html:203
+msgid "Primer Nombre"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:81
+#: apps/templates/administrador/crear_usuario.html:144
+#: apps/templates/administrador/crear_usuario.html:207
+msgid "Segundo Nombre"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:85
+#: apps/templates/administrador/crear_usuario.html:148
+#: apps/templates/administrador/crear_usuario.html:211
+msgid "Primer Apellido"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:89
+#: apps/templates/administrador/crear_usuario.html:152
+#: apps/templates/administrador/crear_usuario.html:215
+msgid "Segundo Apellido"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:93
+#: apps/templates/administrador/crear_usuario.html:156
+#: apps/templates/administrador/crear_usuario.html:219
+msgid "Fecha de Nacimiento"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:102
+msgid "Cargar Estudiantes desde Excel"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:110
+#: apps/templates/administrador/crear_usuario.html:173
+#: apps/templates/administrador/crear_usuario.html:245
+msgid "Arrastra aquí el archivo Excel o haz clic para seleccionarlo"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:116
+#: apps/templates/administrador/crear_usuario.html:179
+msgid "Descargar Plantilla"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:165
+msgid "Cargar Docentes desde Excel"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:246
+msgid "Tu navegador no soporta la carga de archivos mediante arrastrar y soltar"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:247
+msgid ""
+"El archivo es demasiado grande ({{filesize}}MB). Tamaño máximo: "
+"{{maxFilesize}}MB"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:248
+msgid "No puedes subir archivos de este tipo"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:249
+msgid "Error al subir el archivo: {{statusCode}}"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:250
+msgid "Cancelar subida"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:251
+msgid "Subida cancelada"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:252
+msgid "Eliminar archivo"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:253
+msgid "No puedes subir más archivos"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:298
+msgid ""
+"Arrastra aquí el archivo Excel de estudiantes o haz clic para "
+"seleccionarlo"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:304
+msgid "Arrastra aquí el archivo Excel de docentes o haz clic para seleccionarlo"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:318
+msgid "La cédula debe tener 10 dígitos"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:332
+msgid "Debe usar un correo institucional (@unl.edu.ec)"
+msgstr ""
+
+#: apps/templates/components/ver_tests.html:3
+#: apps/templates/components/ver_tests.html:22
+#: apps/templates/components/ver_tests.html:28
+msgid "Ver Tests"
+msgstr ""
+
+#: apps/templates/components/ver_tests.html:27
+msgid "Tests"
+msgstr ""
+
+#: apps/templates/errors/401.html:3
+msgid "Unauthorized"
+msgstr ""
+
+#: apps/templates/errors/401.html:19
+msgid "Authentication Required!"
+msgstr ""
+
+#: apps/templates/errors/401.html:21
+msgid "You need to login to access this page."
+msgstr ""
+
+#: apps/templates/errors/401.html:65 apps/templates/errors/403.html:54
+#: apps/templates/errors/404.html:54 apps/templates/errors/500.html:79
+msgid "Home"
+msgstr ""
+
+#: apps/templates/errors/401.html:77 apps/templates/errors/403.html:66
+#: apps/templates/errors/404.html:66 apps/templates/errors/500.html:104
+msgid "Technical Details"
+msgstr ""
+
+#: apps/templates/errors/401.html:81 apps/templates/errors/403.html:70
+#: apps/templates/errors/404.html:70 apps/templates/errors/500.html:108
+msgid "Copy"
+msgstr ""
+
+#: apps/templates/errors/403.html:3
+msgid "Access Denied"
+msgstr ""
+
+#: apps/templates/errors/403.html:19
+msgid "Access Denied!"
+msgstr ""
+
+#: apps/templates/errors/403.html:21
+msgid "You do not have permission to access this page."
+msgstr ""
+
+#: apps/templates/errors/403.html:29
+msgid "Why does this happen?"
+msgstr ""
+
+#: apps/templates/errors/403.html:33
+msgid "You do not have the necessary permissions"
+msgstr ""
+
+#: apps/templates/errors/403.html:37
+msgid "Your session may have expired"
+msgstr ""
+
+#: apps/templates/errors/403.html:41
+msgid "The resource is restricted"
+msgstr ""
+
+#: apps/templates/errors/404.html:3
+msgid "Page Not Found"
+msgstr ""
+
+#: apps/templates/errors/404.html:19
+msgid "Page Not Found!"
+msgstr ""
+
+#: apps/templates/errors/404.html:21
+msgid "The page you are looking for seems to be lost in cyberspace."
+msgstr ""
+
+#: apps/templates/errors/404.html:29
+msgid "What can you do?"
+msgstr ""
+
+#: apps/templates/errors/404.html:33
+msgid "Check the URL for typing errors"
+msgstr ""
+
+#: apps/templates/errors/404.html:37
+msgid "Go back to the previous page"
+msgstr ""
+
+#: apps/templates/errors/404.html:41
+msgid "Go to the home page"
+msgstr ""
+
+#: apps/templates/errors/404.html:51
+msgid "Back"
+msgstr ""
+
+#: apps/templates/errors/500.html:3
+msgid "Server Error"
+msgstr ""
+
+#: apps/templates/errors/500.html:20
+msgid "Server Error!"
+msgstr ""
+
+#: apps/templates/errors/500.html:22
+msgid "An internal server error has occurred."
+msgstr ""
+
+#: apps/templates/errors/500.html:30
+msgid "System Status"
+msgstr ""
+
+#: apps/templates/errors/500.html:36
+msgid "Server"
+msgstr ""
+
+#: apps/templates/errors/500.html:38
+msgid "Error"
+msgstr ""
+
+#: apps/templates/errors/500.html:48
+msgid "Database"
+msgstr ""
+
+#: apps/templates/errors/500.html:50 apps/templates/errors/500.html:62
+msgid "Operational"
+msgstr ""
+
+#: apps/templates/errors/500.html:60
+msgid "Storage"
+msgstr ""
+
+#: apps/templates/errors/500.html:76
+msgid "Reload"
+msgstr ""
+
+#: apps/templates/errors/500.html:87
+msgid "Need help?"
+msgstr ""
+
+#: apps/templates/errors/500.html:88
+msgid "Our technical team has been notified and is working on the solution."
+msgstr ""
+
+#: apps/templates/errors/500.html:90 apps/templates/errors/500.html:125
+msgid "Contact Support"
+msgstr ""
+
+#: apps/templates/errors/500.html:133
+msgid "Describe the problem"
+msgstr ""
+
+#: apps/templates/errors/500.html:134
+msgid "What were you doing when the error occurred?"
+msgstr ""
+
+#: apps/templates/errors/500.html:137
+msgid "How can we contact you?"
+msgstr ""
+
+#: apps/templates/errors/500.html:138
+msgid "Your email"
+msgstr ""
+
+#: apps/templates/errors/500.html:146
+msgid "Send"
+msgstr ""
+
+#: apps/templates/errors/500.html:265
+msgid "Your message has been sent. We will contact you soon."
+msgstr ""
+
+#: apps/templates/errors/500.html:271
+msgid "Error details copied to clipboard"
+msgstr ""
+
+#: apps/templates/includes/navbar.html:9
+msgid "Stress Less U"
+msgstr ""
+
+#: apps/templates/includes/navbar.html:23
+msgid "Search..."
+msgstr ""
+
+#: apps/templates/includes/navbar.html:24
+msgid "Close"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:16
+#: apps/templates/includes/side_bars/side_bar_docente.html:16
+msgid "Navigation"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:23
+#: apps/templates/includes/side_bars/side_bar_docente.html:23
+msgid "Dashboard"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:26
+#: apps/templates/includes/side_bars/side_bar_docente.html:26
+msgid "Default"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:27
+#: apps/templates/includes/side_bars/side_bar_docente.html:27
+msgid "Analytics"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:28
+#: apps/templates/includes/side_bars/side_bar_docente.html:28
+msgid "Reports"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:34
+#: apps/templates/includes/side_bars/side_bar_docente.html:34
+msgid "User Management"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:41
+#: apps/templates/includes/side_bars/side_bar_docente.html:41
+msgid "Users"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:44
+#: apps/templates/includes/side_bars/side_bar_docente.html:44
+msgid "User List"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:45
+#: apps/templates/includes/side_bars/side_bar_docente.html:45
+msgid "Roles"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:46
+#: apps/templates/includes/side_bars/side_bar_docente.html:46
+msgid "Permissions"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:52
+#: apps/templates/includes/side_bars/side_bar_docente.html:52
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:50
+msgid "UI Components"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:59
+#: apps/templates/includes/side_bars/side_bar_docente.html:59
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:57
+msgid "Basic"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:62
+#: apps/templates/includes/side_bars/side_bar_docente.html:62
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:60
+msgid "Alerts"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:63
+#: apps/templates/includes/side_bars/side_bar_docente.html:63
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:61
+msgid "Buttons"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:64
+#: apps/templates/includes/side_bars/side_bar_docente.html:64
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:62
+msgid "Cards"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:65
+#: apps/templates/includes/side_bars/side_bar_docente.html:65
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:63
+msgid "Badges"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:73
+#: apps/templates/includes/side_bars/side_bar_docente.html:73
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:71
+msgid "Advanced"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:76
+#: apps/templates/includes/side_bars/side_bar_docente.html:76
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:74
+msgid "Modals"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:78
+#: apps/templates/includes/side_bars/side_bar_docente.html:78
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:76
+msgid "Carousel"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:79
+#: apps/templates/includes/side_bars/side_bar_docente.html:79
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:77
+msgid "Range Slider"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:85
+#: apps/templates/includes/side_bars/side_bar_docente.html:85
+msgid "Tables & Data"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:92
+#: apps/templates/includes/side_bars/side_bar_administrador.html:22
+#: apps/templates/includes/side_bars/side_bar_docente.html:92
+msgid "Tables"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:95
+#: apps/templates/includes/side_bars/side_bar_administrador.html:25
+#: apps/templates/includes/side_bars/side_bar_docente.html:95
+msgid "Basic Tables"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:96
+#: apps/templates/includes/side_bars/side_bar_administrador.html:26
+#: apps/templates/includes/side_bars/side_bar_docente.html:96
+msgid "Data Tables"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:97
+#: apps/templates/includes/side_bars/side_bar_administrador.html:27
+#: apps/templates/includes/side_bars/side_bar_docente.html:97
+msgid "Editable Tables"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:105
+#: apps/templates/includes/side_bars/side_bar_administrador.html:35
+#: apps/templates/includes/side_bars/side_bar_docente.html:105
+msgid "Charts"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:108
+#: apps/templates/includes/side_bars/side_bar_administrador.html:38
+#: apps/templates/includes/side_bars/side_bar_docente.html:108
+msgid "Apex Charts"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:109
+#: apps/templates/includes/side_bars/side_bar_administrador.html:39
+#: apps/templates/includes/side_bars/side_bar_docente.html:109
+msgid "Chart.js"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:115
+#: apps/templates/includes/side_bars/side_bar_docente.html:115
+msgid "Forms & Inputs"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:122
+#: apps/templates/includes/side_bars/side_bar_docente.html:122
+msgid "Forms"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:125
+#: apps/templates/includes/side_bars/side_bar_docente.html:125
+msgid "Form Elements"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:126
+#: apps/templates/includes/side_bars/side_bar_docente.html:126
+msgid "Form Validation"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:127
+#: apps/templates/includes/side_bars/side_bar_docente.html:127
+msgid "Form Wizard"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:128
+#: apps/templates/includes/side_bars/side_bar_docente.html:128
+msgid "File Upload"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:134
+#: apps/templates/includes/side_bars/side_bar_administrador.html:65
+#: apps/templates/includes/side_bars/side_bar_docente.html:134
+msgid "Settings & Help"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:144
+#: apps/templates/includes/side_bars/side_bar_docente.html:144
+msgid "General"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:145
+#: apps/templates/includes/side_bars/side_bar_docente.html:145
+msgid "Security"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:154
+#: apps/templates/includes/side_bars/side_bar_administrador.html:91
+#: apps/templates/includes/side_bars/side_bar_docente.html:154
+msgid "Documentation"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:162
+#: apps/templates/includes/side_bars/side_bar_administrador.html:99
+#: apps/templates/includes/side_bars/side_bar_docente.html:162
+msgid "Support"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:51
+msgid "Tests"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:56
+msgid "Ver Tests"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:59
+msgid "Crear Test"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:77
+msgid "Crear Usuarios"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:80
+msgid "Seguridad"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:83
+msgid "Notificaciones"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:22
+msgid "Actividades"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:26
+msgid "Ver Actividades"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:28
+msgid "Calendario"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:40
+msgid "Análisis"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:44
+msgid "Historial de Estrés"
+msgstr ""
+
