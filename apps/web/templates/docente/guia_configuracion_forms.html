@@ -1,0 +1,147 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Guía de Configuración de Google Forms') }} {% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">{{ _('Configuración de Notificaciones en Google Forms') }}</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item active">{{ _('Guía de Configuración') }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Configuración de Notificaciones por Correo') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="alert alert-info" role="alert">
+                                    {{ _('Esta guía te ayudará a configurar las notificaciones por correo en Google Forms para recibir alertas cuando un estudiante obtenga una puntuación baja en un test.') }}
+                                </div>
+
+                                <h6 class="mt-4">{{ _('Pasos para la Configuración:') }}</h6>
+                                <ol class="mt-3">
+                                    <li class="mb-3">
+                                        <strong>{{ _('Abrir el Editor de Secuencias de Comandos:') }}</strong>
+                                        <ul class="mt-2">
+                                            <li>{{ _('En tu formulario de Google Forms, haz clic en los tres puntos verticales (⋮) en la esquina superior derecha') }}</li>
+                                            <li>{{ _('Selecciona "Editor de secuencias de comandos"') }}</li>
+                                        </ul>
+                                    </li>
+                                    <li class="mb-3">
+                                        <strong>{{ _('Copiar y Pegar el Código:') }}</strong>
+                                        <ul class="mt-2">
+                                            <li>{{ _('Reemplaza todo el contenido en el editor con el siguiente código:') }}</li>
+                                        </ul>
+                                        <div class="bg-light p-3 mt-2 rounded">
+                                            <pre class="mb-0"><code>function onFormSubmit(e) {
+  var form = FormApp.getActiveForm();
+  var formResponse = e.response;
+  var itemResponses = formResponse.getItemResponses();
+  var totalScore = 0;
+  var maxScore = 0;
+  
+  // Calcular puntuación total
+  for (var i = 0; i < itemResponses.length; i++) {
+    var itemResponse = itemResponses[i];
+    if (itemResponse.getItem().getType() === FormApp.ItemType.GRID) {
+      var score = parseInt(itemResponse.getResponse()) || 0;
+      totalScore += score;
+      maxScore += 4; // Asumiendo escala de 0-4
+    }
+  }
+  
+  // Calcular porcentaje
+  var percentage = (totalScore / maxScore) * 100;
+  
+  // Si el porcentaje es menor al 60%, enviar correo
+  if (percentage < 60) {
+    var studentEmail = formResponse.getRespondentEmail();
+    var timestamp = formResponse.getTimestamp();
+    
+    // Enviar correo al docente
+    MailApp.sendEmail({
+      to: Session.getEffectiveUser().getEmail(),
+      subject: "Alerta: Resultado Bajo en Test de Estrés",
+      htmlBody: `
+        <h3>Alerta de Resultado Bajo</h3>
+        <p>Un estudiante ha obtenido una puntuación baja en el test de estrés:</p>
+        <ul>
+          <li><strong>Estudiante:</strong> ${studentEmail}</li>
+          <li><strong>Fecha:</strong> ${timestamp.toLocaleString()}</li>
+          <li><strong>Puntuación:</strong> ${percentage.toFixed(1)}%</li>
+        </ul>
+        <p>Por favor, revisa los resultados detallados en el formulario.</p>
+      `
+    });
+  }
+}</code></pre>
+                                        </div>
+                                    </li>
+                                    <li class="mb-3">
+                                        <strong>{{ _('Configurar el Activador:') }}</strong>
+                                        <ul class="mt-2">
+                                            <li>{{ _('En el editor, haz clic en el ícono del reloj (Activadores)') }}</li>
+                                            <li>{{ _('Haz clic en "Agregar activador"') }}</li>
+                                            <li>{{ _('Configura el activador con las siguientes opciones:') }}
+                                                <ul>
+                                                    <li>{{ _('Función a ejecutar:') }} <code>onFormSubmit</code></li>
+                                                    <li>{{ _('Fuente del evento:') }} {{ _('De formulario') }}</li>
+                                                    <li>{{ _('Tipo de evento:') }} {{ _('Al enviar el formulario') }}</li>
+                                                </ul>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li class="mb-3">
+                                        <strong>{{ _('Autorizar el Script:') }}</strong>
+                                        <ul class="mt-2">
+                                            <li>{{ _('La primera vez que configures el activador, Google te pedirá autorizar el script') }}</li>
+                                            <li>{{ _('Sigue los pasos para autorizar el acceso a tu cuenta de Google') }}</li>
+                                        </ul>
+                                    </li>
+                                </ol>
+
+                                <div class="alert alert-warning mt-4" role="alert">
+                                    <h6 class="alert-heading">{{ _('Notas Importantes:') }}</h6>
+                                    <ul class="mb-0">
+                                        <li>{{ _('Asegúrate de que el formulario esté configurado para recopilar direcciones de correo electrónico') }}</li>
+                                        <li>{{ _('Las preguntas deben estar en formato de cuadrícula con escala de 0-4') }}</li>
+                                        <li>{{ _('El umbral de alerta está configurado en 60%, puedes ajustarlo en el código') }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock inner_content %}
+
+{% block javascripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('#menu-dashboard').classList.add('active');
+    });
+</script>
+{% endblock javascripts %}

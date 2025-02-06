@@ -1,0 +1,168 @@
+<nav class="pcoded-navbar menupos-fixed menu-light">
+    <div class="navbar-wrapper">
+        <div class="navbar-brand header-logo">
+            <a href="{{ url_for('home_blueprint.index') }}" class="b-brand">
+                <div class="b-bg">
+                    <i class="feather icon-book"></i>
+                </div>
+                <span class="b-title">Stress Less U</span>
+            </a>
+            <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+        </div>
+        <div class="navbar-content scroll-div">
+            <ul class="nav pcoded-inner-navbar">
+                <!-- Dashboard -->
+                <li class="nav-item pcoded-menu-caption">
+                    <label>{{ _('Navigation') }}</label>
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-dashboard">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-home"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Dashboard') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li><a href="#!">{{ _('Default') }}</a></li>
+                        <li><a href="#!">{{ _('Analytics') }}</a></li>
+                        <li><a href="#!">{{ _('Reports') }}</a></li>
+                    </ul>
+                </li>
+
+                <!-- User Management -->
+                <li class="nav-item pcoded-menu-caption">
+                    <label>{{ _('User Management') }}</label>
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-users">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-users"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Users') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li><a href="#!">{{ _('User List') }}</a></li>
+                        <li><a href="#!">{{ _('Roles') }}</a></li>
+                        <li><a href="#!">{{ _('Permissions') }}</a></li>
+                    </ul>
+                </li>
+
+                <!-- UI Components -->
+                <li class="nav-item pcoded-menu-caption">
+                    <label>{{ _('UI Components') }}</label>
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-basic">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-box"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Basic') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li><a href="#!">{{ _('Alerts') }}</a></li>
+                        <li><a href="#!">{{ _('Buttons') }}</a></li>
+                        <li><a href="#!">{{ _('Cards') }}</a></li>
+                        <li><a href="#!">{{ _('Badges') }}</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-advanced">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-gitlab"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Advanced') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li><a href="#!">{{ _('Modals') }}</a></li>
+                        <li><a href="#!">{{ _('Notifications') }}</a></li>
+                        <li><a href="#!">{{ _('Carousel') }}</a></li>
+                        <li><a href="#!">{{ _('Range Slider') }}</a></li>
+                    </ul>
+                </li>
+
+                <!-- Tables & Data -->
+                <li class="nav-item pcoded-menu-caption">
+                    <label>{{ _('Tables & Data') }}</label>
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-tables">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-grid"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Tables') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li><a href="#!">{{ _('Basic Tables') }}</a></li>
+                        <li><a href="#!">{{ _('Data Tables') }}</a></li>
+                        <li><a href="#!">{{ _('Editable Tables') }}</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-charts">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-pie-chart"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Charts') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li><a href="#!">{{ _('Apex Charts') }}</a></li>
+                        <li><a href="#!">{{ _('Chart.js') }}</a></li>
+                    </ul>
+                </li>
+
+                <!-- Forms -->
+                <li class="nav-item pcoded-menu-caption">
+                    <label>{{ _('Forms & Inputs') }}</label>
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-forms">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-file-text"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Forms') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li><a href="#!">{{ _('Form Elements') }}</a></li>
+                        <li><a href="#!">{{ _('Form Validation') }}</a></li>
+                        <li><a href="#!">{{ _('Form Wizard') }}</a></li>
+                        <li><a href="#!">{{ _('File Upload') }}</a></li>
+                    </ul>
+                </li>
+
+                <!-- Settings -->
+                <li class="nav-item pcoded-menu-caption">
+                    <label>{{ _('Settings & Help') }}</label>
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-settings">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-settings"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Settings') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li><a href="#!">{{ _('General') }}</a></li>
+                        <li><a href="#!">{{ _('Security') }}</a></li>
+                        <li><a href="#!">{{ _('Notifications') }}</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item" id="menu-help">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-help-circle"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Documentation') }}</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="menu-support">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-life-buoy"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Support') }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

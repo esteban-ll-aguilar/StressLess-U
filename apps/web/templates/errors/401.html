@@ -1,0 +1,173 @@
+{% extends "errors/base_error.html" %}
+
+{% block title %}{{ _('Unauthorized') }}{% endblock %}
+
+{% block error_content %}
+<div class="error-container">
+    <!-- Animación 401 -->
+    <div class="error-animation mb-4">
+        <div class="key-container">
+            <div class="key">
+                <div class="key-body">🔑</div>
+                <div class="numbers">401</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mensaje principal -->
+    <div class="error-message text-center">
+        <h2 class="mb-3">{{ _('Authentication Required!') }}</h2>
+        <div class="alert alert-info border mb-4">
+            <p class="mb-0">{{ description or _('You need to login to access this page.') }}</p>
+        </div>
+    </div>
+
+    <!-- Login Card -->
+    <div class="login-section mb-4">
+        <div class="card border">
+            <div class="card-body">
+                <h6 class="mb-3 text-center">{{ _('Login') }}</h6>
+                <form action="{{ url_for('autenticacion.login') }}" method="post">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="feather icon-user"></i>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="{{ _('Username') }}" name="username">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">
+                                    <i class="feather icon-lock"></i>
+                                </span>
+                            </div>
+                            <input type="password" class="form-control" placeholder="{{ _('Password') }}" name="password">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">
+                        <i class="feather icon-log-in mr-2"></i>{{ _('Login') }}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Enlaces útiles -->
+    <div class="useful-links text-center">
+        <a href="{{ url_for('autenticacion.register') }}" class="btn btn-light mr-2">
+            <i class="feather icon-user-plus mr-2"></i>{{ _('Register') }}
+        </a>
+        <a href="{{ url_for('home_blueprint.index') }}" class="btn btn-light">
+            <i class="feather icon-home mr-2"></i>{{ _('Home') }}
+        </a>
+    </div>
+
+    <!-- Detalles Técnicos (solo para administradores) -->
+    {% if current_user.is_authenticated  %}
+    <div class="technical-details mt-4">
+        <div class="card border">
+            <div class="card-header bg-light">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">
+                        <i class="feather icon-terminal mr-2"></i>
+                        {{ _('Technical Details') }}
+                    </h6>
+                    <button class="btn btn-sm btn-light" onclick="copyErrorDetails()">
+                        <i class="feather icon-copy mr-1"></i>
+                        {{ _('Copy') }}
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <pre class="error-details mb-0"><code>{{ error_details }}</code></pre>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<style>
+.key-container {
+    position: relative;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.key {
+    position: relative;
+    width: 200px;
+    height: 100px;
+}
+
+.key-body {
+    font-size: 50px;
+    animation: rotate 3s ease-in-out infinite;
+}
+
+.numbers {
+    font-size: 72px;
+    font-weight: bold;
+    color: #4099ff;
+    text-align: center;
+    opacity: 0.3;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-90deg); }
+    75% { transform: rotate(90deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.error-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.login-section .card {
+    transition: transform 0.3s ease;
+}
+
+.login-section .card:hover {
+    transform: translateY(-5px);
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.input-group-text {
+    background: transparent;
+    border-right: none;
+}
+
+.form-control {
+    border-left: none;
+}
+
+.form-control:focus {
+    box-shadow: none;
+    border-color: #ced4da;
+}
+
+.useful-links .btn {
+    transition: all 0.3s ease;
+}
+
+.useful-links .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+</style>
+{% endblock %}

@@ -1,0 +1,83 @@
+<nav class="pcoded-navbar menupos-fixed menu-light">
+    <div class="navbar-wrapper">
+        <div class="navbar-brand header-logo">
+            <a href="{{ url_for('home_blueprint.index') }}" class="b-brand">
+                <div class="b-bg">
+                    <i class="feather icon-book"></i>
+                </div>
+                <span class="b-title">Stress Less U</span>
+            </a>
+            <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+        </div>
+        <div class="navbar-content scroll-div">
+            <ul class="nav pcoded-inner-navbar">
+                <!-- Dashboard -->
+                <li class="nav-item pcoded-menu-caption">
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-dashboard">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-home"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Actividades') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li><a href="{{ url_for('estudiante.ver_actividades') }}">
+                            <i class="feather icon-search mr-1"></i>{{ _('Ver Actividades') }}</a></li>
+                        <li><a href="{{ url_for('estudiante.calendario') }}">
+                            <i class="feather icon-calendar mr-1"></i>{{ _('Calendario') }}</a></li>
+                    </ul>
+                </li>
+
+                <!-- Tests -->
+                <li class="nav-item pcoded-menu-caption">
+                    <label>{{ _('Tests') }}</label>
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-tests">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-clipboard"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Tests de Estrés') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li><a href="{{ url_for('estudiante.ver_tests') }}">
+                            <i class="feather icon-check-square mr-1"></i>{{ _('Tests Asignados') }}</a></li>
+                        <li><a href="{{ url_for('estudiante.historial_tests') }}">
+                            <i class="feather icon-bar-chart mr-1"></i>{{ _('Historial de Tests') }}</a></li>
+                    </ul>
+                </li>
+
+                <!-- Ayuda y Soporte -->
+                <li class="nav-item pcoded-menu-caption">
+                    <label>{{ _('Ayuda y Soporte') }}</label>
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-help">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-help-circle"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Recursos') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li><a href="{{ url_for('estudiante.recomendaciones') }}">
+                            <i class="feather icon-book-open mr-1"></i>{{ _('Recomendaciones') }}</a></li>
+                        <li><a href="{{ url_for('estudiante.actividades_fisicas') }}">
+                            <i class="feather icon-activity mr-1"></i>{{ _('Actividades Físicas') }}</a></li>
+                        <li><a href="{{ url_for('estudiante.contactos_bienestar') }}">
+                            <i class="feather icon-users mr-1"></i>{{ _('Contactos Bienestar') }}</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item" id="menu-canal-ayuda">
+                    <a href="{{ url_for('estudiante.canal_ayuda') }}" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-message-circle"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Canal de Ayuda') }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

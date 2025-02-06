@@ -1,0 +1,143 @@
+{% extends "errors/base_error.html" %}
+
+{% block title %}{{ _('Access Denied') }}{% endblock %}
+
+{% block error_content %}
+<div class="error-container">
+    <!-- Animación 403 -->
+    <div class="error-animation mb-4">
+        <div class="lock-container">
+            <div class="lock">
+                <div class="lock-body">🔒</div>
+                <div class="numbers">403</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mensaje principal -->
+    <div class="error-message text-center">
+        <h2 class="mb-3">{{ _('Access Denied!') }}</h2>
+        <div class="alert alert-warning border mb-4">
+            <p class="mb-0">{{ description or _('You do not have permission to access this page.') }}</p>
+        </div>
+    </div>
+
+    <!-- Información adicional -->
+    <div class="info-section mb-4">
+        <div class="card border-0 bg-light">
+            <div class="card-body">
+                <h6 class="mb-3">{{ _('Why does this happen?') }}</h6>
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                        <i class="feather icon-shield text-warning mr-2"></i>
+                        {{ _('You do not have the necessary permissions') }}
+                    </li>
+                    <li class="mb-2">
+                        <i class="feather icon-user-x text-warning mr-2"></i>
+                        {{ _('Your session may have expired') }}
+                    </li>
+                    <li>
+                        <i class="feather icon-lock text-warning mr-2"></i>
+                        {{ _('The resource is restricted') }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Acciones -->
+    <div class="actions text-center">
+        <a href="{{ url_for('autenticacion.login') }}" class="btn btn-warning mr-2">
+            <i class="feather icon-log-in mr-2"></i>{{ _('Login') }}
+        </a>
+        <a href="{{ url_for('home_blueprint.index') }}" class="btn btn-light">
+            <i class="feather icon-home mr-2"></i>{{ _('Home') }}
+        </a>
+    </div>
+
+    <!-- Detalles Técnicos (solo para administradores) -->
+    {% if current_user.is_authenticated  %}
+    <div class="technical-details mt-4">
+        <div class="card border">
+            <div class="card-header bg-light">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">
+                        <i class="feather icon-terminal mr-2"></i>
+                        {{ _('Technical Details') }}
+                    </h6>
+                    <button class="btn btn-sm btn-light" onclick="copyErrorDetails()">
+                        <i class="feather icon-copy mr-1"></i>
+                        {{ _('Copy') }}
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <pre class="error-details mb-0"><code>{{ error_details }}</code></pre>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<style>
+.lock-container {
+    position: relative;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lock {
+    position: relative;
+    width: 200px;
+    height: 100px;
+}
+
+.lock-body {
+    font-size: 50px;
+    animation: shake 1.5s ease-in-out infinite;
+}
+
+.numbers {
+    font-size: 72px;
+    font-weight: bold;
+    color: #FFB64D;
+    text-align: center;
+    opacity: 0.3;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@keyframes shake {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+}
+
+.error-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.info-section .card {
+    transition: transform 0.3s ease;
+}
+
+.info-section .card:hover {
+    transform: translateY(-5px);
+}
+
+.actions .btn {
+    transition: all 0.3s ease;
+}
+
+.actions .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+</style>
+{% endblock %}

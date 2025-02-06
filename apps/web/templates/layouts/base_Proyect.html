@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Flask Gradient -{% block title %}{% endblock %}</title>
+
+    <!-- Favicon icon -->
+    <link rel="icon" href="{{ url_for('static', filename='assets/images/favicon.ico') }}" type="image/x-icon">
+    <!-- animation css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/plugins/animate.min.css') }}">
+    <!-- vendor css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+    <!-- Template custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/template.css') }}">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+    {% if current_user.is_authenticated %}
+        {% set layout = current_user.settings.get('layout', {}) %}
+        {% if layout.get('type') == 'dark' %}
+            <link rel="stylesheet" class="layout-css" href="/static/assets/css/layout-dark.css">
+        {% endif %}
+        {% if layout.get('rtlEnabled') %}
+            <link rel="stylesheet" class="rtl-css" href="/static/assets/css/layout-rtl.css">
+        {% endif %}
+    {% endif %}
+
+    {% block stylesheets %}{% endblock stylesheets %}
+
+    <style>
+        /* Alineación del contenido cuando no hay sidebar */
+        .no-sidebar .pcoded-main-container {
+            margin-left: 0 !important;
+        }
+        
+        .no-sidebar .pcoded-content {
+            margin: 60px 30px 0 !important;
+            padding: 0 !important;
+        }
+
+        .no-sidebar .pcoded-inner-content {
+            padding: 0 !important;
+        }
+
+        .no-sidebar .main-body {
+            margin: 0 !important;
+        }
+
+        .no-sidebar .page-wrapper {
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+    </style>
+</head>
+
+<body class="{% if only_navbar %}no-sidebar{% endif %} {% if current_user.is_authenticated %}
+             {% set layout = current_user.settings.get('layout', {}) %}
+             {% if layout.get('type') %}{{ layout.get('type') }}{% endif %}
+             {% if layout.get('boxLayout') %}container box-layout{% endif %}
+             {% endif %}">
+    <!-- [ Pre-loader ] start -->
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <!-- [ Pre-loader ] End -->
+
+    {% include 'includes/navbar.html' %}
+
+    {% if not only_navbar %}
+        <!-- Change to side_bar if you want to show sidebar personalized and not lose the sidebar of the template  -->
+        <!--  include 'includes/sidebar.html'  -->
+        {% if current_user.rol == 'estudiante' %}
+            {% include 'includes/side_bars/side_bar_estudiante.html' %}
+        {% elif current_user.rol == 'docente' %}
+            {% include 'includes/side_bars/side_bar_docente.html' %}
+        {% elif current_user.rol == 'administrador' %}
+            {% include 'includes/side_bars/side_bar_administrador.html' %}
+        {% endif %}
+        <!-- [ Main Content ] start -->
+        <div class="pcoded-main-container">
+            <div class="pcoded-wrapper">
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+                        <div class="main-body">
+                            <div class="page-wrapper">
+                                {% block inner_content %}{% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    {% else %}
+        <!-- [ Main Content ] start -->
+        <div class="pcoded-main-container">
+            <div class="pcoded-wrapper">
+                <div class="pcoded-content">
+                    <div class="pcoded-inner-content">
+                        <div class="main-body">
+                            <div class="page-wrapper">
+                                {% block content %}{% endblock %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- [ Main Content ] end -->
+    {% endif %}
+
+    <!-- Required Js -->
+    {% include 'includes/scripts.html' %}
+
+    
+    {% if current_user.is_authenticated %}
+    <script>
+        // Pasar las configuraciones del usuario al JavaScript
+        var userSettings = '{{ current_user.settings|tojson|safe }}';
+    </script>
+    {% endif %}
+
+
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const flashMessages = JSON.parse('{{ get_flashed_messages(with_categories=True) | tojson | safe }}');
+            flashMessages.forEach(([category, message]) => {
+                let icon;
+                switch(category) {
+                    case 'success':
+                        icon = 'success';
+                        break;
+                    case 'error':
+                        icon = 'error';
+                        break;
+                    case 'info':
+                        icon = 'info';
+                        break;
+                    case 'warning':
+                        icon = 'warning';
+                        break;
+                    default:
+                        icon = 'info';
+                }
+                
+                Swal.fire({
+                    icon: icon,
+                    title: message,
+                    timer: 3000,
+                    showConfirmButton: false,
+                    toast: true,
+                    position: 'bottom-end',
+                    showClass: {
+                        popup: 'animate__animated animate__zoomInDown'
+                    },
+                    hideClass: {
+                        popup: 'animate__animated animate__slideOutUp'
+                    }
+                });
+            });
+        });
+    </script>
+    <script src="/static/assets/js/layout-settings.js"></script>
+
+    {% block javascripts %}{% endblock javascripts %}
+</body>
+</html>

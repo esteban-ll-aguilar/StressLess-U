@@ -1,0 +1,232 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Dashboard') }} {% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5>{{ _('Panel de Control') }}</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item">{{ _('Dashboard') }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <!-- Tarjetas de estadísticas -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h3>{{ total_estudiantes }}</h3>
+                                        <h6 class="text-muted m-b-0">{{ _('Estudiantes') }}</h6>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <i class="feather icon-users f-28"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-primary">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <a href="{{ url_for('administrador.ver_usuarios') }}?tipo=estudiante" class="text-white m-b-0">{{ _('Ver Estudiantes') }}</a>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <i class="feather icon-trending-up text-white f-16"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h3>{{ total_docentes }}</h3>
+                                        <h6 class="text-muted m-b-0">{{ _('Docentes') }}</h6>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <i class="feather icon-user-check f-28"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-success">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <a href="{{ url_for('administrador.ver_usuarios') }}?tipo=docente" class="text-white m-b-0">{{ _('Ver Docentes') }}</a>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <i class="feather icon-trending-up text-white f-16"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h3>{{ total_materias }}</h3>
+                                        <h6 class="text-muted m-b-0">{{ _('Materias') }}</h6>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <i class="feather icon-book f-28"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-info">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <a href="{{ url_for('administrador.ver_materias') }}" class="text-white m-b-0">{{ _('Ver Materias') }}</a>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <i class="feather icon-trending-up text-white f-16"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h3>{{ total_paralelos }}</h3>
+                                        <h6 class="text-muted m-b-0">{{ _('Paralelos') }}</h6>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <i class="feather icon-layers f-28"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-warning">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <a href="{{ url_for('administrador.ver_paralelos') }}" class="text-white m-b-0">{{ _('Ver Paralelos') }}</a>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <i class="feather icon-trending-up text-white f-16"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accesos Rápidos -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Acciones Rápidas') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <a href="{{ url_for('administrador.crear_usuario') }}" class="btn btn-primary btn-block mb-3">
+                                            <i class="feather icon-user-plus mr-2"></i>{{ _('Crear Usuario') }}
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="{{ url_for('administrador.crear_materia') }}" class="btn btn-info btn-block mb-3">
+                                            <i class="feather icon-book mr-2"></i>{{ _('Crear Materia') }}
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="{{ url_for('administrador.crear_paralelo') }}" class="btn btn-warning btn-block mb-3">
+                                            <i class="feather icon-layers mr-2"></i>{{ _('Crear Paralelo') }}
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="{{ url_for('administrador.crear_test') }}" class="btn btn-success btn-block mb-3">
+                                            <i class="feather icon-file-text mr-2"></i>{{ _('Crear Test') }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Últimos Usuarios -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Últimos Usuarios Registrados') }}</h5>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-hover mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ _('Nombre') }}</th>
+                                                <th>{{ _('Correo') }}</th>
+                                                <th>{{ _('Rol') }}</th>
+                                                <th>{{ _('Estado') }}</th>
+                                                <th>{{ _('Acciones') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for usuario in ultimos_usuarios %}
+                                            <tr>
+                                                <td>{{ usuario.primer_nombre }} {{ usuario.primer_apellido }}</td>
+                                                <td>{{ usuario.correo }}</td>
+                                                <td>
+                                                    {% if usuario.es_estudiante %}
+                                                        <span class="badge badge-primary">{{ _('Estudiante') }}</span>
+                                                    {% elif usuario.es_docente %}
+                                                        <span class="badge badge-success">{{ _('Docente') }}</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    {% if usuario.esta_activo %}
+                                                        <span class="badge badge-success">{{ _('Activo') }}</span>
+                                                    {% else %}
+                                                        <span class="badge badge-danger">{{ _('Inactivo') }}</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    <a href="{{ url_for('administrador.ver_usuarios') }}" class="btn btn-info btn-sm">
+                                                        <i class="feather icon-edit"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

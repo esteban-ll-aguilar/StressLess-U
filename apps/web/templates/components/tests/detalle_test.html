@@ -1,0 +1,262 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Detalles del Test') }} {% endblock %}
+
+{% block inner_content %}
+
+<!-- [ breadcrumb ] start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title d-flex justify-content-between align-items-center">
+                    <h5 class="m-b-10">
+                        <i class="feather icon-list m-r-5"></i>
+                        {{ _('Detalles del Test') }}
+                    </h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#!">{{ _('Tests') }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('c.ver_tests') }}">{{ _('Ver Tests') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ _('Detalles del Test') }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ breadcrumb ] end -->
+
+<!-- Hacer un nav con 2 secciones  -->
+<!-- 1. Detalles del test -->
+<!-- 2. Resultados del test -->
+
+<div class="row">
+    <div class="col-12">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home"
+                    aria-selected="true">
+                    {{ _('Detalles del Test') }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab"
+                    aria-controls="profile" aria-selected="false">
+                    {{ _('Resultados del Test') }}
+                </a>
+            </li>
+        </ul>
+
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                {% if form %}
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">{{ form.info.title }}</h5>
+                    </div>
+                    <div class="card-body mt-2">
+                        <p class="card-text text-muted">{{ form.info.description | default(_('Sin descripción')) }}</p>
+                        <p class="card-text">
+                            <strong>{{ _('ID:') }}</strong> <span class="badge badge-secondary">{{ form.formId }}</span>
+                        </p>
+
+                        <h6 class="mt-4">{{ _('Preguntas del Test:') }}</h6>
+                        <ul class="list-group mb-3">
+                            {% for item in form.get('items', []) %}
+                            <li class="list-group-item">
+                                <strong>{{ _('Pregunta:') }}</strong> {{ item.title | default(_('Sin título')) }}<br>
+                                {% if item.questionItem.question.choiceQuestion %}
+                                <strong>{{ _('Opciones:') }}</strong>
+                                <ul class="mt-2">
+                                    {% for option in item.questionItem.question.choiceQuestion.options %}
+                                    <li><i class="feather icon-chevron-right text-primary"></i> {{ option.value }}</li>
+                                    {% endfor %}
+                                </ul>
+                                {% elif item.questionItem.question.textQuestion %}
+                                <em>{{ _('Tipo de respuesta: Texto libre') }}</em>
+                                {% endif %}
+                            </li>
+                            {% endfor %}
+                        </ul>
+
+                        <h6 class="mt-4">{{ _('Link para responder el test:') }}</h6>
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control" value="{{ form.responderUri }}" id="responderUri"
+                                readonly>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button"
+                                    onclick="copyToClipboard('#responderUri')">{{ _('Copiar Link') }}</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="alert alert-warning mt-4" role="alert">
+                    {{ _('No se encontraron detalles de test.') }}
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="card shadow-sm">
+                    <div class="card-header bg-primary text-white">
+                        <h5 class="mb-0">{{ _('Resultados del Test') }}</h5>
+                    </div>
+                    <div class="card-body mt-2">
+                        {% if respuestas %}
+                            <!-- Resumen General -->
+                            <div class="row mb-4">
+                                <div class="col-md-4">
+                                    <div class="card border-primary">
+                                        <div class="card-body text-center">
+                                            <h6 class="card-title text-muted">{{ _('Total de Respuestas') }}</h6>
+                                            <h2 class="mb-0 text-primary">{{ respuestas|length }}</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card border-success">
+                                        <div class="card-body text-center">
+                                            <h6 class="card-title text-muted">{{ _('Última Respuesta') }}</h6>
+                                            <p class="mb-0">{{ respuestas[-1].createTime|format_date }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card border-info">
+                                        <div class="card-body text-center">
+                                            <h6 class="card-title text-muted">{{ _('Estado') }}</h6>
+                                            <span class="badge badge-success">{{ _('Activo') }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Tabla de Respuestas -->
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead class="thead-light">
+                                        <tr>
+                                            <th>{{ _('Estudiante') }}</th>
+                                            <th>{{ _('Fecha') }}</th>
+                                            <th>{{ _('Acciones') }}</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for respuesta in respuestas %}
+                                        <tr>
+                                            <td>
+                                                <div class="d-flex align-items-center">
+                                                    <i class="feather icon-user text-primary mr-2"></i>
+                                                    {{ respuesta.respondentEmail }}
+                                                </div>
+                                            </td>
+                                            <td>{{ respuesta.createTime|format_date }}</td>
+                                            <td>
+                                <button class="btn btn-sm btn-primary" onclick="showrespuestaDetails('{{ respuesta.responseId }}')">
+                                                    <i class="feather icon-eye"></i> {{ _('Ver Detalles') }}
+                                                </button>
+                                            </td>
+                                        </tr>
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- Modal para Detalles de Respuesta -->
+                            <div class="modal fade" id="respuestaDetailsModal" tabindex="-1" role="dialog">
+                                <div class="modal-dialog modal-lg" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header bg-primary text-white">
+                                            <h5 class="modal-title">{{ _('Detalles de la Respuesta') }}</h5>
+                                            <button type="button" class="close text-white" data-dismiss="modal">
+                                                <span>&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="row mb-3">
+                                                <div class="col-md-6">
+                                                    <p><strong>{{ _('Estudiante:') }}</strong> <span id="modalEstudiante"></span></p>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p><strong>{{ _('Fecha:') }}</strong> <span id="modalFecha"></span></p>
+                                                </div>
+                                            </div>
+                                            <div id="respuestaDetailsContent">
+                                                <!-- El contenido se llenará dinámicamente -->
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _('Cerrar') }}</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        {% else %}
+                            <div class="alert alert-warning mt-4" role="alert">
+                                {{ _('No se encontraron resultados de test.') }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <script>
+                    function showrespuestaDetails(responseId) {
+                        var respuestas = {{ respuestas|tojson|safe }};
+                        var form = {{ form|tojson|safe }};
+                        
+                        var respuesta = respuestas.find(function(r) { 
+                            return r.responseId === responseId; 
+                        });
+                        
+                        if (!respuesta) return;
+
+                        document.getElementById('modalEstudiante').textContent = respuesta.respondentEmail;
+                        document.getElementById('modalFecha').textContent = new Date(respuesta.createTime).toLocaleString();
+
+                        var html = '<div class="list-group">';
+                        
+                        Object.keys(respuesta.answers).forEach(function(questionId) {
+                            var answer = respuesta.answers[questionId];
+                            var value = answer.textAnswers.answers[0].value;
+                            
+                            // Buscar el título de la pregunta en el formulario
+                            var pregunta = form.items.find(function(item) {
+                                // console.log("Comparando",item.questionId, item.questionItem.question.questionId);
+                                // console.log("Iten",item);
+                                return item.questionItem && item.questionItem.question.questionId === questionId;
+                            });
+                            
+                            html += '<div class="list-group-item">';
+                            html += '<h6 class="mb-1">' + (pregunta ? pregunta.title : questionId) + '</h6>';
+                            html += '<p class="mb-1 text-primary">' + value + '</p>';
+                            html += '</div>';
+                        });
+                        
+                        html += '</div>';
+                        
+                        document.getElementById('respuestaDetailsContent').innerHTML = html;
+                        $('#respuestaDetailsModal').modal('show');
+                    }
+                </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script>
+    function copyToClipboard(selector) {
+        const input = document.querySelector(selector);
+        input.select();
+        document.execCommand("copy");
+        alert("{{ _('Link copiado al portapapeles.') }}");
+    }
+</script>
+
+{% endblock inner_content %}

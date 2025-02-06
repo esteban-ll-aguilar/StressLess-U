@@ -1,0 +1,144 @@
+{% extends "errors/base_error.html" %}
+
+{% block title %}{{ _('Page Not Found') }}{% endblock %}
+
+{% block error_content %}
+<div class="error-container">
+    <!-- Animación 404 -->
+    <div class="error-animation mb-4">
+        <div class="maze-container">
+            <div class="maze">
+                <div class="ghost">👻</div>
+                <div class="numbers">404</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mensaje principal -->
+    <div class="error-message text-center">
+        <h2 class="mb-3">{{ _('Page Not Found!') }}</h2>
+        <div class="alert alert-light border mb-4">
+            <p class="mb-0">{{ description or _('The page you are looking for seems to be lost in cyberspace.') }}</p>
+        </div>
+    </div>
+
+    <!-- Sugerencias -->
+    <div class="suggestions mb-4">
+        <div class="card border-0 bg-light">
+            <div class="card-body">
+                <h6 class="mb-3">{{ _('What can you do?') }}</h6>
+                <ul class="list-unstyled mb-0">
+                    <li class="mb-2">
+                        <i class="feather icon-check-circle text-success mr-2"></i>
+                        {{ _('Check the URL for typing errors') }}
+                    </li>
+                    <li class="mb-2">
+                        <i class="feather icon-check-circle text-success mr-2"></i>
+                        {{ _('Go back to the previous page') }}
+                    </li>
+                    <li>
+                        <i class="feather icon-check-circle text-success mr-2"></i>
+                        {{ _('Go to the home page') }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Acciones -->
+    <div class="actions text-center">
+        <button class="btn btn-light mr-2" onclick="history.back()">
+            <i class="feather icon-arrow-left mr-2"></i>{{ _('Back') }}
+        </button>
+        <a href="{{ url_for('home_blueprint.index') }}" class="btn btn-primary">
+            <i class="feather icon-home mr-2"></i>{{ _('Home') }}
+        </a>
+    </div>
+
+    <!-- Detalles Técnicos (solo para administradores) -->
+    {% if current_user.is_authenticated  %}
+    <div class="technical-details mt-4">
+        <div class="card border">
+            <div class="card-header bg-light">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">
+                        <i class="feather icon-terminal mr-2"></i>
+                        {{ _('Technical Details') }}
+                    </h6>
+                    <button class="btn btn-sm btn-light" onclick="copyErrorDetails()">
+                        <i class="feather icon-copy mr-1"></i>
+                        {{ _('Copy') }}
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <pre class="error-details mb-0"><code>{{ error_details }}</code></pre>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<style>
+.maze-container {
+    position: relative;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.maze {
+    position: relative;
+    width: 200px;
+    height: 100px;
+}
+
+.ghost {
+    position: absolute;
+    font-size: 40px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.numbers {
+    font-size: 72px;
+    font-weight: bold;
+    color: #7267EF;
+    text-align: center;
+    opacity: 0.3;
+    position: absolute;
+    width: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px) rotate(0deg); }
+    50% { transform: translateY(-20px) rotate(10deg); }
+    100% { transform: translateY(0px) rotate(0deg); }
+}
+
+.error-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.suggestions .card {
+    transition: transform 0.3s ease;
+}
+
+.suggestions .card:hover {
+    transform: translateY(-5px);
+}
+
+.actions .btn {
+    transition: all 0.3s ease;
+}
+
+.actions .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+</style>
+{% endblock %}

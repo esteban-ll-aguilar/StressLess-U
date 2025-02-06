@@ -1,0 +1,124 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Historial de Tests') }} {% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">{{ _('Historial de Tests') }}</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{{ url_for('home_blueprint.index') }}"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="#!">{{ _('Tests') }}</a></li>
+                                    <li class="breadcrumb-item">{{ _('Historial') }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    {% if resultados %}
+                        {% for resultado in resultados %}
+                        <div class="col-md-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>{{ resultado.nombre }}</h5>
+                                    <span class="d-block m-t-5">
+                                        <span class="badge badge-primary">{{ _('Completado') }}</span>
+                                        <span class="text-muted ml-2">
+                                            <i class="feather icon-calendar mr-1"></i>
+                                            <span class="fecha-realizacion" data-fecha="{{ resultado.fecha_realizacion }}"></span>
+                                        </span>
+                                    </span>
+                                </div>
+                                <div class="card-body">
+                                    <p class="text-muted mb-4">{{ resultado.descripcion }}</p>
+                                    
+                                    <h6 class="mb-3">{{ _('Respuestas') }}</h6>
+                                    <div class="table-responsive">
+                                        <table class="table table-borderless">
+                                            <tbody>
+                                                {% for pregunta_id, respuesta in resultado.respuestas.items() %}
+                                                    <tr>
+                                                        <td class="font-weight-bold" style="width: 40%;">
+                                                            {% if respuesta.questionId %}
+                                                                {{ _('Pregunta') }} {{ loop.index }}
+                                                            {% endif %}
+                                                        </td>
+                                                        <td class="text-muted">
+                                                            {% if respuesta.textAnswers and respuesta.textAnswers.answers %}
+                                                                {% for answer in respuesta.textAnswers.answers %}
+                                                                    {{ answer.value }}{% if not loop.last %}, {% endif %}
+                                                                {% endfor %}
+                                                            {% endif %}
+                                                        </td>
+                                                    </tr>
+                                                {% endfor %}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% else %}
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-body text-center">
+                                    <div class="mb-4">
+                                        <i class="feather icon-bar-chart-2 text-muted" style="font-size: 3rem;"></i>
+                                    </div>
+                                    <h5 class="mb-3">{{ _('No hay resultados disponibles') }}</h5>
+                                    <p class="text-muted">{{ _('Los resultados de tus tests aparecerán aquí una vez que los completes') }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock inner_content %}
+
+{% block javascripts %}
+<script>
+    function formatearFecha(fechaStr) {
+        if (!fechaStr) return '{{ _("Sin fecha definida") }}';
+        return new Date(fechaStr).toLocaleDateString('es-ES', {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric',
+            hour: '2-digit',
+            minute: '2-digit'
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        // Marcar el menú activo
+        document.querySelector('#menu-tests').classList.add('active');
+        // Inicializar tooltips
+        $('[data-toggle="tooltip"]').tooltip();
+
+        // Formatear fechas
+        document.querySelectorAll('.fecha-realizacion').forEach(element => {
+            const fechaStr = element.dataset.fecha;
+            if (fechaStr) {
+                element.textContent = formatearFecha(fechaStr);
+            }
+        });
+    });
+</script>
+{% endblock javascripts %}

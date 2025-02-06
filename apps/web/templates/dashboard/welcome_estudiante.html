@@ -1,0 +1,226 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Dashboard') }} {% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5>{{ _('Panel de Control') }}</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item">{{ _('Dashboard') }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <!-- Tarjetas de estadísticas -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h3>{{ total_actividades }}</h3>
+                                        <h6 class="text-muted m-b-0">{{ _('Actividades Pendientes') }}</h6>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <i class="feather icon-check-square f-28"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-primary">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <a href="{{ url_for('estudiante.ver_actividades') }}" class="text-white m-b-0">{{ _('Ver Actividades') }}</a>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <i class="feather icon-trending-up text-white f-16"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h3>{{ total_tests }}</h3>
+                                        <h6 class="text-muted m-b-0">{{ _('Tests Pendientes') }}</h6>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <i class="feather icon-file-text f-28"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-success">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <a href="{{ url_for('estudiante.ver_tests') }}" class="text-white m-b-0">{{ _('Ver Tests') }}</a>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <i class="feather icon-trending-up text-white f-16"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h3>{{ total_paralelos }}</h3>
+                                        <h6 class="text-muted m-b-0">{{ _('Mis Paralelos') }}</h6>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <i class="feather icon-layers f-28"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-info">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <a href="{{ url_for('estudiante.ver_paralelos') }}" class="text-white m-b-0">{{ _('Ver Paralelos') }}</a>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <i class="feather icon-trending-up text-white f-16"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h3>{{ nivel_estres }}%</h3>
+                                        <h6 class="text-muted m-b-0">{{ _('Nivel de Estrés') }}</h6>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <i class="feather icon-activity f-28"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer {% if nivel_estres >= 80 %}bg-danger{% elif nivel_estres >= 60 %}bg-warning{% else %}bg-success{% endif %}">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <a href="{{ url_for('estudiante.recomendaciones') }}" class="text-white m-b-0">{{ _('Ver Recomendaciones') }}</a>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <i class="feather icon-trending-up text-white f-16"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accesos Rápidos -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Accesos Rápidos') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <a href="{{ url_for('estudiante.calendario') }}" class="btn btn-primary btn-block mb-3">
+                                            <i class="feather icon-calendar mr-2"></i>{{ _('Calendario') }}
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="{{ url_for('estudiante.canal_ayuda') }}" class="btn btn-info btn-block mb-3">
+                                            <i class="feather icon-message-circle mr-2"></i>{{ _('Canal de Ayuda') }}
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="{{ url_for('estudiante.ver_tests') }}" class="btn btn-warning btn-block mb-3">
+                                            <i class="feather icon-file-text mr-2"></i>{{ _('Tests Pendientes') }}
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="{{ url_for('estudiante.recomendaciones') }}" class="btn btn-success btn-block mb-3">
+                                            <i class="feather icon-heart mr-2"></i>{{ _('Recomendaciones') }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Actividades Pendientes -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Actividades Pendientes') }}</h5>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-hover mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ _('Nombre') }}</th>
+                                                <th>{{ _('Paralelo') }}</th>
+                                                <th>{{ _('Fecha Entrega') }}</th>
+                                                <th>{{ _('Estado') }}</th>
+                                                <th>{{ _('Acciones') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for actividad in actividades_pendientes %}
+                                            <tr>
+                                                <td>{{ actividad.nombre }}</td>
+                                                <td>{{ actividad.paralelo_nombre }}</td>
+                                                <td>{{ actividad.fecha_entrega }}</td>
+                                                <td>
+                                                    {% if actividad.es_obligatoria %}
+                                                        <span class="badge badge-danger">{{ _('Obligatoria') }}</span>
+                                                    {% else %}
+                                                        <span class="badge badge-info">{{ _('Opcional') }}</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    <a href="{{ actividad.link_test }}" target="_blank" class="btn btn-primary btn-sm">
+                                                        <i class="feather icon-external-link"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,80 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Crear Paralelo') if not paralelo else _('Editar Paralelo') }} {% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">{{ _('Crear Paralelo') if not paralelo else _('Editar Paralelo') }}</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="{{ url_for('administrador.ver_paralelos') }}">{{ _('Paralelos') }}</a></li>
+                                    <li class="breadcrumb-item"><a href="#">{{ _('Crear') if not paralelo else _('Editar') }}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Información del Paralelo') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <form method="POST">
+                                    <div class="form-group">
+                                        <label for="nombre">{{ _('Nombre del Paralelo (A, B, C, etc)') }}</label>
+                                        <input type="text" class="form-control text-uppercase" id="nombre" name="nombre" 
+                                               value="{{ paralelo.nombre if paralelo else '' }}" 
+                                               maxlength="2"
+                                               required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="materia">{{ _('Materia') }}</label>
+                                        <select class="form-control" id="materia" name="materia_uid" required>
+                                            <option value="">{{ _('Seleccione una materia') }}</option>
+                                            {% for materia in materias %}
+                                            <option value="{{ materia.uid }}" 
+                                                    {% if paralelo and paralelo.materia_uid == materia.uid %}selected{% endif %}>
+                                                {{ materia.nombre }}
+                                            </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="docente">{{ _('Docente') }}</label>
+                                        <select class="form-control" id="docente" name="docente_uid" required>
+                                            <option value="">{{ _('Seleccione un docente') }}</option>
+                                            {% for docente in docentes %}
+                                            <option value="{{ docente.uid }}"
+                                                    {% if paralelo and paralelo.docente_uid == docente.uid %}selected{% endif %}>
+                                                {{ docente.primer_nombre }} {{ docente.primer_apellido }}
+                                            </option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="descripcion">{{ _('Descripción') }}</label>
+                                        <textarea class="form-control" id="descripcion" name="descripcion" rows="3">{{ paralelo.descripcion if paralelo else '' }}</textarea>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">{{ _('Guardar') }}</button>
+                                    <a href="{{ url_for('administrador.ver_paralelos') }}" class="btn btn-secondary">{{ _('Cancelar') }}</a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock inner_content %}

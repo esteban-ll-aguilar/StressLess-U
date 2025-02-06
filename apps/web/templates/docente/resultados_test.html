@@ -1,0 +1,423 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Resultados de Tests') }} {% endblock %}
+
+{% block stylesheets %}
+<!-- ApexCharts CSS -->
+<link href="/static/assets/css/plugins/apexcharts.css" rel="stylesheet">
+<style>
+    .filter-section {
+        margin-bottom: 20px;
+        padding: 15px;
+        background: white;
+        border-radius: 5px;
+        box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
+    }
+    .chart-card {
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
+        margin-bottom: 20px;
+    }
+    .results-table {
+        margin-top: 20px;
+    }
+    .stress-level-critical {
+        color: #dc3545;
+        font-weight: bold;
+    }
+    .stress-level-warning {
+        color: #ffc107;
+        font-weight: bold;
+    }
+    .stress-level-normal {
+        color: #28a745;
+        font-weight: bold;
+    }
+</style>
+{% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- Header -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">{{ _('Resultados de Tests de Estrés') }}</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="#">{{ _('Tests') }}</a></li>
+                                    <li class="breadcrumb-item active">{{ _('Resultados') }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenido Principal -->
+                <div class="row">
+                    <!-- Filtros -->
+                    <div class="col-sm-12">
+                        <div class="card filter-section">
+                            <div class="card-header">
+                                <h5>{{ _('Filtros') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="filterForm">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="paralelo">{{ _('Paralelo') }}</label>
+                                                <select class="form-control" id="paralelo" name="paralelo">
+                                                    <option value="">{{ _('Todos') }}</option>
+                                                    {% for paralelo in paralelos %}
+                                                    <option value="{{ paralelo.uid }}">
+                                                        {{ paralelo.nombre }} - {{ materias[paralelo.materia_uid].nombre }}
+                                                    </option>
+                                                    {% endfor %}
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="estudiante">{{ _('Estudiante') }}</label>
+                                                <select class="form-control" id="estudiante" name="estudiante">
+                                                    <option value="">{{ _('Todos') }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="nivel_estres">{{ _('Nivel de Estrés') }}</label>
+                                                <select class="form-control" id="nivel_estres" name="nivel_estres">
+                                                    <option value="">{{ _('Todos') }}</option>
+                                                    <option value="critico">{{ _('Crítico') }}</option>
+                                                    <option value="alto">{{ _('Alto') }}</option>
+                                                    <option value="medio">{{ _('Medio') }}</option>
+                                                    <option value="bajo">{{ _('Bajo') }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="fecha">{{ _('Fecha') }}</label>
+                                                <input type="date" class="form-control" id="fecha" name="fecha">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row mt-3">
+                                        <div class="col-12">
+                                            <button type="submit" class="btn btn-primary">
+                                                <i class="feather icon-filter"></i> {{ _('Filtrar') }}
+                                            </button>
+                                            <button type="button" class="btn btn-success" onclick="exportarResultados()">
+                                                <i class="feather icon-mail"></i> {{ _('Enviar Reporte') }}
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gráficas -->
+                    <div class="col-md-6">
+                        <div class="card chart-card">
+                            <div class="card-header">
+                                <h5>{{ _('Distribución de Niveles de Estrés') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="pieChart"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card chart-card">
+                            <div class="card-header">
+                                <h5>{{ _('Evolución del Nivel de Estrés') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div id="lineChart"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tabla de Resultados -->
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Resultados Detallados') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ _('Estudiante') }}</th>
+                                                <th>{{ _('Fecha') }}</th>
+                                                <th>{{ _('Test') }}</th>
+                                                <th>{{ _('Nivel de Estrés') }}</th>
+                                                <th>{{ _('Estado') }}</th>
+                                                <th>{{ _('Acciones') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody id="resultsTableBody">
+                                            <!-- Los resultados se cargarán dinámicamente -->
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Enviar Reporte -->
+<div class="modal fade" id="enviarReporteModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ _('Enviar Reporte por Correo') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="reporteForm">
+                    <div class="form-group">
+                        <label for="email">{{ _('Correo Electrónico') }}</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="formato">{{ _('Formato del Reporte') }}</label>
+                        <select class="form-control" id="formato">
+                            <option value="pdf">PDF</option>
+                            <option value="excel">Excel</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _('Cancelar') }}</button>
+                <button type="button" class="btn btn-primary" onclick="enviarReporte()">{{ _('Enviar') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<!-- ApexCharts JS -->
+<script src="/static/assets/js/plugins/apexcharts.min.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Inicializar gráficas
+    initializeCharts();
+    
+    // Cargar datos iniciales
+    loadResults();
+    
+    // Event listeners
+    document.getElementById('filterForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        loadResults();
+    });
+    
+    // Actualizar lista de estudiantes cuando cambia el paralelo
+    document.getElementById('paralelo').addEventListener('change', function() {
+        updateEstudiantesList();
+    });
+});
+
+function initializeCharts() {
+    // Gráfica de Pie - Distribución de niveles de estrés
+    var pieOptions = {
+        series: [44, 55, 13, 43],
+        chart: {
+            width: 380,
+            type: 'pie',
+        },
+        labels: ['Crítico', 'Alto', 'Medio', 'Bajo'],
+        colors: ['#dc3545', '#ffc107', '#17a2b8', '#28a745'],
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    };
+    var pieChart = new ApexCharts(document.querySelector("#pieChart"), pieOptions);
+    pieChart.render();
+
+    // Gráfica de Línea - Evolución temporal
+    var lineOptions = {
+        series: [{
+            name: 'Nivel de Estrés',
+            data: [30, 40, 35, 50, 49, 60, 70, 91, 125]
+        }],
+        chart: {
+            height: 350,
+            type: 'line',
+            zoom: {
+                enabled: false
+            }
+        },
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            curve: 'straight'
+        },
+        grid: {
+            row: {
+                colors: ['#f3f3f3', 'transparent'],
+                opacity: 0.5
+            },
+        },
+        xaxis: {
+            categories: ['Ene', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul', 'Ago', 'Sep'],
+        }
+    };
+    var lineChart = new ApexCharts(document.querySelector("#lineChart"), lineOptions);
+    lineChart.render();
+}
+
+function loadResults() {
+    const filters = {
+        paralelo: document.getElementById('paralelo').value,
+        estudiante: document.getElementById('estudiante').value,
+        nivel_estres: document.getElementById('nivel_estres').value,
+        fecha: document.getElementById('fecha').value
+    };
+
+    fetch('/docente/resultados/obtener?' + new URLSearchParams(filters))
+        .then(response => response.json())
+        .then(data => {
+            updateTable(data.resultados);
+            updateCharts(data.estadisticas);
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showNotification('error', "{{ _('Error al cargar los resultados') }}");
+        });
+}
+
+function updateTable(resultados) {
+    const tbody = document.getElementById('resultsTableBody');
+    tbody.innerHTML = '';
+
+    resultados.forEach(resultado => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${resultado.estudiante_nombre}</td>
+            <td>${new Date(resultado.fecha).toLocaleDateString()}</td>
+            <td>${resultado.test_nombre}</td>
+            <td class="stress-level-${getStressLevelClass(resultado.nivel_estres)}">
+                ${resultado.nivel_estres}
+            </td>
+            <td>
+                <span class="badge ${resultado.es_critico ? 'badge-danger' : 'badge-success'}">
+                    ${resultado.es_critico ? "{{ _('Crítico') }}" : "{{ _('Normal') }}"}
+                </span>
+            </td>
+            <td>
+                <button class="btn btn-info btn-sm" onclick="verDetalle('${resultado.uid}')">
+                    <i class="feather icon-eye"></i>
+                </button>
+            </td>
+        `;
+        tbody.appendChild(row);
+    });
+}
+
+function getStressLevelClass(nivel) {
+    if (nivel >= 80) return 'critical';
+    if (nivel >= 60) return 'warning';
+    return 'normal';
+}
+
+function updateEstudiantesList() {
+    const paraleloId = document.getElementById('paralelo').value;
+    if (!paraleloId) {
+        document.getElementById('estudiante').innerHTML = '<option value="">{{ _("Todos") }}</option>';
+        return;
+    }
+
+    fetch(`/docente/paralelos/${paraleloId}/estudiantes`)
+        .then(response => response.json())
+        .then(estudiantes => {
+            const select = document.getElementById('estudiante');
+            select.innerHTML = '<option value="">{{ _("Todos") }}</option>';
+            estudiantes.forEach(estudiante => {
+                const option = document.createElement('option');
+                option.value = estudiante.uid;
+                option.textContent = `${estudiante.primer_nombre} ${estudiante.primer_apellido}`;
+                select.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showNotification('error', "{{ _('Error al cargar los estudiantes') }}");
+        });
+}
+
+function exportarResultados() {
+    $('#enviarReporteModal').modal('show');
+}
+
+function enviarReporte() {
+    const email = document.getElementById('email').value;
+    const formato = document.getElementById('formato').value;
+    const filters = {
+        paralelo: document.getElementById('paralelo').value,
+        estudiante: document.getElementById('estudiante').value,
+        nivel_estres: document.getElementById('nivel_estres').value,
+        fecha: document.getElementById('fecha').value,
+        email: email,
+        formato: formato
+    };
+
+    fetch('/docente/resultados/enviar-reporte', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(filters)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            $('#enviarReporteModal').modal('hide');
+            showNotification('success', "{{ _('Reporte enviado exitosamente') }}");
+        } else {
+            showNotification('error', data.error || "{{ _('Error al enviar el reporte') }}");
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showNotification('error', "{{ _('Error al enviar el reporte') }}");
+    });
+}
+
+function showNotification(type, message) {
+    // Implementar según el sistema de notificaciones de la aplicación
+    alert(message);
+}
+</script>
+{% endblock %}

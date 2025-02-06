@@ -1,0 +1,157 @@
+<!-- [ Modal de Edición de Perfil ] -->
+<div class="modal fade" id="editProfileModal" tabindex="-1" role="dialog" aria-labelledby="editProfileModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header card-header">
+                <h5 class="modal-title" id="editProfileModalLabel">
+                    <i class="feather icon-edit mr-2"></i>{{ _('Edit Profile') }}
+                </h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="text-center mb-4">
+                    <div class="position-relative d-inline-block">
+                        <img src="/static/assets/images/user/avatar-5.jpg" class="img-radius wid-100" alt="User Image">
+                    </div>
+                </div>
+
+                <ul class="nav nav-pills nav-fill mb-3" id="profileTabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase active" id="basic-tab" data-toggle="tab" href="#basic" role="tab">
+                            <i class="feather icon-user mr-2"></i>{{ _('Basic Info') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase" id="preferences-tab" data-toggle="tab" href="#preferences" role="tab">
+                            <i class="feather icon-settings mr-2"></i>{{ _('Preferences') }}
+                        </a>
+                    </li>
+                </ul>
+
+                <form id="profileForm" method="POST" action="{{ url_for('home_blueprint.update_profile') }}">
+                    
+                    <div class="tab-content" id="profileTabsContent">
+                        <!-- Basic Info Tab -->
+                        <div class="tab-pane fade show active" id="basic" role="tabpanel">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="floating-label" for="primer_nombre">{{ _('Primer Nombre') }}</label>
+                                        <div class="input-group">
+                                            <span class="input-group-prepend"><label class="input-group-text"><i class="feather icon-user"></i></label></span>
+                                            <input type="text" class="form-control" id="primer_nombre" name="primer_nombre" 
+                                                   value="{{ user.primer_nombre }}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="floating-label" for="segundo_nombre">{{ _('Segundo Nombre') }}</label>
+                                        <div class="input-group">
+                                            <span class="input-group-prepend"><label class="input-group-text"><i class="feather icon-user"></i></label></span>
+                                            <input type="text" class="form-control" id="segundo_nombre" name="segundo_nombre" 
+                                                   value="{{ user.segundo_nombre }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="floating-label" for="primer_apellido">{{ _('Primer Apellido') }}</label>
+                                        <div class="input-group">
+                                            <span class="input-group-prepend"><label class="input-group-text"><i class="feather icon-user"></i></label></span>
+                                            <input type="text" class="form-control" id="primer_apellido" name="primer_apellido" 
+                                                   value="{{ user.primer_apellido }}" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="floating-label" for="segundo_apellido">{{ _('Segundo Apellido') }}</label>
+                                        <div class="input-group">
+                                            <span class="input-group-prepend"><label class="input-group-text"><i class="feather icon-user"></i></label></span>
+                                            <input type="text" class="form-control" id="segundo_apellido" name="segundo_apellido" 
+                                                   value="{{ user.segundo_apellido }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="floating-label" for="email">{{ _('Correo Electrónico') }}</label>
+                                        <div class="input-group">
+                                            <span class="input-group-prepend"><label class="input-group-text"><i class="feather icon-mail"></i></label></span>
+                                            <input type="email" class="form-control" id="email" value="{{ user.correo }}" readonly>
+                                        </div>
+                                        <small class="form-text text-muted">
+                                            <i class="feather icon-info mr-1"></i>{{ _('Email cannot be changed') }}
+                                        </small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="floating-label" for="phone">{{ _('Telefono') }}</label>
+                                        <div class="input-group">
+                                            <span class="input-group-prepend"><label class="input-group-text"><i class="feather icon-phone"></i></label></span>
+                                            <input type="tel" class="form-control" id="phone" name="phone" 
+                                                   value="{{ user.telefono }}">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Preferences Tab -->
+                        <div class="tab-pane fade" id="preferences" role="tabpanel">
+                            <div class="card">
+                                <div class="card-body">
+                                    <div class="form-group">
+                                        <label class="floating-label" for="timeZone">{{ _('Time Zone') }}</label>
+                                        <div class="input-group">
+                                            <span class="input-group-prepend"><label class="input-group-text"><i class="feather icon-globe"></i></label></span>
+                                            <select class="form-control" id="timeZone" name="timeZone">
+                                                <option value="UTC" {{ 'selected' if user.settings.get('timeZone') == 'UTC' }}>UTC</option>
+                                                <option value="America/New_York" {{ 'selected' if user.settings.get('timeZone') == 'America/New_York' }}>New York</option>
+                                                <option value="Europe/London" {{ 'selected' if user.settings.get('timeZone') == 'Europe/London' }}>London</option>
+                                                <option value="Asia/Tokyo" {{ 'selected' if user.settings.get('timeZone') == 'Asia/Tokyo' }}>Tokyo</option>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="floating-label" for="language">{{ _('Language') }}</label>
+                                        <div class="input-group">
+                                            <span class="input-group-prepend"><label class="input-group-text"><i class="feather icon-flag"></i></label></span>
+                                            <select class="form-control" id="language" name="languagePreference">
+                                                <option value="en" {{ 'selected' if user.settings.get('languagePreference') == 'en' }}>English</option>
+                                                <option value="es" {{ 'selected' if user.settings.get('languagePreference') == 'es' }}>Español</option>
+                                                <option value="nl" {{ 'selected' if user.settings.get('languagePreference') == 'nl' }}>Nederlands</option>
+                                            </select>
+                                        </div>
+                                    </div>
+<!-- 
+                                    <div class="form-group">
+                                        <label class="d-block mb-2">{{ _('Notifications') }}</label>
+                                        <div class="custom-control custom-switch custom-control-inline">
+                                            <input type="checkbox" class="custom-control-input" id="emailNotifications" 
+                                                   name="emailNotifications" {{ 'checked' if user.settings.get('notifications', {}).get('email') }}>
+                                            <label class="custom-control-label" for="emailNotifications">{{ _('Email') }}</label>
+                                        </div>
+                                        <div class="custom-control custom-switch custom-control-inline">
+                                            <input type="checkbox" class="custom-control-input" id="pushNotifications" 
+                                                   name="pushNotifications" {{ 'checked' if user.settings.get('notifications', {}).get('push') }}>
+                                            <label class="custom-control-label" for="pushNotifications">{{ _('Push') }}</label>
+                                        </div>
+                                    </div> -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer card-header">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                    <i class="feather icon-x mr-2"></i>{{ _('Cancel') }}
+                </button>
+                <button type="submit" form="profileForm" class="btn btn-primary">
+                    <i class="feather icon-save mr-2"></i>{{ _('Save Changes') }}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,91 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Tests compartidos conmigo') }} {% endblock %}
+
+{% block inner_content %}
+
+<!-- [ breadcrumb ] start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title d-flex justify-content-between align-items-center">
+                    <h5 class="m-b-10">
+                        <i class="feather icon-list m-r-5"></i>
+                        {{ _('Tests compartidos conmigo') }}
+                        <i class="feather icon-info m-r-5" data-toggle="tooltip" data-placement="top" data-original-title="{{ _('Se reflejan los test compartidos por el administrador') }}"></i>
+                    </h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#!">{{ _('Tests') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ _('Compartidos conmigo') }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ breadcrumb ] end -->
+
+<!-- [ content ] start -->
+<div class="container mt-4">
+    {% if lista %}
+    <div class="row">
+        {% for test in lista %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card shadow-sm border-light rounded">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold">{{ test.name }}</h5>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" value="{{ test.id }}" id="{{ test.id }}" readonly>
+                        <div class="input-group-append">
+                            <button id="copy-btn-{{ test.id }}" class="btn btn-outline-secondary" type="button" onclick="copyToClipboard('{{ test.id }}')">{{ _('Copiar Link') }}</button>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <a href="{{ url_for('c.detalle_test', id=test.id) }}" class="btn btn-outline-info btn-sm">
+                            <i class="feather icon-eye"></i> {{ _('Ver Detalles') }}
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-warning" role="alert">
+        <i class="feather icon-alert-circle"></i> 
+        {{ _('No hay encuestas disponibles, ve a tu perfil y autenticate si no lo has hecho.') }}
+        <a href="{{ url_for('home_blueprint.profile') }}" class="alert-link">{{ _('Ir a mi perfil') }}</a>
+    </div>
+    {% endif %}
+</div>
+<!-- [ content ] end -->
+
+<script>
+    function copyToClipboard(testId) {
+        const input = document.getElementById(testId);
+        input.select();
+        input.setSelectionRange(0, 99999); 
+        document.execCommand("copy");
+        navigator.clipboard.writeText(input.value).then(() => {
+            console.log('Async: Copying to clipboard was successful!');
+            Swal.fire({
+                icon: 'success',
+                title: '¡Copiado!',
+                text: 'Link copiado al portapapeles',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        }, (err) => {
+            console.error('Async: Could not copy text: ', err);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo copiar el link',
+            });
+        });
+    }
+</script>
+{% endblock inner_content %}
+

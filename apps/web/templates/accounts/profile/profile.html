@@ -1,0 +1,276 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('My Profile') }} {% endblock %}
+{% block activeMenu %}menu-profile{% endblock %}
+
+{% block inner_content %}
+<!-- Loading update layout -->
+<div id="updateLayout" class="loader" style="display: none;">
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+</div>
+<!-- [ Main Content ] start -->
+<!-- [ profile header start ] -->
+<div class="pcoded-wrapper">
+    <div class="pcoded-inner-content">
+        <!-- [ profile header start ] -->
+        <div class="user-profile user-card mb-4">
+            <div class="card-header border-0 p-0 pb-0">
+                <div class="cover-img-block">
+                    <img src="/static/assets/images/profile/cover.jpg" alt="" class="img-fluid">
+                    <div class="overlay"></div>
+                </div>
+            </div>
+            <div class="card-body py-0">
+                <div class="user-about-block m-0">
+                    <div class="row">
+                        <div class="col-md-4 text-center mt-n5">
+                            <div class="change-profile text-center">
+                                <div class="dropdown w-auto d-inline-block">
+                                    <div class="profile-dp">
+                                        <div class="position-relative d-inline-block">
+                                            <img class="img-radius img-fluid wid-100"
+                                                src="{{ current_user.foto_url }}"
+                                                
+                                                alt="{{ _('Imagen de Perfil') }}">
+                                        </div>
+                                        {% if user._role == 'administrador' %}
+                                        <div class="certificated-badge">
+                                            <i class="fas fa-certificate text-c-blue bg-icon"></i>
+                                            <i class="fas fa-check front-icon text-white"></i>
+                                        </div>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                            </div>
+                            <h5 class="mb-1">
+                                {{ user.primer_nombre }} {% if user.segundo_nombre %}{{ user.segundo_nombre }}{% endif %} 
+                                {{ user.primer_apellido }} {% if user.segundo_apellido %}{{ user.segundo_apellido }}{% endif %}
+                            </h5>
+                        </div>
+                        <div class="col-md-8 mt-md-4">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <a href="mailto:{{ user.email }}"
+                                        class="mb-1 text-muted d-flex align-items-end text-h-primary">
+                                        <i class="feather icon-mail mr-2 f-18"></i>{{ user.correo }}
+                                    </a>
+                                        <!-- Role -->
+                                    <p class="mb-0 text-muted d-flex align-items-end">
+                                        <i class="feather icon-user mr-2 f-18"></i>
+                                        <b class="text-primary text-uppercase mr-2">{{ user.rol }}</b>
+                                    </p>
+
+                                    <div class="clearfix"></div>
+                                </div>
+                                <div class="col-md-6">
+                                    {% if user.rol != 'estudiante' %}
+                                    <div class="mb-3">
+                                        <a href="{{ url_for('autenticacion.authenticacion_google_forms')}}" 
+                                           class="btn btn-primary btn-block d-flex align-items-center justify-content-center">
+                                            <i class="fab fa-google mr-2"></i>
+                                            <span>{{ _('Autenticar con Google Forms') }}</span>
+                                        </a>
+                                        <small class="text-muted mt-1">
+                                            <i class="feather icon-info mr-1"></i>
+                                            {{ _('Necesario para crear y gestionar formularios') }}
+                                        </small>
+                                    </div>
+                                    {% endif %}
+                                    <a href="#!" class="mb-1 text-muted d-flex align-items-end text-h-primary"><i
+                                            class="feather icon-globe mr-2 f-18"></i>{{ _('Language') }}: {{
+                                        user.settings.get('languagePreference', _('Not set')) }}</a>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="nav nav-tabs profile-tabs nav-fill" id="myTab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link text-reset active" id="overview-tab" data-toggle="tab"
+                                    href="#overview" role="tab">
+                                    <i class="feather icon-user mr-2"></i>{{ _('Overview') }}
+                                </a>
+                            </li>
+                            
+                            <li class="nav-item">
+                                <a class="nav-link text-reset" id="appearance-tab" data-toggle="tab" href="#appearance"
+                                    role="tab">
+                                    <i class="feather icon-sun mr-2"></i>{{ _('Appearance ') }}
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- [ profile content start ] -->
+    <div class="row">
+        <div class="tab-content d-flex justify-content-center" style="width: 100%; min-height: 100vh;">
+            <!-- [ Overview and Settings Content Combined ] -->
+            <div class="tab-pane fade show active p-2 w-100" id="overview" role="tabpanel">
+                <div class="card">
+                    <div class="card-header d-flex align-items-center justify-content-between">
+                        <h5 class="mb-0">{{ _('Personal Information and Settings') }}</h5>
+                        <button type="button" class="btn btn-primary btn-sm rounded m-0" data-toggle="modal"
+                            data-target="#editProfileModal">
+                            <i class="feather icon-edit mr-1"></i>{{ _('Edit') }}
+                        </button>
+                    </div>
+                    <div class="card-body">
+                        <!-- Personal Information Section -->
+                        <h6 class="mb-3">{{ _('Personal Information') }}</h6>
+                        <div class="row">
+                            <div class="col-sm-6 mb-4">
+                                <div class="d-flex align-items-center">
+                                    <i class="feather icon-user text-primary f-22 m-r-10"></i>
+                                    <div>
+                                        <h6 class="mb-1">{{ _('Primer Nombre') }}</h6>
+                                        <p class="text-muted mb-0">{{ user.primer_nombre }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <div class="d-flex align-items-center">
+                                    <i class="feather icon-user text-primary f-22 m-r-10"></i>
+                                    <div>
+                                        <h6 class="mb-1">{{ _('Segundo Nombre') }}</h6>
+                                        <p class="text-muted mb-0">{{ user.segundo_nombre or _('No especificado') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <div class="d-flex align-items-center">
+                                    <i class="feather icon-user text-primary f-22 m-r-10"></i>
+                                    <div>
+                                        <h6 class="mb-1">{{ _('Primer Apellido') }}</h6>
+                                        <p class="text-muted mb-0">{{ user.primer_apellido }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <div class="d-flex align-items-center">
+                                    <i class="feather icon-user text-primary f-22 m-r-10"></i>
+                                    <div>
+                                        <h6 class="mb-1">{{ _('Segundo Apellido') }}</h6>
+                                        <p class="text-muted mb-0">{{ user.segundo_apellido or _('No especificado') }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <div class="d-flex align-items-center">
+                                    <i class="feather icon-mail text-primary f-22 m-r-10"></i>
+                                    <div>
+                                        <h6 class="mb-1">{{ _('Email') }}</h6>
+                                        <p class="text-muted mb-0">{{ user.correo }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <div class="d-flex align-items-center">
+                                    <i class="feather icon-phone text-primary f-22 m-r-10"></i>
+                                    <div>
+                                        <h6 class="mb-1">{{ _('Telefono') }}</h6>
+                                        <p class="text-muted mb-0">{{ user.telefono }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- <div class="col-sm-6 mb-4">
+                                <div class="d-flex align-items-center">
+                                    <i class="feather icon-calendar text-primary f-22 m-r-10"></i>
+                                    <div>
+                                        <h6 class="mb-1">{{ _('Registration Date') }}</h6>
+                                        <p class="text-muted mb-0">{{ user._created_at }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <div class="d-flex align-items-center">
+                                    <i class="feather icon-clock text-primary f-22 m-r-10"></i>
+                                    <div>
+                                        <h6 class="mb-1">{{ _('Last Access') }}</h6>
+                                        <p class="text-muted mb-0">{{ user._last_login }}</p>
+                                    </div>
+                                </div>
+                            </div> -->
+                        </div>
+
+                        <!-- Settings Section -->
+                        <h6 class="mt-4 mb-3">{{ _('Settings') }}</h6>
+                        <div class="row align-items-center">
+                            <div class="col-sm-6 mb-4">
+                                <div class="d-flex align-items-center">
+                                    <i class="feather icon-globe text-primary f-22 m-r-10"></i>
+                                    <div>
+                                        <h6 class="mb-1">{{ _('Time Zone') }}</h6>
+                                        <p class="text-muted mb-0">{{ user.settings.get('timeZone', _('Not set')) }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6 mb-4">
+                                <div class="d-flex align-items-center">
+                                    <i class="feather icon-flag text-primary f-22 m-r-10"></i>
+                                    <div>
+                                        <h6 class="mb-1">{{ _('Language') }}</h6>
+                                        <p class="text-muted mb-0">{{ user.settings.get('languagePreference', _('Not
+                                            set')) }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% include 'accounts/profile/layouts_config.html' %}
+        </div>
+    </div>
+</div>
+
+<!-- [ Modal de Edición ] -->
+{% include 'accounts/profile/modals/edit_profile.html' %}
+
+{% endblock inner_content %}
+
+{% block javascripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Inicialización de tooltips
+        $('[data-toggle="tooltip"]').tooltip();
+
+        // Animaciones suaves para los elementos del modal
+        $('#editProfileModal').on('show.bs.modal', function () {
+            $(this).find('.card').each(function (index) {
+                $(this).delay(100 * index).animate({ opacity: 1 }, 300);
+            });
+        });
+    });
+</script>
+<script>
+    function toggleEdit(editMode = false) {
+        const accessTokenInput = document.getElementById('hubspotAccessToken');
+        const editButton = document.querySelector('button[onclick="toggleEdit(true)"]');
+        const saveButton = document.querySelector('button[type="submit"]');
+        const cancelButton = document.querySelector('button[onclick="toggleEdit(false)"]');
+
+
+        if (editMode) {
+            accessTokenInput.removeAttribute('disabled');
+            saveButton.style.display = 'inline-block';
+            cancelButton.style.display = 'inline-block';
+            editButton.style.display = 'none';
+        } else {
+            accessTokenInput.setAttribute('disabled', 'disabled');
+            saveButton.style.display = 'none';
+            cancelButton.style.display = 'none';
+            editButton.style.display = 'inline-block';
+        }
+    }
+    toggleEdit(false);
+</script>
+<script src="/static/assets/js/profile/appearance.js"></script>
+
+{% endblock javascripts %}

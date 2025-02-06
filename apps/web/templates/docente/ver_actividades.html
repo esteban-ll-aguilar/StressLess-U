@@ -1,0 +1,111 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Actividades del Paralelo') }} {% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title d-flex justify-content-between align-items-center">
+                                    <h5 class="m-b-10">
+                                        {{ _('Actividades del Paralelo') }} {{ paralelo.nombre }} - {{ materia.nombre }}
+                                    </h5>
+                                    <a href="{{ url_for('docente.crear_actividad', paralelo_uid=paralelo.uid) }}" class="btn btn-primary">
+                                        <i class="feather icon-plus"></i> {{ _('Crear Actividad') }}
+                                    </a>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="{{ url_for('docente.ver_paralelos') }}">{{ _('Paralelos') }}</a></li>
+                                    <li class="breadcrumb-item"><a href="#">{{ _('Actividades') }}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Lista de Actividades') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th>{{ _('Nombre') }}</th>
+                                                <th>{{ _('Descripción') }}</th>
+                                                <th>{{ _('Fecha de Entrega') }}</th>
+                                                <th>{{ _('Estado de Activación') }}</th>
+                                                <th>{{ _('Link del Test') }}</th>
+                                                <th>{{ _('Acciones') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for actividad in actividades %}
+                                            <tr class="align-middle text-center">
+                                                <td>{{ actividad.nombre }}</td>
+                                                <td>{{ actividad.descripcion }}</td>
+                                                <td>{{ actividad.fecha_entrega }}</td>
+                                                <td>
+                                                    <span class="badge {% if actividad.esta_activa %}badge-success{% else %}badge-warning{% endif %}">
+                                                        {{ _('Activa') if actividad.esta_activa else _('Inactiva') }}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    {% if actividad.link_test %}
+                                                    <a href="{{ actividad.link_test }}" target="_blank" class="btn btn-primary btn-sm" title="{{ _('Ir al Test') }}">
+                                                        <i class="feather icon-external-link"></i> {{ _('Ir al Test') }}
+                                                    </a>
+                                                    {% else %}
+                                                    <span class="text-muted">{{ _('No disponible') }}</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    <a href="{{ url_for('docente.editar_actividad', paralelo_uid=paralelo.uid, actividad_uid=actividad.uid) }}" class="btn btn-info btn-sm" title="{{ _('Editar') }}">
+                                                        <i class="feather icon-edit"></i>
+                                                    </a>
+                                                    <button onclick="eliminarActividad('{{ actividad.uid }}')" class="btn btn-danger btn-sm" title="{{ _('Eliminar') }}">
+                                                        <i class="feather icon-trash-2"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            {% else %}
+                                            <tr>
+                                                <td colspan="6" class="text-center">{{ _('No hay actividades registradas') }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock inner_content %}
+
+{% block javascripts %}
+<script>
+function eliminarActividad(uid) {
+    if (confirm("{{ _('¿Está seguro de eliminar esta actividad?') }}")) {
+        fetch(`/docente/actividades/${uid}/eliminar`, {
+            method: 'DELETE',
+        }).then(response => {
+            if (response.ok) {
+                window.location.reload();
+            }
+        });
+    }
+}
+</script>
+{% endblock javascripts %}

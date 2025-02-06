@@ -1,0 +1,88 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Crear Materia') }} {% endblock %}
+
+{% block inner_content %}
+<!-- [ breadcrumb ] start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title d-flex justify-content-between align-items-center">
+                    <h5 class="m-b-10">
+                        <i class="feather icon-book m-r-5"></i>
+                        {{ _('Creación de Materias') }}
+                    </h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#!">{{ _('Configuraciones') }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('administrador.crear_materia') }}">{{ _('Crear Materia') }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ breadcrumb ] end -->
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ _('Gestión de Materias') }}</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        <form id="form-materia" method="POST" action="{{ url_for('administrador.crear_materia') }}">
+                            
+                            <div class="form-group">
+                                <label>{{ _('Nombre de la Materia') }}</label>
+                                <input type="text" class="form-control" name="nombre" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>{{ _('Descripción') }}</label>
+                                <textarea class="form-control" name="descripcion" rows="3"></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="btn-crear-materia">
+                                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                <span class="btn-text">{{ _('Crear Materia') }}</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock inner_content %}
+
+{% block javascripts %}
+<script>
+// Función para mostrar el estado de carga
+function showLoading(button) {
+    const spinner = button.querySelector('.spinner-border');
+    const text = button.querySelector('.btn-text');
+    spinner.classList.remove('d-none');
+    button.disabled = true;
+    text.style.opacity = '0.5';
+}
+
+// Función para ocultar el estado de carga
+function hideLoading(button) {
+    const spinner = button.querySelector('.spinner-border');
+    const text = button.querySelector('.btn-text');
+    spinner.classList.add('d-none');
+    button.disabled = false;
+    text.style.opacity = '1';
+}
+
+// Manejar envío del formulario
+document.getElementById('form-materia').addEventListener('submit', function(e) {
+    const submitButton = this.querySelector('button[type="submit"]');
+    showLoading(submitButton);
+});
+</script>
+{% endblock javascripts %}

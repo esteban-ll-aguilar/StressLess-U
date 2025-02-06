@@ -1,0 +1,12 @@
+{
+    "layout": {
+        "type": "menu-light",  // Valores posibles: "menu-dark", "menu-light", "dark"
+        "headerColor": "header-blue",  // Valores posibles: "header-blue", "header-red", "header-purple", "header-info", "header-dark", "header-orenge", "header-green", "header-yellow", "header-orchidgreen", "header-indigogreen", "header-darkgreen", "header-darkblue"
+        "rtlEnabled": false,  // true/false para RTL
+        "menuFixed": false,   // true/false para Sidebar Fixed
+        "headerFixed": false, // true/false para Header Fixed
+        "boxLayout": false,  // true/false para Box Layouts
+        "breadcrumbSticky": false  // true/false para Breadcrumb sticky
+    }
+}
+

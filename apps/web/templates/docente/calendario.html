@@ -1,0 +1,486 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Calendario Académico') }} {% endblock %}
+
+{% block stylesheets %}
+<!-- FullCalendar CSS -->
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.css' rel='stylesheet' />
+<link href='https://cdn.jsdelivr.net/npm/@fullcalendar/bootstrap@5.11.3/main.min.css' rel='stylesheet' />
+<!-- Select2 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<style>
+    .fc-event {
+        cursor: pointer;
+    }
+    #calendar {
+        background: white;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
+    }
+    .fc-toolbar-title {
+        font-size: 1.5em !important;
+    }
+    .search-box {
+        margin-bottom: 20px;
+    }
+    .modal {
+        z-index: 1050 !important;
+    }
+    .modal-backdrop {
+        z-index: 1040 !important;
+    }
+    .select2-container {
+        z-index: 1060 !important;
+    }
+</style>
+{% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- Header -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">{{ _('Calendario Académico') }}</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="#">{{ _('Calendario') }}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenido Principal -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Gestión de Actividades') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <!-- Barra de búsqueda -->
+                                <div class="search-box">
+                                    <div class="input-group">
+                                        <input type="text" id="searchActivity" class="form-control" placeholder="{{ _('Buscar actividad...') }}">
+                                        <div class="input-group-append">
+                                            <button class="btn btn-primary" type="button" onclick="searchActivities()">
+                                                <i class="feather icon-search"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Calendario -->
+                                <div id="calendar"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Crear/Editar Actividad -->
+<div class="modal fade" id="activityModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalTitle">{{ _('Actividad') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="activityForm" class="needs-validation" novalidate>
+                    <input type="hidden" id="activityId">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="title">{{ _('Nombre') }} *</label>
+                            <input type="text" class="form-control" id="title" required>
+                            <div class="invalid-feedback">
+                                {{ _('Por favor ingrese un nombre') }}
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="paralelo">{{ _('Paralelo') }} *</label>
+                            <select class="form-control" id="paralelo" required>
+                                {% for paralelo in paralelos %}
+                                <option value="{{ paralelo.uid }}">{{ paralelo.nombre }} - {{ materias[paralelo.materia_uid].nombre }}</option>
+                                {% endfor %}
+                            </select>
+                            <div class="invalid-feedback">
+                                {{ _('Por favor seleccione un paralelo') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">{{ _('Descripción') }} *</label>
+                        <textarea class="form-control" id="description" rows="3" required></textarea>
+                        <div class="invalid-feedback">
+                            {{ _('Por favor ingrese una descripción') }}
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="start">{{ _('Fecha Inicio') }} *</label>
+                            <input type="datetime-local" class="form-control" id="start" required>
+                            <div class="invalid-feedback">
+                                {{ _('Por favor seleccione una fecha de inicio') }}
+                            </div>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="end">{{ _('Fecha Fin') }} *</label>
+                            <input type="datetime-local" class="form-control" id="end" required>
+                            <div class="invalid-feedback">
+                                {{ _('Por favor seleccione una fecha de fin') }}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="test_estres">{{ _('Formulario de Test') }} *</label>
+                        <select class="form-control" id="test_estres" required>
+                            <option value="">{{ _('Seleccione un formulario') }}</option>
+                            {% for form in google_forms %}
+                            <option value="{{ form.id }}">{{ form.name }}</option>
+                            {% endfor %}
+                        </select>
+                        <div class="invalid-feedback">
+                            {{ _('Por favor seleccione un formulario') }}
+                        </div>
+                        <small class="form-text text-muted">
+                            {{ _('Se creará una copia del formulario seleccionado para esta actividad') }}
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="es_grupal">
+                            <label class="custom-control-label" for="es_grupal">{{ _('Actividad Grupal') }}</label>
+                        </div>
+                    </div>
+                    <div class="form-group" id="estudiantes_grupo" style="display: none;">
+                        <label for="estudiantes">{{ _('Seleccionar Estudiantes') }}</label>
+                        <select class="form-control" id="estudiantes" multiple>
+                            {% for estudiante in estudiantes %}
+                            <option value="{{ estudiante.uid }}">
+                                {{ estudiante.primer_nombre }} {{ estudiante.primer_apellido }}
+                            </option>
+                            {% endfor %}
+                        </select>
+                        <small class="form-text text-muted">
+                            {{ _('Mantenga presionado Ctrl para seleccionar múltiples estudiantes') }}
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-switch">
+                            <input type="checkbox" class="custom-control-input" id="esta_activa" checked>
+                            <label class="custom-control-label" for="esta_activa">{{ _('Actividad Activa') }}</label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _('Cancelar') }}</button>
+                <button type="button" class="btn btn-danger" id="deleteBtn" style="display: none;" onclick="deleteActivity()">
+                    {{ _('Eliminar') }}
+                </button>
+                <button type="button" class="btn btn-primary" onclick="saveActivity()">{{ _('Guardar') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<!-- FullCalendar JS -->
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/bootstrap@5.11.3/main.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/@fullcalendar/core@5.11.3/locales/es.js'></script>
+<!-- Select2 JS -->
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    var calendarEl = document.getElementById('calendar');
+    
+    // Inicializar select2 con búsqueda
+    $('#estudiantes').select2({
+        placeholder: "{{ _('Buscar y seleccionar estudiantes...') }}",
+        allowClear: true,
+        width: '100%',
+        ajax: {
+            url: '/docente/buscar-estudiantes',
+            dataType: 'json',
+            delay: 250,
+            data: function(params) {
+                return {
+                    term: params.term
+                };
+            },
+            processResults: function(data) {
+                return {
+                    results: data.map(function(item) {
+                        return {
+                            id: item.email,
+                            text: item.nombre
+                        };
+                    })
+                };
+            },
+            cache: true
+        }
+    });
+
+    // Mostrar/ocultar selector de estudiantes
+    var esGrupalSwitch = document.getElementById('es_grupal');
+    var estudiantesGrupo = document.getElementById('estudiantes_grupo');
+    var estudiantesSelect = document.getElementById('estudiantes');
+
+    function toggleEstudiantesGrupo() {
+        if (esGrupalSwitch.checked) {
+            estudiantesGrupo.style.display = 'block';
+            estudiantesSelect.required = true;
+        } else {
+            estudiantesGrupo.style.display = 'none';
+            estudiantesSelect.required = false;
+        }
+    }
+
+    // Escuchar cambios en el switch
+    esGrupalSwitch.addEventListener('change', toggleEstudiantesGrupo);
+    
+    // Primero cargar las actividades
+    fetch('/docente/actividades/calendario')
+        .then(response => response.json())
+        .then(events => {
+            console.log('Actividades cargadas:', events);
+            
+            // Formatear las fechas para FullCalendar
+            events = events.map(event => ({
+                ...event,
+                start: new Date(event.start).toISOString(),
+                end: new Date(event.end).toISOString()
+            }));
+            
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                themeSystem: 'bootstrap',
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,listWeek'
+                },
+                locale: 'es',
+                editable: true,
+                selectable: true,
+                selectMirror: true,
+                dayMaxEvents: true,
+                events: events,
+                displayEventTime: true,
+                eventTimeFormat: {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true
+                },
+                select: function(info) {
+                    console.log('Selección:', info);
+                    openActivityModal(null, info.start, info.end);
+                },
+                eventClick: function(info) {
+                    console.log('Evento clickeado:', info.event);
+                    openActivityModal(info.event);
+                },
+                eventDrop: function(info) {
+                    console.log('Evento movido:', info.event);
+                    updateActivityDates(info.event);
+                },
+                eventResize: function(info) {
+                    console.log('Evento redimensionado:', info.event);
+                    updateActivityDates(info.event);
+                }
+            });
+            
+            calendar.render();
+            window.calendar = calendar;
+        })
+        .catch(error => {
+            console.error('Error al cargar actividades:', error);
+            // Mostrar mensaje de error en la interfaz
+            document.getElementById('calendar').innerHTML = '<div class="alert alert-danger">{{ _("Error al cargar las actividades") }}</div>';
+        });
+});
+
+function openActivityModal(event, start = null, end = null) {
+    const modal = $('#activityModal');
+    const form = document.getElementById('activityForm');
+    const deleteBtn = document.getElementById('deleteBtn');
+    
+    // Limpiar formulario
+    form.reset();
+    
+    if (event) {
+        // Editar actividad existente
+        document.getElementById('modalTitle').textContent = "{{ _('Editar Actividad') }}";
+        document.getElementById('activityId').value = event.id;
+        document.getElementById('title').value = event.title;
+        document.getElementById('description').value = event.extendedProps.description || '';
+        document.getElementById('start').value = formatDateTime(event.start);
+        document.getElementById('end').value = formatDateTime(event.end);
+        document.getElementById('paralelo').value = event.extendedProps.paralelo_uid;
+        document.getElementById('test_estres').value = event.extendedProps.test_estres || '';
+        document.getElementById('es_grupal').checked = event.extendedProps.es_grupal || false;
+        document.getElementById('esta_activa').checked = event.extendedProps.esta_activa !== false;
+        
+        // Si es grupal, cargar estudiantes seleccionados
+        if (event.extendedProps.es_grupal) {
+            document.getElementById('estudiantes_grupo').style.display = 'block';
+            $('#estudiantes').val(event.extendedProps.estudiantes || []).trigger('change');
+        }
+        
+        deleteBtn.style.display = 'block';
+    } else {
+        // Nueva actividad
+        document.getElementById('modalTitle').textContent = "{{ _('Nueva Actividad') }}";
+        document.getElementById('activityId').value = '';
+        if (start) document.getElementById('start').value = formatDateTime(start);
+        if (end) document.getElementById('end').value = formatDateTime(end);
+        document.getElementById('esta_activa').checked = true;
+        deleteBtn.style.display = 'none';
+    }
+    
+    modal.modal('show');
+}
+
+function formatDateTime(date) {
+    if (!date) return '';
+    return new Date(date).toISOString().slice(0, 16);
+}
+
+function saveActivity() {
+    const form = document.getElementById('activityForm');
+    if (!form.checkValidity()) {
+        form.reportValidity();
+        return;
+    }
+    
+    const activityId = document.getElementById('activityId').value;
+    const activityData = {
+        title: document.getElementById('title').value,
+        description: document.getElementById('description').value,
+        start: document.getElementById('start').value,
+        end: document.getElementById('end').value,
+        paralelo_uid: document.getElementById('paralelo').value,
+        test_estres: document.getElementById('test_estres').value,
+        es_grupal: document.getElementById('es_grupal').checked,
+        esta_activa: document.getElementById('esta_activa').checked,
+        estudiantes: document.getElementById('es_grupal').checked ? 
+            $('#estudiantes').val() : []
+    };
+    
+    const url = activityId ? 
+        `/docente/actividades/${activityId}/actualizar` : 
+        '/docente/actividades/crear';
+    
+    fetch(url, {
+        method: activityId ? 'PUT' : 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(activityData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.calendar.refetchEvents();
+            $('#activityModal').modal('hide');
+            showNotification('success', "{{ _('Actividad guardada exitosamente') }}");
+        } else {
+            showNotification('error', data.error || "{{ _('Error al guardar la actividad') }}");
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showNotification('error', "{{ _('Error al guardar la actividad') }}");
+    });
+}
+
+function deleteActivity() {
+    const activityId = document.getElementById('activityId').value;
+    if (!activityId) return;
+    
+    if (confirm("{{ _('¿Está seguro de eliminar esta actividad?') }}")) {
+        fetch(`/docente/actividades/${activityId}/eliminar`, {
+            method: 'DELETE'
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.calendar.refetchEvents();
+                $('#activityModal').modal('hide');
+                showNotification('success', "{{ _('Actividad eliminada exitosamente') }}");
+            } else {
+                showNotification('error', data.error || "{{ _('Error al eliminar la actividad') }}");
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showNotification('error', "{{ _('Error al eliminar la actividad') }}");
+        });
+    }
+}
+
+function updateActivityDates(event) {
+    fetch(`/docente/actividades/${event.id}/actualizar-fechas`, {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            start: event.start.toISOString(),
+            end: event.end ? event.end.toISOString() : event.start.toISOString()
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (!data.success) {
+            window.calendar.refetchEvents();
+            showNotification('error', data.error || "{{ _('Error al actualizar las fechas') }}");
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        window.calendar.refetchEvents();
+        showNotification('error', "{{ _('Error al actualizar las fechas') }}");
+    });
+}
+
+function searchActivities() {
+    const searchTerm = document.getElementById('searchActivity').value.toLowerCase();
+    const events = window.calendar.getEvents();
+    
+    events.forEach(event => {
+        const title = event.title.toLowerCase();
+        const description = (event.extendedProps.description || '').toLowerCase();
+        
+        if (title.includes(searchTerm) || description.includes(searchTerm)) {
+            event.setProp('display', 'auto');
+        } else {
+            event.setProp('display', 'none');
+        }
+    });
+}
+
+function showNotification(type, message) {
+    // Implementar según el sistema de notificaciones de tu aplicación
+    alert(message);
+}
+</script>
+{% endblock %}

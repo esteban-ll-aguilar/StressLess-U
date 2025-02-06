@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>{% block title %}{% endblock %}</title>
+    
+    <!-- Favicon icon -->
+    <link rel="icon" href="{{ url_for('static', filename='assets/images/favicon.ico') }}" type="image/x-icon">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- vendor css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/style.css') }}">
+    
+    <!-- Animation css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/plugins/animate.min.css') }}">
+    
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='assets/css/plugins/bootstrap.min.css') }}">
+
+    <style>
+    :root {
+        --primary-color: #7267EF;
+        --secondary-color: #6c757d;
+        --success-color: #2ed8b6;
+        --danger-color: #dc3545;
+        --warning-color: #FFB64D;
+        --info-color: #4099ff;
+        --light-color: #f8f9fa;
+        --dark-color: #343a40;
+    }
+
+    body {
+        font-family: 'Inter', sans-serif;
+        background: #f4f7fa;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding: 1rem;
+    }
+
+    .auth-wrapper {
+        width: 100%;
+        max-width: 1200px;
+        margin: auto;
+    }
+
+    .auth-content {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0,0,0,0.05);
+        overflow: hidden;
+    }
+
+    .btn {
+        border-radius: 5px;
+        padding: 0.6rem 1.2rem;
+        font-weight: 500;
+        transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+        background: var(--primary-color);
+        border-color: var(--primary-color);
+    }
+
+    .btn-primary:hover {
+        background: #635ce0;
+        border-color: #635ce0;
+        transform: translateY(-1px);
+    }
+
+    .alert {
+        border-radius: 5px;
+    }
+
+    .card {
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    }
+
+    /* Animaciones generales */
+    .fade-in {
+        animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        .auth-wrapper {
+            padding: 1rem;
+        }
+    }
+    </style>
+</head>
+<body>
+    {% block error_content %}{% endblock %}
+
+    <!-- Required Js -->
+    <script src="{{ url_for('static', filename='assets/js/vendor-all.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/plugins/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='assets/js/pcoded.min.js') }}"></script>
+    
+    <!-- Custom scripts -->
+    {% block scripts %}{% endblock %}
+</body>
+</html>

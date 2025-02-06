@@ -1,0 +1,75 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Mis Paralelos') }} {% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">{{ _('Mis Paralelos') }}</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="#">{{ _('Paralelos') }}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Lista de Paralelos') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th>{{ _('Paralelo') }}</th>
+                                                <th>{{ _('Materia') }}</th>
+                                                <th>{{ _('Descripción') }}</th>
+                                                <th>{{ _('Estudiantes') }}</th>
+                                                <th>{{ _('Acciones') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for paralelo in paralelos %}
+                                            <tr class="align-middle text-center">
+                                                <td class="text-uppercase">{{ paralelo.nombre }}</td>
+                                                <td>{{ materias[paralelo.materia_uid].nombre }}</td>
+                                                <td>{{ materias[paralelo.materia_uid].descripcion }}</td>
+                                                <td>{{ paralelo.estudiantes|length }}</td>
+                                                <td>
+                                                    <a href="{{ url_for('docente.ver_actividades', paralelo_uid=paralelo.uid) }}" class="btn btn-primary btn-sm" title="{{ _('Ver Actividades') }}">
+                                                        <i class="feather icon-calendar"></i>
+                                                    </a>
+                                                    <a href="{{ url_for('docente.ver_estudiantes', paralelo_uid=paralelo.uid) }}" class="btn btn-info btn-sm" title="{{ _('Ver Estudiantes') }}">
+                                                        <i class="feather icon-users"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            {% else %}
+                                            <tr>
+                                                <td colspan="5" class="text-center">{{ _('No hay paralelos asignados') }}</td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock inner_content %}

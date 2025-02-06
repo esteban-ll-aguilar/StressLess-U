@@ -1,0 +1,170 @@
+{# 
+ESTRUCTURA BASE PARA PÁGINAS DEL PROYECTO
+
+Este archivo sirve como plantilla y documentación para mantener la consistencia
+en todas las páginas del proyecto.
+
+REGLAS GENERALES:
+1. Usar base_Proyect.html como plantilla base
+2. Mantener la estructura de breadcrumbs
+3. Usar iconos feather consistentemente
+4. Implementar traducciones con {{ _('texto') }}
+5. Mantener el diseño responsive
+#}
+
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Título de la Página') }} {% endblock %}
+
+{% block inner_content %}
+<!-- [ breadcrumb ] start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                {# Header con título y botón de acción (si es necesario) #}
+                <div class="page-header-title d-flex justify-content-between align-items-center">
+                    <h5 class="m-b-10">
+                        <i class="feather icon-[icono] m-r-5"></i>
+                        {{ _('Título de la Sección') }}
+                    </h5>
+                    {% if show_action_button %}
+                    <a href="{{ url_for('ruta.accion') }}" class="btn btn-primary">
+                        <i class="feather icon-plus"></i> {{ _('Texto del Botón') }}
+                    </a>
+                    {% endif %}
+                </div>
+                {# Breadcrumbs para navegación #}
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#!">{{ _('Sección Principal') }}</a></li>
+                    <li class="breadcrumb-item"><a href="#">{{ _('Subsección') }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ breadcrumb ] end -->
+
+<!-- [ contenido principal ] start -->
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            {# Encabezado de la tarjeta #}
+            <div class="card-header">
+                <h5>{{ _('Título del Contenido') }}</h5>
+                {% if show_card_actions %}
+                <div class="card-header-right">
+                    {# Botones o acciones adicionales #}
+                </div>
+                {% endif %}
+            </div>
+
+            {# Cuerpo de la tarjeta #}
+            <div class="card-body">
+                {% if is_form %}
+                <!-- [ formulario ] start -->
+                <div class="row">
+                    <div class="col-md-6">
+                        <form id="form-id" method="POST" action="{{ url_for('ruta.accion') }}">
+                            
+                            {# Ejemplo de campo de formulario #}
+                            <div class="form-group">
+                                <label>{{ _('Etiqueta') }}</label>
+                                <input type="text" class="form-control" name="campo" required>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" id="btn-submit">
+                                <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                <span class="btn-text">{{ _('Enviar') }}</span>
+                            </button>
+                        </form>
+                    </div>
+                </div>
+                <!-- [ formulario ] end -->
+                {% endif %}
+
+                {% if is_table %}
+                <!-- [ tabla ] start -->
+                <div class="table-responsive">
+                    <table class="table table-hover" id="data-table">
+                        <thead>
+                            <tr>
+                                <th>{{ _('Columna 1') }}</th>
+                                <th>{{ _('Columna 2') }}</th>
+                                <th class="text-center">{{ _('Acciones') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in items %}
+                            <tr>
+                                <td>{{ item.campo1 }}</td>
+                                <td>{{ item.campo2 }}</td>
+                                <td class="text-center">
+                                    <button class="btn btn-icon btn-primary btn-sm" title="{{ _('Editar') }}">
+                                        <i class="feather icon-edit"></i>
+                                    </button>
+                                    <button class="btn btn-icon btn-danger btn-sm" title="{{ _('Eliminar') }}">
+                                        <i class="feather icon-trash-2"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="3" class="text-center">{{ _('No hay datos disponibles') }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <!-- [ tabla ] end -->
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ contenido principal ] end -->
+{% endblock inner_content %}
+
+{% block javascripts %}
+<script>
+{% if is_form %}
+// Funciones para formularios
+function showLoading(button) {
+    const spinner = button.querySelector('.spinner-border');
+    const text = button.querySelector('.btn-text');
+    spinner.classList.remove('d-none');
+    button.disabled = true;
+    text.style.opacity = '0.5';
+}
+
+function hideLoading(button) {
+    const spinner = button.querySelector('.spinner-border');
+    const text = button.querySelector('.btn-text');
+    spinner.classList.add('d-none');
+    button.disabled = false;
+    text.style.opacity = '1';
+}
+
+document.getElementById('form-id').addEventListener('submit', function(e) {
+    const submitButton = this.querySelector('button[type="submit"]');
+    showLoading(submitButton);
+});
+{% endif %}
+
+{% if is_table %}
+// Inicialización de DataTable
+$(document).ready(function() {
+    $('#data-table').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json'
+        },
+        order: [[0, 'asc']], // Ordenar por primera columna por defecto
+        columnDefs: [
+            { orderable: false, targets: -1 } // Deshabilitar ordenamiento en última columna (acciones)
+        ]
+    });
+});
+{% endif %}
+</script>
+{% endblock javascripts %}

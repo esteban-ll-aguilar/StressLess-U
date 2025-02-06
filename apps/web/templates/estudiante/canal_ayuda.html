@@ -1,0 +1,179 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Canal de Ayuda') }} {% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">{{ _('Canal de Ayuda') }}</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="{{ url_for('home_blueprint.index') }}"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item">{{ _('Canal de Ayuda') }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <!-- Canales de Ayuda -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Contacto Directo') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center mb-4">
+                                    <i class="feather icon-phone-call text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                                <p class="text-muted">{{ _('Comunícate directamente con el departamento de Bienestar Académico') }}</p>
+                                <div class="text-center mt-4">
+                                    <a href="tel:+123456789" class="btn btn-outline-primary">
+                                        <i class="feather icon-phone mr-1"></i>
+                                        {{ _('Llamar Ahora') }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Chat en Línea') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center mb-4">
+                                    <i class="feather icon-message-circle text-success" style="font-size: 3rem;"></i>
+                                </div>
+                                <p class="text-muted">{{ _('Chatea con un profesional de apoyo en tiempo real') }}</p>
+                                <div class="text-center mt-4">
+                                    <button class="btn btn-outline-success" onclick="iniciarChat()">
+                                        <i class="feather icon-message-square mr-1"></i>
+                                        {{ _('Iniciar Chat') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Correo Electrónico') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center mb-4">
+                                    <i class="feather icon-mail text-info" style="font-size: 3rem;"></i>
+                                </div>
+                                <p class="text-muted">{{ _('Envía un correo detallando tu situación') }}</p>
+                                <div class="text-center mt-4">
+                                    <a href="mailto:bienestar@universidad.edu" class="btn btn-outline-info">
+                                        <i class="feather icon-send mr-1"></i>
+                                        {{ _('Enviar Correo') }}
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Formulario de Solicitud
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Solicitar Asistencia') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="formSolicitud" action="{{ url_for('estudiante.solicitar_ayuda') }}" method="POST">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="tipo_ayuda">{{ _('Tipo de Ayuda') }}</label>
+                                                <select class="form-control" id="tipo_ayuda" name="tipo_ayuda" required>
+                                                    <option value="">{{ _('Selecciona una opción') }}</option>
+                                                    <option value="academico">{{ _('Académico') }}</option>
+                                                    <option value="emocional">{{ _('Emocional') }}</option>
+                                                    <option value="estres">{{ _('Manejo del Estrés') }}</option>
+                                                    <option value="otro">{{ _('Otro') }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="urgencia">{{ _('Nivel de Urgencia') }}</label>
+                                                <select class="form-control" id="urgencia" name="urgencia" required>
+                                                    <option value="">{{ _('Selecciona una opción') }}</option>
+                                                    <option value="baja">{{ _('Baja') }}</option>
+                                                    <option value="media">{{ _('Media') }}</option>
+                                                    <option value="alta">{{ _('Alta') }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="descripcion">{{ _('Describe tu situación') }}</label>
+                                                <textarea class="form-control" id="descripcion" name="descripcion" rows="4" required></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="contacto_preferido">{{ _('Método de contacto preferido') }}</label>
+                                                <select class="form-control" id="contacto_preferido" name="contacto_preferido" required>
+                                                    <option value="">{{ _('Selecciona una opción') }}</option>
+                                                    <option value="telefono">{{ _('Teléfono') }}</option>
+                                                    <option value="correo">{{ _('Correo Electrónico') }}</option>
+                                                    <option value="chat">{{ _('Chat en Línea') }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <button type="submit" class="btn btn-primary">
+                                            <i class="feather icon-send mr-1"></i>
+                                            {{ _('Enviar Solicitud') }}
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock inner_content %}
+
+{% block javascripts %}
+<script>
+    // Marcar el menú activo
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('#menu-canal-ayuda').classList.add('active');
+    });
+
+    function iniciarChat() {
+        // Aquí iría la lógica para iniciar el chat
+        alert("{{ _('Iniciando chat con un profesional de apoyo...') }}");
+    }
+
+    // Validación del formulario
+    document.getElementById('formSolicitud').addEventListener('submit', function(e) {
+        e.preventDefault();
+        // Aquí iría la lógica de validación y envío
+        alert("{{ _('Tu solicitud ha sido enviada. Nos pondremos en contacto contigo pronto.') }}");
+        this.reset();
+    });
+</script>
+{% endblock javascripts %}

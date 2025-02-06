@@ -1,0 +1,90 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Ver Materias') }} {% endblock %}
+
+{% block inner_content %}
+<!-- [ breadcrumb ] start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title d-flex justify-content-between align-items-center">
+                    <h5 class="m-b-10">
+                        <i class="feather icon-book m-r-5"></i>
+                        {{ _('Lista de Materias') }}
+                    </h5>
+                    <a href="{{ url_for('administrador.crear_materia') }}" class="btn btn-primary">
+                        <i class="feather icon-plus"></i> {{ _('Crear Materia') }}
+                    </a>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#!">{{ _('Configuraciones') }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('administrador.ver_materias') }}">{{ _('Ver Materias') }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ breadcrumb ] end -->
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ _('Gestión de Materias') }}</h5>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover" id="materias-table">
+                        <thead>
+                            <tr>
+                                <th>{{ _('Nombre') }}</th>
+                                <th>{{ _('Descripción') }}</th>
+                                <th class="text-center">{{ _('Acciones') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for materia in materias %}
+                            <tr>
+                                <td>{{ materia.nombre }}</td>
+                                <td>{{ materia.descripcion }}</td>
+                                <td class="text-center">
+                                    <button class="btn btn-icon btn-primary btn-sm" title="{{ _('Editar') }}">
+                                        <i class="feather icon-edit"></i>
+                                    </button>
+                                    <button class="btn btn-icon btn-danger btn-sm" title="{{ _('Eliminar') }}">
+                                        <i class="feather icon-trash-2"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                            {% else %}
+                            <tr>
+                                <td colspan="3" class="text-center">{{ _('No hay materias registradas') }}</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock inner_content %}
+
+{% block javascripts %}
+<script>
+$(document).ready(function() {
+    // Inicializar DataTable
+    $('#materias-table').DataTable({
+        language: {
+            url: '//cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json'
+        },
+        order: [[0, 'asc']], // Ordenar por nombre por defecto
+        columnDefs: [
+            { orderable: false, targets: 2 } // Deshabilitar ordenamiento en columna de acciones
+        ]
+    });
+});
+</script>
+{% endblock javascripts %}

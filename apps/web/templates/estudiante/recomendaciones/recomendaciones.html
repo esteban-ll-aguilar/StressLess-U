@@ -1,0 +1,63 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Recomendaciones para el Estrés Académico') }} {% endblock %}
+
+{% block inner_content %}
+<!-- [ breadcrumb ] start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title d-flex justify-content-between align-items-center">
+                    <h5 class="m-b-10">
+                        <i class="feather icon-heart m-r-5"></i>
+                        {{ _('Recomendaciones para el Estrés Académico') }}
+                    </h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item active">{{ _('Recomendaciones') }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ breadcrumb ] end -->
+
+<!-- [ contenido principal ] start -->
+<div class="row">
+    <div class="col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ _('Consejos para Manejar el Estrés Académico') }}</h5>
+            </div>
+            <div class="card-body">
+                <ul class="list-group">
+                    <li class="list-group-item">{{ _('Organiza tu tiempo con un horario de estudio.') }}</li>
+                    <li class="list-group-item">{{ _('Tómate pausas regulares para evitar la fatiga mental.') }}</li>
+                    <li class="list-group-item">{{ _('Practica técnicas de respiración y relajación.') }}</li>
+                    <li class="list-group-item">{{ _('Mantén una alimentación equilibrada y duerme bien.') }}</li>
+                    <li class="list-group-item">{{ _('Haz ejercicio regularmente para liberar tensión.') }}</li>
+                    <li class="list-group-item">{{ _('Busca apoyo en amigos, familiares o consejeros.') }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ _('Recursos y Apoyo') }}</h5>
+            </div>
+            <div class="card-body">
+                <p>{{ _('Si necesitas más ayuda, visita los siguientes recursos:') }}</p>
+                <ul class="list-unstyled">
+                    <li><a href="#" class="btn btn-link">{{ _('Centro de Apoyo Estudiantil') }}</a></li>
+                    <li><a href="#" class="btn btn-link">{{ _('Grupos de Estudio y Tutorías') }}</a></li>
+                    <li><a href="#" class="btn btn-link">{{ _('Técnicas de Mindfulness') }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ contenido principal ] end -->
+{% endblock inner_content %}

@@ -1,0 +1,178 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Notificaciones') }} {% endblock %}
+
+{% block stylesheets %}
+<style>
+    .notification-card {
+        margin-bottom: 15px;
+        transition: all 0.3s ease;
+    }
+    .notification-card:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    }
+    .notification-unread {
+        border-left: 4px solid #4680ff;
+        background-color: rgba(70, 128, 255, 0.05);
+    }
+    .notification-read {
+        border-left: 4px solid #ddd;
+    }
+    .notification-critical {
+        border-left: 4px solid #dc3545;
+    }
+    .notification-date {
+        font-size: 0.85rem;
+        color: #6c757d;
+    }
+    .notification-actions {
+        display: flex;
+        gap: 10px;
+    }
+    .empty-state {
+        text-align: center;
+        padding: 40px 20px;
+    }
+    .empty-state i {
+        font-size: 48px;
+        color: #6c757d;
+        margin-bottom: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- Header -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">{{ _('Notificaciones') }}</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item active">{{ _('Notificaciones') }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contenido Principal -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="row align-items-center">
+                                    <div class="col">
+                                        <h5>{{ _('Centro de Notificaciones') }}</h5>
+                                    </div>
+                                    <div class="col text-right">
+                                        <button class="btn btn-primary btn-sm" onclick="marcarTodasComoLeidas()">
+                                            <i class="feather icon-check-square"></i> {{ _('Marcar todas como leídas') }}
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                {% if notificaciones %}
+                                    {% for notificacion in notificaciones %}
+                                    <div class="card notification-card {% if not notificacion.leida %}notification-unread{% else %}notification-read{% endif %} {% if notificacion.tipo == 'nivel_critico' %}notification-critical{% endif %}">
+                                        <div class="card-body">
+                                            <div class="row align-items-center">
+                                                <div class="col">
+                                                    <h5 class="card-title mb-1">
+                                                        {% if notificacion.tipo == 'nivel_critico' %}
+                                                            <i class="feather icon-alert-triangle text-danger"></i>
+                                                        {% endif %}
+                                                        {{ notificacion.mensaje }}
+                                                    </h5>
+                                                    <p class="notification-date mb-0">
+                                                        {{ notificacion.fecha.strftime('%d/%m/%Y %H:%M') }}
+                                                    </p>
+                                                </div>
+                                                <div class="col-auto">
+                                                    <div class="notification-actions">
+                                                        {% if notificacion.resultado_test_uid %}
+                                                        <a href="{{ url_for('docente.ver_resultados', resultado_uid=notificacion.resultado_test_uid) }}" class="btn btn-info btn-sm">
+                                                            <i class="feather icon-eye"></i> {{ _('Ver Detalles') }}
+                                                        </a>
+                                                        {% endif %}
+                                                        {% if not notificacion.leida %}
+                                                        <button class="btn btn-success btn-sm" onclick="marcarComoLeida('{{ notificacion.uid }}')">
+                                                            <i class="feather icon-check"></i> {{ _('Marcar como leída') }}
+                                                        </button>
+                                                        {% endif %}
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <div class="empty-state">
+                                        <i class="feather icon-bell"></i>
+                                        <h4>{{ _('No hay notificaciones') }}</h4>
+                                        <p>{{ _('No tienes notificaciones pendientes en este momento.') }}</p>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+function marcarComoLeida(uid) {
+    fetch(`/docente/notificaciones/${uid}/marcar-leida`, {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        } else {
+            showNotification('error', data.error || "{{ _('Error al marcar la notificación como leída') }}");
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showNotification('error', "{{ _('Error al marcar la notificación como leída') }}");
+    });
+}
+
+function marcarTodasComoLeidas() {
+    fetch('/docente/notificaciones/marcar-todas-leidas', {
+        method: 'POST'
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            location.reload();
+        } else {
+            showNotification('error', data.error || "{{ _('Error al marcar las notificaciones como leídas') }}");
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showNotification('error', "{{ _('Error al marcar las notificaciones como leídas') }}");
+    });
+}
+
+function showNotification(type, message) {
+    // Implementar según el sistema de notificaciones de la aplicación
+    alert(message);
+}
+</script>
+{% endblock %}

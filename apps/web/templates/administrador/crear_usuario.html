@@ -1,0 +1,378 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Crear Usuario') }} {% endblock %}
+
+{% block inner_content %}
+<!-- [ breadcrumb ] start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title d-flex justify-content-between align-items-center">
+                    <h5 class="m-b-10">
+                        <i class="feather icon-user-plus m-r-5"></i>
+                        {{ _('Creación de Usuarios') }}
+                    </h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#!">{{ _('Configuraciones') }}</a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('administrador.crear_usuario') }}">{{ _('Crear Usuario') }}</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ breadcrumb ] end -->
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ _('Gestión de Usuarios') }}</h5>
+            </div>
+            <div class="card-body">
+                <!-- Nav tabs -->
+                <ul class="nav nav-tabs mb-3" id="userTabs" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" id="estudiante-tab" data-toggle="tab" href="#estudiante" role="tab">
+                            <i class="feather icon-user"></i> {{ _('Crear Estudiante') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="docente-tab" data-toggle="tab" href="#docente" role="tab">
+                            <i class="feather icon-users"></i> {{ _('Crear Docente') }}
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" id="admin-tab" data-toggle="tab" href="#admin" role="tab">
+                            <i class="feather icon-shield"></i> {{ _('Crear Administrador') }}
+                        </a>
+                    </li>
+                </ul>
+
+                <!-- Tab panes -->
+                <div class="tab-content">
+                    <!-- Estudiante Tab -->
+                    <div class="tab-pane active" id="estudiante" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <form id="form-estudiante" method="POST" action="{{ url_for('administrador.crear_estudiante') }}">
+                                    <div class="form-group">
+                                        <label>{{ _('Correo Electrónico') }}</label>
+                                        <input type="email" class="form-control" name="email" pattern=".+@unl\.edu\.ec$" title="{{ _('El correo debe tener el dominio @unl.edu.ec') }}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Cédula') }}</label>
+                                        <input type="text" class="form-control" name="cedula" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Primer Nombre') }}</label>
+                                        <input type="text" class="form-control" name="primer_nombre" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Segundo Nombre') }}</label>
+                                        <input type="text" class="form-control" name="segundo_nombre">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Primer Apellido') }}</label>
+                                        <input type="text" class="form-control" name="primer_apellido" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Segundo Apellido') }}</label>
+                                        <input type="text" class="form-control" name="segundo_apellido">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Fecha de Nacimiento') }}</label>
+                                        <input type="date" class="form-control" name="fecha_nacimiento" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="btn-crear-estudiante">
+                                        <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                        <span class="btn-text">{{ _('Crear Estudiante') }}</span>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5>{{ _('Cargar Estudiantes desde Excel') }}</h5>
+                                        <a href="{{ url_for('static', filename='templates/plantilla_estudiantes.xlsx') }}" 
+                                           class="btn btn-info">
+                                            <i class="feather icon-download"></i> {{ _('Descargar Plantilla') }}
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="form-excel-estudiantes" action="{{ url_for('administrador.cargar_usuarios_excel') }}" method="POST" enctype="multipart/form-data">
+                                            <input type="hidden" name="tipo_usuario" value="estudiante">
+                                            <div class="form-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" name="file" accept=".xlsx,.xls" id="excel-estudiantes">
+                                                    <label class="custom-file-label">{{ _('Seleccionar archivo Excel') }}</label>
+                                                </div>
+                                                <small class="form-text text-muted">{{ _('Formatos permitidos: .xlsx, .xls') }}</small>
+                                            </div>
+                                            <div id="preview-estudiantes" class="mt-3 d-none">
+                                                <h6>{{ _('Vista previa del archivo:') }}</h6>
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered table-sm">
+                                                        <thead id="preview-head-estudiantes"></thead>
+                                                        <tbody id="preview-body-estudiantes"></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="text-center mt-3">
+                                                <button type="submit" class="btn btn-primary" id="btn-cargar-estudiantes">
+                                                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                                    <i class="feather icon-upload"></i> 
+                                                    <span class="btn-text">{{ _('Cargar Archivo Excel') }}</span>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Docente Tab -->
+                    <div class="tab-pane" id="docente" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <form id="form-docente" method="POST" action="{{ url_for('administrador.crear_docente') }}">
+                                    <div class="form-group">
+                                        <label>{{ _('Correo Electrónico') }}</label>
+                                        <input type="email" class="form-control" name="email" pattern=".+@unl\.edu\.ec$" title="{{ _('El correo debe tener el dominio @unl.edu.ec') }}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Cédula') }}</label>
+                                        <input type="text" class="form-control" name="cedula" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Primer Nombre') }}</label>
+                                        <input type="text" class="form-control" name="primer_nombre" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Segundo Nombre') }}</label>
+                                        <input type="text" class="form-control" name="segundo_nombre">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Primer Apellido') }}</label>
+                                        <input type="text" class="form-control" name="primer_apellido" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Segundo Apellido') }}</label>
+                                        <input type="text" class="form-control" name="segundo_apellido">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Fecha de Nacimiento') }}</label>
+                                        <input type="date" class="form-control" name="fecha_nacimiento" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="btn-crear-docente">
+                                        <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                        <span class="btn-text">{{ _('Crear Docente') }}</span>
+                                    </button>
+                                </form>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="card">
+                                    <div class="card-header d-flex justify-content-between align-items-center">
+                                        <h5>{{ _('Cargar Docentes desde Excel') }}</h5>
+                                        <a href="{{ url_for('static', filename='templates/plantilla_docentes.xlsx') }}" 
+                                           class="btn btn-info">
+                                            <i class="feather icon-download"></i> {{ _('Descargar Plantilla') }}
+                                        </a>
+                                    </div>
+                                    <div class="card-body">
+                                        <form id="form-excel-docentes" action="{{ url_for('administrador.cargar_usuarios_excel') }}" method="POST" enctype="multipart/form-data">
+                                            <input type="hidden" name="tipo_usuario" value="docente">
+                                            <div class="form-group">
+                                                <div class="custom-file">
+                                                    <input type="file" class="custom-file-input" name="file" accept=".xlsx,.xls" id="excel-docentes">
+                                                    <label class="custom-file-label">{{ _('Seleccionar archivo Excel') }}</label>
+                                                </div>
+                                                <small class="form-text text-muted">{{ _('Formatos permitidos: .xlsx, .xls') }}</small>
+                                            </div>
+                                            <div id="preview-docentes" class="mt-3 d-none">
+                                                <h6>{{ _('Vista previa del archivo:') }}</h6>
+                                                <div class="table-responsive">
+                                                    <table class="table table-bordered table-sm">
+                                                        <thead id="preview-head-docentes"></thead>
+                                                        <tbody id="preview-body-docentes"></tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="text-center mt-3">
+                                                <button type="submit" class="btn btn-primary" id="btn-cargar-docentes">
+                                                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                                    <i class="feather icon-upload"></i> 
+                                                    <span class="btn-text">{{ _('Cargar Archivo Excel') }}</span>
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Administrador Tab -->
+                    <div class="tab-pane" id="admin" role="tabpanel">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <form id="form-admin" method="POST" action="{{ url_for('administrador.crear_administrador') }}">
+                                    <div class="form-group">
+                                        <label>{{ _('Correo Electrónico') }}</label>
+                                        <input type="email" class="form-control" name="email" pattern=".+@unl\.edu\.ec$" title="{{ _('El correo debe tener el dominio @unl.edu.ec') }}" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Cédula') }}</label>
+                                        <input type="text" class="form-control" name="cedula" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Primer Nombre') }}</label>
+                                        <input type="text" class="form-control" name="primer_nombre" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Segundo Nombre') }}</label>
+                                        <input type="text" class="form-control" name="segundo_nombre">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Primer Apellido') }}</label>
+                                        <input type="text" class="form-control" name="primer_apellido" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Segundo Apellido') }}</label>
+                                        <input type="text" class="form-control" name="segundo_apellido">
+                                    </div>
+                                    <div class="form-group">
+                                        <label>{{ _('Fecha de Nacimiento') }}</label>
+                                        <input type="date" class="form-control" name="fecha_nacimiento" required>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" id="btn-crear-admin">
+                                        <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                                        <span class="btn-text">{{ _('Crear Administrador') }}</span>
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock inner_content %}
+
+{% block javascripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+<script>
+// Función para mostrar el estado de carga
+function showLoading(button) {
+    const spinner = button.querySelector('.spinner-border');
+    const text = button.querySelector('.btn-text');
+    spinner.classList.remove('d-none');
+    button.disabled = true;
+    text.style.opacity = '0.5';
+}
+
+// Función para ocultar el estado de carga
+function hideLoading(button) {
+    const spinner = button.querySelector('.spinner-border');
+    const text = button.querySelector('.btn-text');
+    spinner.classList.add('d-none');
+    button.disabled = false;
+    text.style.opacity = '1';
+}
+
+// Manejar envío de formularios
+document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', function(e) {
+        const submitButton = this.querySelector('button[type="submit"]');
+        showLoading(submitButton);
+    });
+});
+
+// Función para previsualizar Excel
+function previewExcel(file, previewHeadId, previewBodyId, previewContainerId) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+        const data = new Uint8Array(e.target.result);
+        const workbook = XLSX.read(data, {type: 'array'});
+        const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
+        const jsonData = XLSX.utils.sheet_to_json(firstSheet, {header: 1});
+
+        if (jsonData.length > 0) {
+            const headers = jsonData[0];
+            const rows = jsonData.slice(1, 6); // Mostrar solo las primeras 5 filas
+
+            // Crear encabezados
+            const thead = document.getElementById(previewHeadId);
+            thead.innerHTML = `<tr>${headers.map(h => `<th>${h}</th>`).join('')}</tr>`;
+
+            // Crear filas
+            const tbody = document.getElementById(previewBodyId);
+            tbody.innerHTML = rows.map(row => 
+                `<tr>${row.map(cell => `<td>${cell || ''}</td>`).join('')}</tr>`
+            ).join('');
+
+            // Mostrar la vista previa
+            document.getElementById(previewContainerId).classList.remove('d-none');
+        }
+    };
+    reader.readAsArrayBuffer(file);
+}
+
+// Manejar cambios en los archivos Excel
+document.getElementById('excel-estudiantes').addEventListener('change', function(e) {
+    if (this.files[0]) {
+        previewExcel(this.files[0], 'preview-head-estudiantes', 'preview-body-estudiantes', 'preview-estudiantes');
+    }
+});
+
+document.getElementById('excel-docentes').addEventListener('change', function(e) {
+    if (this.files[0]) {
+        previewExcel(this.files[0], 'preview-head-docentes', 'preview-body-docentes', 'preview-docentes');
+    }
+});
+
+// Actualizar el nombre del archivo seleccionado
+document.querySelectorAll('.custom-file-input').forEach(input => {
+    input.addEventListener('change', function(e) {
+        const fileName = this.files[0]?.name;
+        const label = this.nextElementSibling;
+        label.textContent = fileName || "{{ _('Seleccionar archivo Excel') }}";
+    });
+});
+
+// Validar antes de enviar
+document.querySelectorAll('form[id^="form-excel-"]').forEach(form => {
+    form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const fileInput = this.querySelector('input[type="file"]');
+        if (!fileInput.files.length) {
+            alert("{{ _('Por favor, selecciona un archivo Excel primero') }}");
+            return;
+        }
+
+        const file = fileInput.files[0];
+        const allowedTypes = [
+            'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+            'application/vnd.ms-excel'
+        ];
+
+        if (!allowedTypes.includes(file.type)) {
+            alert("{{ _('Solo se permiten archivos Excel (.xlsx, .xls)') }}");
+            return;
+        }
+
+        if (file.size > 5 * 1024 * 1024) {
+            alert("{{ _('El archivo es demasiado grande. El tamaño máximo es 5MB') }}");
+            return;
+        }
+
+        this.submit();
+    });
+});
+</script>
+{% endblock javascripts %}

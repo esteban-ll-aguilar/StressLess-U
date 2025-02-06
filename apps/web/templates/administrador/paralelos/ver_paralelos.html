@@ -1,0 +1,90 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Ver Paralelos') }} {% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">{{ _('Gestión de Paralelos') }}</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="#">{{ _('Paralelos') }}</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Lista de Paralelos') }}</h5>
+                                <div class="card-header-right">
+                                    <a href="{{ url_for('administrador.crear_paralelo') }}" class="btn btn-primary">
+                                        {{ _('Crear Paralelo') }}
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover">
+                                        <thead>
+                                            <tr class="text-center">
+                                                <th>{{ _('Paralelo') }}</th>
+                                                <th>{{ _('Materia') }}</th>
+                                                <th>{{ _('Docente') }}</th>
+                                                <th>{{ _('Acciones') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for paralelo in paralelos %}
+                                            <tr class="align-middle text-center">
+                                                <td class="text-uppercase">{{ paralelo.nombre }}</td>
+                                                <td>{{ materias[paralelo.materia_uid].nombre }}</td>
+                                                <td>{{ docentes[paralelo.docente_uid].correo }}</td>
+                                                <td>
+                                                    <a href="{{ url_for('administrador.editar_paralelo', uid=paralelo.uid) }}" class="btn btn-info btn-sm">
+                                                        <i class="feather icon-edit"></i>
+                                                    </a>
+                                                    <button onclick="eliminarParalelo('{{ paralelo.uid }}')" class="btn btn-danger btn-sm">
+                                                        <i class="feather icon-trash-2"></i>
+                                                    </button>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock inner_content %}
+
+{% block javascripts %}
+<script>
+function eliminarParalelo(uid) {
+    if (confirm("{{ _('¿Está seguro de eliminar este paralelo?') }}")) {
+        fetch(`/administrador/paralelos/${uid}/eliminar`, {
+            method: 'DELETE',
+        }).then(response => {
+            if (response.ok) {
+                window.location.reload();
+            }
+        });
+    }
+}
+</script>
+{% endblock javascripts %}

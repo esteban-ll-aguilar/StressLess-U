@@ -1,0 +1,80 @@
+<div class="tab-pane fade p-2 w-100" id="appearance" role="tabpanel">
+    <div class="card">
+        <div class="card-header d-flex align-items-center justify-content-between">
+            <h5 class="mb-0">{{ _('Appearance') }}</h5>
+        </div>
+        <div class="card-body">
+            <div class="m-style-scroller">
+                <h6 class="mt-2">{{ _('Layouts') }}</h6>
+                <div class="theme-color layout-type">
+                    <a href="#!" class="" data-value="menu-dark"
+                        title="{{ _('Default Layout') }}"><span></span><span></span></a>
+                    <a href="#!" class="" data-value="menu-light"
+                        title="{{ _('Light') }}"><span></span><span></span></a>
+                    <a href="#!" class="" data-value="dark"
+                        title="{{ _('Dark') }}"><span></span><span></span></a>
+                    <a href="#!" class="" data-value="reset" title="{{ _('Reset') }}">{{ _('Reset')
+                        }}</a>
+                </div>
+
+                <h6 class="mt-4">{{ _('Header background color') }}</h6>
+                <div class="theme-color header-color">
+                    <a href="#!" class="" data-value="header-blue"><span></span><span></span></a>
+                    <a href="#!" class="" data-value="header-red"><span></span><span></span></a>
+                    <a href="#!" class="" data-value="header-purple"><span></span><span></span></a>
+                    <a href="#!" class="" data-value="header-info"><span></span><span></span></a>
+                    <a href="#!" class="" data-value="header-dark"><span></span><span></span></a>
+                    <a href="#!" class="" data-value="header-orenge"><span></span><span></span></a>
+                    <a href="#!" class="" data-value="header-green"><span></span><span></span></a>
+                    <a href="#!" class="" data-value="header-yellow"><span></span><span></span></a>
+                    <a href="#!" class="" data-value="header-orchidgreen"><span></span><span></span></a>
+                    <a href="#!" class="" data-value="header-indigogreen"><span></span><span></span></a>
+                    <a href="#!" class="" data-value="header-darkgreen"><span></span><span></span></a>
+                    <a href="#!" class="" data-value="header-darkblue"><span></span><span></span></a>
+                </div>
+
+                <div class="form-group mb-2 mt-4">
+                    <div class="switch switch-primary d-inline m-r-10">
+                        <input type="checkbox" id="theme-rtl">
+                        <label for="theme-rtl" class="cr"></label>
+                    </div>
+                    <label>{{ _('RTL') }}</label>
+                </div>
+
+                <div class="form-group mb-2">
+                    <div class="switch switch-primary d-inline m-r-10">
+                        <input type="checkbox" id="menu-fixed">
+                        <label for="menu-fixed" class="cr"></label>
+                    </div>
+                    <label>{{ _('Sidebar Fixed') }}</label>
+                </div>
+
+                <div class="form-group mb-2">
+                    <div class="switch switch-primary d-inline m-r-10">
+                        <input type="checkbox" id="header-fixed">
+                        <label for="header-fixed" class="cr"></label>
+                    </div>
+                    <label>{{ _('Header Fixed') }}</label>
+                </div>
+
+                <div class="form-group mb-2">
+                    <div class="switch switch-primary d-inline m-r-10">
+                        <input type="checkbox" id="box-layouts">
+                        <label for="box-layouts" class="cr"></label>
+                    </div>
+                    <label>{{ _('Box Layouts') }}</label>
+                </div>
+
+                <div class="form-group mb-2">
+                    <div class="switch switch-primary d-inline m-r-10">
+                        <input type="checkbox" id="breadcumb-layouts">
+                        <label for="breadcumb-layouts" class="cr"></label>
+                    </div>
+                    <label>{{ _('Breadcrumb sticky') }}</label>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

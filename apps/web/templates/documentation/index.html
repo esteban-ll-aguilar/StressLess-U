@@ -1,0 +1,172 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Documentación') }} {% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">{{ _('Documentación') }}</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item active">{{ _('Documentación') }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <!-- Introducción -->
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Bienvenido a la Documentación') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="lead">
+                                    {{ _('Esta documentación te guiará a través de todas las funcionalidades de la plataforma, incluyendo la integración con Google Forms y el sistema de notificaciones automáticas.') }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Secciones Principales -->
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <i class="feather icon-file-text text-primary" style="font-size: 48px;"></i>
+                                    <h4 class="mt-3">{{ _('Google Forms') }}</h4>
+                                    <p>{{ _('Aprende a crear y gestionar formularios, configurar notificaciones y analizar resultados.') }}</p>
+                                    <a href="{{ url_for('documentation.google_forms') }}" class="btn btn-primary">{{ _('Ver Documentación') }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <i class="feather icon-bell text-warning" style="font-size: 48px;"></i>
+                                    <h4 class="mt-3">{{ _('Notificaciones') }}</h4>
+                                    <p>{{ _('Configura las notificaciones automáticas para estar al tanto de los resultados importantes.') }}</p>
+                                    <a href="{{ url_for('documentation.notificaciones') }}" class="btn btn-warning">{{ _('Ver Documentación') }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <i class="feather icon-code text-success" style="font-size: 48px;"></i>
+                                    <h4 class="mt-3">{{ _('API') }}</h4>
+                                    <p>{{ _('Explora la API para integrar nuestras funcionalidades en tus aplicaciones.') }}</p>
+                                    <a href="{{ url_for('documentation.api') }}" class="btn btn-success">{{ _('Ver Documentación') }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Guía Rápida -->
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Guía Rápida') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="border-bottom pb-3">
+                                            <h6><i class="feather icon-check-circle text-success mr-2"></i>{{ _('Primeros Pasos') }}</h6>
+                                            <ol class="pl-4">
+                                                <li>{{ _('Configura tu cuenta de Google Forms') }}</li>
+                                                <li>{{ _('Crea tu primer formulario de test') }}</li>
+                                                <li>{{ _('Configura las notificaciones automáticas') }}</li>
+                                                <li>{{ _('Comparte el formulario con tus estudiantes') }}</li>
+                                            </ol>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="border-bottom pb-3">
+                                            <h6><i class="feather icon-alert-circle text-warning mr-2"></i>{{ _('Consejos Importantes') }}</h6>
+                                            <ul class="pl-4">
+                                                <li>{{ _('Asegúrate de tener los permisos necesarios') }}</li>
+                                                <li>{{ _('Revisa la configuración de notificaciones') }}</li>
+                                                <li>{{ _('Mantén actualizada la información de contacto') }}</li>
+                                                <li>{{ _('Haz copias de seguridad regularmente') }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Recursos Adicionales -->
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Recursos Adicionales') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="media">
+                                            <i class="feather icon-video text-info mr-3" style="font-size: 24px;"></i>
+                                            <div class="media-body">
+                                                <h6>{{ _('Tutoriales en Video') }}</h6>
+                                                <p class="text-muted">{{ _('Aprende visualmente con nuestros tutoriales paso a paso.') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="media">
+                                            <i class="feather icon-book text-primary mr-3" style="font-size: 24px;"></i>
+                                            <div class="media-body">
+                                                <h6>{{ _('Guías PDF') }}</h6>
+                                                <p class="text-muted">{{ _('Descarga nuestras guías detalladas para consulta offline.') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="media">
+                                            <i class="feather icon-help-circle text-success mr-3" style="font-size: 24px;"></i>
+                                            <div class="media-body">
+                                                <h6>{{ _('Soporte') }}</h6>
+                                                <p class="text-muted">{{ _('Obtén ayuda de nuestro equipo de soporte.') }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock inner_content %}
+
+{% block javascripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('#menu-documentation').classList.add('active');
+    });
+</script>
+{% endblock javascripts %}

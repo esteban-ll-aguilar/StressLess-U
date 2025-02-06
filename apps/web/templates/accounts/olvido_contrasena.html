@@ -1,0 +1,51 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %} {{ _('Recuperar Contraseña') }} {% endblock %}
+
+{% block wrapper_class %} align-items-stretch aut-bg-img {% endblock %}
+
+{% block content %}
+<div class="flex-grow-1">
+    <div class="h-100 d-md-flex align-items-center auth-side-img">
+        <div class="col-sm-10 auth-content w-auto">
+            <img src="/static/assets/images/logo.png" alt="" class="img-fluid">
+            <h1 class="text-white my-4">{{ _('¿Olvidaste tu contraseña?') }}</h1>
+            <h4 class="text-white font-weight-normal">{{ _('No te preocupes, te ayudaremos a recuperar tu cuenta.') }}</h4>
+        </div>
+    </div>
+    <div class="auth-side-form">
+        <div class="auth-content">
+            <img src="/static/assets/images/logo.png" alt="" class="img-fluid mb-4 d-block d-xl-none d-lg-none">
+            <h3 class="mb-4 f-w-400 text-center"><b>{{ _('Recuperar Contraseña') }}</b></h3>
+
+            <div class="alert alert-info mb-4" role="alert">
+                <i class="feather icon-info mr-2"></i>
+                {{ _('Ingresa tu correo electrónico y te enviaremos instrucciones para restablecer tu contraseña.') }}
+            </div>
+
+            <form method="post" action="">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="feather icon-mail"></i></span>
+                    </div>
+                    <input type="email" name="email" class="form-control" placeholder="{{ _('Correo Electrónico') }}" required>
+                </div>
+
+                <button type="submit" class="btn btn-block btn-primary mb-4">
+                    {{ _('Enviar Instrucciones') }}
+                </button>
+
+                <div class="text-center">
+                    <p class="mb-0 text-muted">{{ _('¿Recordaste tu contraseña?') }} 
+                        <a href="{{ url_for('autenticacion.login') }}" class="f-w-400">{{ _('Iniciar Sesión') }}</a>
+                    </p>
+                </div>
+            </form>
+
+            {% if msg %}
+            <div class="alert alert-{{ category }} mt-3">{{ msg | safe }}</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock content %}

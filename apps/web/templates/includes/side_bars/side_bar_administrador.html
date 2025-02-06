@@ -1,0 +1,125 @@
+<nav class="pcoded-navbar menupos-fixed menu-light">
+    <div class="navbar-wrapper">
+        <div class="navbar-brand header-logo">
+            <a href="{{ url_for('home_blueprint.index') }}" class="b-brand">
+                <div class="b-bg">
+                    <i class="feather icon-shield"></i>
+                </div>
+                <span class="b-title">Stress Less U</span>
+            </a>
+            <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+        </div>
+        <div class="navbar-content scroll-div">
+            <ul class="nav pcoded-inner-navbar">
+                <!-- Tables & Data -->
+                <li class="nav-item" id="menu-help">
+                    <a href="/" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-home"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Casa') }}</span>
+                    </a>
+                </li>
+                <!-- Forms -->
+                <li class="nav-item pcoded-menu-caption">
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-forms">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-file-text"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Tests') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li><a href="{{ url_for('c.ver_tests') }}">
+                                <i class="feather icon-search mr-1"></i>
+                                {{ _('Ver Tests') }}</a></li>
+                       
+                        <li><a href="{{ url_for('c.tests_compatidos_conmigo') }}">
+                                <i class="feather icon-link mr-1"></i>
+                                {{ _('Compartidos') }}</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-advanced">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-book"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Materias') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li><a href="{{ url_for('administrador.crear_materia') }}">
+                            <i class="feather icon-plus mr-1"></i>
+                            {{ _('Crear') }}</a>
+                        </li>
+                        <li><a href="{{ url_for('administrador.ver_materias') }}">
+                            <i class="feather icon-list mr-1"></i>
+                            {{ _('Ver') }}</a>
+                        </li>
+                        <li><a href="#!">
+                            <i class="feather icon-search mr-1"></i>
+                            {{ _('Disponibles') }}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-advanced">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-layout"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Paralelos') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li><a href="{{ url_for('administrador.crear_paralelo') }}">
+                            <i class="feather icon-plus mr-1"></i>
+                            {{ _('Crear') }}</a>
+                        </li>
+                        <li><a href="{{ url_for('administrador.ver_paralelos') }}">
+                            <i class="feather icon-list mr-1"></i>
+                            {{ _('Ver') }}</a>
+                        </li>
+                    </ul>
+                </li>
+                <!-- Settings -->
+                <li class="nav-item pcoded-menu-caption">
+                    <!-- <label>{{ _('Settings & Help') }}</label> -->
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-settings">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-settings"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Configuración') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li><a href="{{ url_for('administrador.crear_usuario') }}">
+                                <i class="feather icon-user-plus m-r-5"></i>
+                                {{ _('Crear Usuarios') }}</a></li>
+                        <li><a href="#!">
+                                <i class="feather icon-lock m-r-5"></i>
+                                {{ _('Seguridad') }}</a></li>
+                        <li><a href="#!">
+                                <i class="feather icon-bell m-r-5"></i>
+                                {{ _('Notificaciones') }}</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item" id="menu-help">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-help-circle"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Documentacion') }}</span>
+                    </a>
+                </li>
+                <li class="nav-item" id="menu-support">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-life-buoy"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Support') }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

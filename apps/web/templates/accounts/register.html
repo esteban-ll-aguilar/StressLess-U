@@ -1,0 +1,266 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %} {{ _('Register') }} {% endblock %}
+
+{% block wrapper_class %} align-items-stretch aut-bg-img {% endblock %}
+
+{% block content %}
+<div class="flex-grow-1">
+    <div class="h-100 d-md-flex align-items-center auth-side-img">
+        <div class="col-sm-10 auth-content w-auto">
+            <img src="/static/assets/images/logo.png" alt="" class="img-fluid">
+            <h1 class="text-white my-4">{{ _('Welcome to Flask Gradient!') }}</h1>
+            <h4 class="text-white font-weight-normal">{{ _('Create your account and start using the Flask Gradient. 
+                This is a template that you can use as a starting point for your own web application. <br>
+                Already have an account? <a href="/auth-login.html" class="text-white f-w-400">Login</a>
+                ') }}</h4>
+        </div>
+    </div>
+    <div class="auth-side-form">
+        <div class="auth-content">
+            <img src="/static/assets/images/logo.png" alt="" class="img-fluid mb-4 d-block d-xl-none d-lg-none">
+            <h3 class="mb-4 f-w-400 text-center"><b>{{ _('Register') }}</b></h3>
+
+            <div id="loading-spinner" class="text-center" style="display: none;">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">{{ _('Loading...') }}</span>
+                </div>
+                <p class="mt-2">{{ _('Processing registration...') }}</p>
+            </div>
+
+            <form id="register-form" role="form" method="post" action="{{ url_for('autenticacion.register') }}">
+                {{ form.hidden_tag() }}
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="feather icon-user"></i></span>
+                    </div>
+                    {{ form.username(placeholder=_("Username"), class="form-control", id="username") }}
+                </div>
+                {% for error in form.username.errors %}
+                    <div class="text-danger mb-3">{{ error }}</div>
+                {% endfor %}
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="feather icon-mail"></i></span>
+                    </div>
+                    {{ form.email(placeholder=_("Email"), class="form-control", type="email", id="email") }}
+                </div>
+                {% for error in form.email.errors %}
+                    <div class="text-danger mb-3">{{ error }}</div>
+                {% endfor %}
+
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="feather icon-lock"></i></span>
+                    </div>
+                    {{ form.password(placeholder=_("Password"), class="form-control", type="password", id="password") }}
+                    <div class="input-group-append">
+                        <span class="input-group-text" style="cursor: pointer;" id="password-toggle">
+                            <i class="feather icon-eye"></i>
+                        </span>
+                    </div>
+                </div>
+                {% for error in form.password.errors %}
+                    <div class="text-danger mb-3">{{ error }}</div>
+                {% endfor %}
+
+                <div class="form-group text-left mt-2">
+                    <div class="checkbox checkbox-primary d-inline">
+                        <input type="checkbox" class="checkbox-primary" id="terms" required>
+                        <label for="terms" class="cr">{{ _('I accept the') }} <a href="#" class="f-w-400">{{ _('terms and conditions') }}</a></label>
+                    </div>
+                </div>
+
+                <button type="submit" name="register" id="register-button" class="btn btn-block btn-primary mb-4">{{ _('Register') }}</button>
+            </form>
+
+            <div class="text-center">
+                <p class="mb-0 text-muted">{{ _('Already have an account?') }} <a href="{{ url_for('autenticacion.login') }}" class="f-w-400">{{ _('Login') }}</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block javascripts %}
+<script src="/static/assets/js/waves.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+<script src="static/assets/js/register.js"></script>
+
+<script>
+    // Error handling function
+    function handleRegisterError(error) {
+        console.error('Error:', error);
+        let errorMessage = "{{ _('An error occurred during registration. Please try again later.') }}";
+
+        if (error.code === 'auth/email-already-in-use') {
+            errorMessage = "{{ _('This email is already in use. Please use another one or login.') }}";
+        } else if (error.code === 'auth/invalid-email') {
+            errorMessage = "{{ _('Invalid email. Please verify and try again.') }}";
+        } else if (error.code === 'auth/weak-password') {
+            errorMessage = "{{ _('Password is too weak. Please choose a stronger password.') }}";
+        }
+
+        Swal.fire({
+            icon: 'error',
+            title: errorMessage,
+            timer: 3000,
+            showConfirmButton: false,
+            toast: true,
+            position: 'bottom-end',
+            showClass: {
+                popup: 'animate__animated animate__zoomInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__slideOutUp'
+            }
+        });
+    }
+
+    // Initialize Firebase
+    var firebaseConfig = JSON.parse('{{ firebase_config | safe }}');
+    firebase.initializeApp(firebaseConfig);
+
+    function showLoading() {
+        document.getElementById('loading-spinner').style.display = 'block';
+        document.getElementById('register-button').disabled = true;
+    }
+
+    function hideLoading() {
+        document.getElementById('loading-spinner').style.display = 'none';
+        document.getElementById('register-button').disabled = false;
+    }
+
+    // validar que el correo sea @unl.edu.ec
+    function validateEmail(email) {
+        return email.endsWith('@unl.edu.ec');
+    }
+
+    function showEmailError() {
+        Swal.fire({
+            icon: 'error',
+            title: "{{ _('Only @unl.edu.ec email addresses are allowed.') }}",
+            timer: 3000,
+            showConfirmButton: false,
+            toast: true,
+            position: 'bottom-end',
+            showClass: {
+                popup: 'animate__animated animate__zoomInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__slideOutUp'
+            }
+        });
+    }
+
+    function showTermsError() {
+        Swal.fire({
+            icon: 'warning',
+            title: "{{ _('You must accept the terms and conditions to continue.') }}",
+            timer: 3000,
+            showConfirmButton: false,
+            toast: true,
+            position: 'bottom-end',
+            showClass: {
+                popup: 'animate__animated animate__zoomInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__slideOutUp'
+            }
+        });
+    }
+
+    document.getElementById('register-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        if (!document.getElementById('terms').checked) {
+            showTermsError();
+            return;
+        }
+
+        var email = document.getElementById('email').value;
+        if (!validateEmail(email)) {
+            showEmailError();
+            return;
+        }
+
+        showLoading();
+        var username = document.getElementById('username').value;
+        var password = document.getElementById('password').value;
+
+        firebase.auth().createUserWithEmailAndPassword(email, password)
+            .then(function(userCredential) {
+                var user = userCredential.user;
+                return user.updateProfile({
+                    displayName: username
+                }).then(function() {
+                    return user.getIdToken();
+                });
+            })
+            .then(function(idToken) {
+                return fetch('{{ url_for("autenticacion.register") }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        idToken: idToken, 
+                        username: username,
+                    })
+                });
+            })
+            .then(function(response) {
+                if (response.ok) {
+                    return response.json();
+                }
+                throw new Error('Network response was not ok.');
+            })
+            .then(function(data) {
+                if (data.success) {
+                    window.location.href = data.redirect;
+                } else {
+                    throw new Error(data.error || "{{ _('Unknown error') }}");
+                }
+            })
+            .catch(function(error) {
+                hideLoading();
+                handleRegisterError(error);
+            });
+    });
+
+    document.getElementById('password-toggle').addEventListener('click', function() {
+        var passwordInput = document.getElementById('password');
+        var type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        var icon = this.querySelector('i');
+        icon.classList.toggle('icon-eye');
+        icon.classList.toggle('icon-eye-off');
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const flashMessages = JSON.parse('{{ get_flashed_messages(with_categories=True) | tojson | safe }}');
+        flashMessages.forEach(([category, message]) => {
+            Swal.fire({
+                icon: category === 'success' ? 'success' : 'error',
+                title: message,
+                timer: 3000,
+                showConfirmButton: false,
+                toast: true,
+                position: 'bottom-end',
+                showClass: {
+                    popup: 'animate__animated animate__zoomInDown'
+                },
+                hideClass: {
+                    popup: 'animate__animated animate__slideOutUp'
+                }
+            });
+        });
+    });
+</script>
+{% endblock javascripts %}

@@ -1,0 +1,114 @@
+<nav class="pcoded-navbar menupos-fixed menu-light">
+    <div class="navbar-wrapper">
+        <div class="navbar-brand header-logo">
+            <a href="{{ url_for('home_blueprint.index') }}" class="b-brand">
+                <div class="b-bg">
+                    <i class="feather icon-book"></i>
+                </div>
+                <span class="b-title">Stress Less U</span>
+            </a>
+            <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+        </div>
+        <div class="navbar-content scroll-div">
+            <ul class="nav pcoded-inner-navbar">
+                <!-- Calendario -->
+                <li class="nav-item pcoded-menu-caption">
+                    <label>{{ _('Calendario') }}</label>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('docente.calendario') }}" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-calendar"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Ver Calendario') }}</span>
+                    </a>
+                </li>
+                <!-- Gestión Académica -->
+                <li class="nav-item pcoded-menu-caption">
+                    <label>{{ _('Gestión Académica') }}</label>
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-paralelos">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-book"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Mis Paralelos') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li>
+                            <a href="{{ url_for('docente.ver_paralelos') }}">
+                                <i class="feather icon-list mr-1"></i>
+                                {{ _('Ver Paralelos') }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <!-- Tests -->
+                <li class="nav-item pcoded-menu-caption">
+                    <label>{{ _('Evaluación') }}</label>
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-tests">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-file-text"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Tests') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li>
+                            <a href="{{ url_for('c.ver_tests') }}">
+                                <i class="feather icon-search mr-1"></i>
+                                {{ _('Mis Tests') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('c.tests_compatidos_conmigo') }}">
+                                <i class="feather icon-share-2 mr-1"></i>
+                                {{ _('Tests Compartidos') }}
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url_for('docente.ver_resultados') }}">
+                                <i class="feather icon-bar-chart-2 mr-1"></i>
+                                {{ _('Ver Resultados') }}
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                
+
+                <!-- Ayuda y Soporte -->
+                <li class="nav-item pcoded-menu-caption">
+                    <label>{{ _('Ayuda y Soporte') }}</label>
+                </li>
+                <li class="nav-item pcoded-hasmenu" id="menu-help">
+                    <a href="#!" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-help-circle"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Recursos') }}</span>
+                    </a>
+                    <ul class="pcoded-submenu">
+                        <li><a href="{{ url_for('estudiante.recomendaciones') }}">
+                            <i class="feather icon-book-open mr-1"></i>{{ _('Recomendaciones') }}</a></li>
+                        <li><a href="{{ url_for('estudiante.actividades_fisicas') }}">
+                            <i class="feather icon-activity mr-1"></i>{{ _('Actividades Físicas') }}</a></li>
+                        <li><a href="{{ url_for('estudiante.contactos_bienestar') }}">
+                            <i class="feather icon-users mr-1"></i>{{ _('Contactos Bienestar') }}</a></li>
+                    </ul>
+                </li>
+
+                <li class="nav-item" id="menu-canal-ayuda">
+                    <a href="{{ url_for('estudiante.canal_ayuda') }}" class="nav-link">
+                        <span class="pcoded-micon">
+                            <i class="feather icon-message-circle"></i>
+                        </span>
+                        <span class="pcoded-mtext">{{ _('Canal de Ayuda') }}</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

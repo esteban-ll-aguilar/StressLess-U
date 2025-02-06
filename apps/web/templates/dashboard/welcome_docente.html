@@ -1,0 +1,226 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Dashboard') }} {% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5>{{ _('Panel de Control') }}</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item">{{ _('Dashboard') }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <!-- Tarjetas de estadísticas -->
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h3>{{ total_estudiantes }}</h3>
+                                        <h6 class="text-muted m-b-0">{{ _('Mis Estudiantes') }}</h6>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <i class="feather icon-users f-28"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-primary">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <a href="{{ url_for('docente.ver_estudiantes', paralelo_uid=paralelos[0].uid if paralelos else '') }}" class="text-white m-b-0">{{ _('Ver Estudiantes') }}</a>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <i class="feather icon-trending-up text-white f-16"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h3>{{ total_paralelos }}</h3>
+                                        <h6 class="text-muted m-b-0">{{ _('Mis Paralelos') }}</h6>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <i class="feather icon-layers f-28"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-success">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <a href="{{ url_for('docente.ver_paralelos') }}" class="text-white m-b-0">{{ _('Ver Paralelos') }}</a>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <i class="feather icon-trending-up text-white f-16"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h3>{{ total_actividades }}</h3>
+                                        <h6 class="text-muted m-b-0">{{ _('Actividades') }}</h6>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <i class="feather icon-check-square f-28"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-info">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <a href="{{ url_for('docente.calendario') }}" class="text-white m-b-0">{{ _('Ver Actividades') }}</a>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <i class="feather icon-trending-up text-white f-16"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-md-6">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="row align-items-center">
+                                    <div class="col-6">
+                                        <h3>{{ total_notificaciones }}</h3>
+                                        <h6 class="text-muted m-b-0">{{ _('Notificaciones') }}</h6>
+                                    </div>
+                                    <div class="col-6">
+                                        <div class="text-right">
+                                            <i class="feather icon-bell f-28"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card-footer bg-warning">
+                                <div class="row align-items-center">
+                                    <div class="col-9">
+                                        <a href="{{ url_for('docente.ver_notificaciones') }}" class="text-white m-b-0">{{ _('Ver Notificaciones') }}</a>
+                                    </div>
+                                    <div class="col-3 text-right">
+                                        <i class="feather icon-trending-up text-white f-16"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accesos Rápidos -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Acciones Rápidas') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <a href="{{ url_for('docente.calendario') }}" class="btn btn-primary btn-block mb-3">
+                                            <i class="feather icon-plus-circle mr-2"></i>{{ _('Nueva Actividad') }}
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="{{ url_for('docente.ver_resultados') }}" class="btn btn-info btn-block mb-3">
+                                            <i class="feather icon-bar-chart-2 mr-2"></i>{{ _('Ver Resultados') }}
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="{{ url_for('docente.configurar_notificaciones') }}" class="btn btn-warning btn-block mb-3">
+                                            <i class="feather icon-settings mr-2"></i>{{ _('Configurar Notificaciones') }}
+                                        </a>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <a href="{{ url_for('documentation.index') }}" class="btn btn-success btn-block mb-3">
+                                            <i class="feather icon-help-circle mr-2"></i>{{ _('Ver Documentación') }}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Últimas Actividades -->
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Últimas Actividades') }}</h5>
+                            </div>
+                            <div class="card-body p-0">
+                                <div class="table-responsive">
+                                    <table class="table table-hover mb-0">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ _('Nombre') }}</th>
+                                                <th>{{ _('Paralelo') }}</th>
+                                                <th>{{ _('Fecha') }}</th>
+                                                <th>{{ _('Estado') }}</th>
+                                                <th>{{ _('Acciones') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for actividad in ultimas_actividades %}
+                                            <tr>
+                                                <td>{{ actividad.nombre }}</td>
+                                                <td>{{ actividad.paralelo_nombre }}</td>
+                                                <td>{{ actividad.fecha_entrega }}</td>
+                                                <td>
+                                                    {% if actividad.esta_activa %}
+                                                        <span class="badge badge-success">{{ _('Activa') }}</span>
+                                                    {% else %}
+                                                        <span class="badge badge-danger">{{ _('Inactiva') }}</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    <a href="{{ url_for('docente.calendario') }}" class="btn btn-info btn-sm">
+                                                        <i class="feather icon-edit"></i>
+                                                    </a>
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

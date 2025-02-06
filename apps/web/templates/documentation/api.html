@@ -1,0 +1,283 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Documentación - API') }} {% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <!-- [ breadcrumb ] start -->
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">{{ _('API de Integración') }}</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="{{ url_for('documentation.index') }}">{{ _('Documentación') }}</a></li>
+                                    <li class="breadcrumb-item active">{{ _('API') }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ breadcrumb ] end -->
+
+                <!-- [ Main Content ] start -->
+                <div class="row">
+                    <!-- Navegación Lateral -->
+                    <div class="col-md-3">
+                        <div class="card sticky-top" style="top: 85px;">
+                            <div class="card-body">
+                                <h5>{{ _('Contenido') }}</h5>
+                                <div class="nav flex-column nav-pills" role="tablist">
+                                    <a class="nav-link active" href="#overview">{{ _('Descripción General') }}</a>
+                                    <a class="nav-link" href="#autenticacion">{{ _('Autenticación') }}</a>
+                                    <a class="nav-link" href="#endpoints">{{ _('Endpoints') }}</a>
+                                    <a class="nav-link" href="#ejemplos">{{ _('Ejemplos') }}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contenido Principal -->
+                    <div class="col-md-9">
+                        <!-- Descripción General -->
+                        <div class="card" id="overview">
+                            <div class="card-header">
+                                <h5>{{ _('Descripción General') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <p class="lead">
+                                    {{ _('La API proporciona acceso programático a las funcionalidades de Google Forms y el sistema de notificaciones.') }}
+                                </p>
+
+                                <div class="alert alert-info">
+                                    <h6><i class="feather icon-info mr-2"></i>{{ _('Características') }}</h6>
+                                    <ul class="mb-0">
+                                        <li>{{ _('Autenticación OAuth 2.0') }}</li>
+                                        <li>{{ _('Respuestas en formato JSON') }}</li>
+                                        <li>{{ _('Rate limiting: 100 requests/min') }}</li>
+                                        <li>{{ _('Versionado de API') }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Autenticación -->
+                        <div class="card" id="autenticacion">
+                            <div class="card-header">
+                                <h5>{{ _('Autenticación') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="mb-4">
+                                    <h6>{{ _('OAuth 2.0') }}</h6>
+                                    <div class="bg-light p-3 rounded">
+                                        <pre><code>POST /oauth/token
+Content-Type: application/x-www-form-urlencoded
+
+grant_type=authorization_code
+&code=AUTHORIZATION_CODE
+&client_id=YOUR_CLIENT_ID
+&client_secret=YOUR_CLIENT_SECRET
+&redirect_uri=YOUR_REDIRECT_URI</code></pre>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-warning">
+                                    <h6>{{ _('Scopes Requeridos:') }}</h6>
+                                    <ul class="mb-0">
+                                        <li><code>https://www.googleapis.com/auth/forms</code></li>
+                                        <li><code>https://www.googleapis.com/auth/drive</code></li>
+                                        <li><code>https://www.googleapis.com/auth/script.external_request</code></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Endpoints -->
+                        <div class="card" id="endpoints">
+                            <div class="card-header">
+                                <h5>{{ _('Endpoints') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <!-- Forms -->
+                                <div class="mb-4">
+                                    <h6>{{ _('Formularios') }}</h6>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>{{ _('Método') }}</th>
+                                                    <th>{{ _('Endpoint') }}</th>
+                                                    <th>{{ _('Descripción') }}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><code>GET</code></td>
+                                                    <td><code>/api/forms</code></td>
+                                                    <td>{{ _('Listar formularios') }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><code>POST</code></td>
+                                                    <td><code>/api/forms/{id}/duplicate</code></td>
+                                                    <td>{{ _('Duplicar formulario') }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><code>POST</code></td>
+                                                    <td><code>/api/forms/{id}/notifications</code></td>
+                                                    <td>{{ _('Configurar notificaciones') }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <!-- Resultados -->
+                                <div class="mb-4">
+                                    <h6>{{ _('Resultados') }}</h6>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th>{{ _('Método') }}</th>
+                                                    <th>{{ _('Endpoint') }}</th>
+                                                    <th>{{ _('Descripción') }}</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><code>GET</code></td>
+                                                    <td><code>/api/results</code></td>
+                                                    <td>{{ _('Obtener resultados') }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><code>GET</code></td>
+                                                    <td><code>/api/results/{id}</code></td>
+                                                    <td>{{ _('Obtener resultado específico') }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td><code>POST</code></td>
+                                                    <td><code>/api/results/analyze</code></td>
+                                                    <td>{{ _('Analizar resultados') }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ejemplos -->
+                        <div class="card" id="ejemplos">
+                            <div class="card-header">
+                                <h5>{{ _('Ejemplos de Uso') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <!-- Duplicar Formulario -->
+                                <div class="mb-4">
+                                    <h6>{{ _('Duplicar Formulario') }}</h6>
+                                    <div class="bg-light p-3 rounded">
+                                        <pre><code>curl -X POST \
+  'https://api.example.com/api/forms/FORM_ID/duplicate' \
+  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "name": "Nuevo Test de Estrés",
+    "configure_notifications": true
+  }'</code></pre>
+                                    </div>
+                                </div>
+
+                                <!-- Configurar Notificaciones -->
+                                <div class="mb-4">
+                                    <h6>{{ _('Configurar Notificaciones') }}</h6>
+                                    <div class="bg-light p-3 rounded">
+                                        <pre><code>curl -X POST \
+  'https://api.example.com/api/forms/FORM_ID/notifications' \
+  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN' \
+  -H 'Content-Type: application/json' \
+  -d '{
+    "threshold": 60,
+    "notify_on": ["submit", "critical"],
+    "recipients": ["docente@example.com"]
+  }'</code></pre>
+                                    </div>
+                                </div>
+
+                                <!-- Obtener Resultados -->
+                                <div class="mb-4">
+                                    <h6>{{ _('Obtener Resultados') }}</h6>
+                                    <div class="bg-light p-3 rounded">
+                                        <pre><code>curl -X GET \
+  'https://api.example.com/api/results?form_id=FORM_ID&start_date=2025-01-01' \
+  -H 'Authorization: Bearer YOUR_ACCESS_TOKEN'</code></pre>
+                                    </div>
+                                </div>
+
+                                <div class="alert alert-info mt-4">
+                                    <h6>{{ _('Códigos de Respuesta') }}</h6>
+                                    <ul class="mb-0">
+                                        <li><code>200</code> - {{ _('Éxito') }}</li>
+                                        <li><code>400</code> - {{ _('Error en la solicitud') }}</li>
+                                        <li><code>401</code> - {{ _('No autorizado') }}</li>
+                                        <li><code>403</code> - {{ _('Prohibido') }}</li>
+                                        <li><code>404</code> - {{ _('No encontrado') }}</li>
+                                        <li><code>500</code> - {{ _('Error del servidor') }}</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- [ Main Content ] end -->
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock inner_content %}
+
+{% block javascripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('#menu-documentation').classList.add('active');
+        
+        // Smooth scroll para navegación
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 100,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Activar link según scroll
+        window.addEventListener('scroll', function() {
+            const sections = document.querySelectorAll('.card[id]');
+            let currentSection = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                if (window.pageYOffset >= sectionTop) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    });
+</script>
+{% endblock javascripts %}

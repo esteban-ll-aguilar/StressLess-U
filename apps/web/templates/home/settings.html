@@ -1,0 +1,43 @@
+{% extends "layouts/base.html" %} {% block title %} Settings {% endblock %} {%
+block content %}
+<div class="pcoded-main-container">
+	<div class="pcoded-content">
+		<div class="row">
+			<div class="col-md-6">
+				<div class="card">
+					<div class="card-header">
+						<h5>Settings</h5>
+					</div>
+					<div class="card-body">
+						<form>
+							<div class="mb-3">
+								<label for="sqlConnectionUrl" class="form-label"
+									>SQL Connection URL</label
+								>
+								<input
+									type="text"
+									class="form-control"
+									id="sqlConnectionUrl"
+									placeholder="Enter SQL Connection URL"
+								/>
+							</div>
+							<div class="mb-3">
+								<label for="LeadDeskApiKey" class="form-label"
+									>LeadDesk API Key</label
+								>
+								<input
+									type="text"
+									class="form-control"
+									id="LeadDeskApiKey"
+									placeholder="Enter LeadDesk API Key"
+								/>
+							</div>
+							<button type="submit" class="btn btn-primary">Save</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock content %}

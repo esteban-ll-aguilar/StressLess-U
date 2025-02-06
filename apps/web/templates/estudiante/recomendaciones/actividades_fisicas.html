@@ -1,0 +1,179 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Actividades Físicas Recomendadas') }} {% endblock %}
+
+{% block inner_content %}
+<!-- [ breadcrumb ] start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title d-flex justify-content-between align-items-center">
+                    <h5 class="m-b-10">
+                        <i class="feather icon-activity m-r-5"></i>
+                        {{ _('Actividades Físicas Recomendadas') }}
+                    </h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('estudiante.recomendaciones') }}">{{ _('Recomendaciones') }}</a></li>
+                    <li class="breadcrumb-item active">{{ _('Actividades Físicas') }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ breadcrumb ] end -->
+
+<!-- [ contenido principal ] start -->
+<div class="row">
+    <!-- Ejercicios de Relajación -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ _('Ejercicios de Relajación') }}</h5>
+            </div>
+            <div class="card-body">
+                <div class="accordion" id="ejerciciosRelajacion">
+                    <div class="card border-0">
+                        <div class="card-header" id="respiracion">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseRespiracion">
+                                    {{ _('Ejercicios de Respiración') }}
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseRespiracion" class="collapse show" data-parent="#ejerciciosRelajacion">
+                            <div class="card-body">
+                                <ol>
+                                    <li>{{ _('Respiración 4-7-8: Inhala por 4 segundos, mantén por 7, exhala por 8.') }}</li>
+                                    <li>{{ _('Respiración diafragmática: Respira profundo desde el abdomen.') }}</li>
+                                    <li>{{ _('Respiración alternada: Alterna la respiración entre fosas nasales.') }}</li>
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card border-0">
+                        <div class="card-header" id="estiramiento">
+                            <h5 class="mb-0">
+                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseEstiramiento">
+                                    {{ _('Estiramientos') }}
+                                </button>
+                            </h5>
+                        </div>
+                        <div id="collapseEstiramiento" class="collapse" data-parent="#ejerciciosRelajacion">
+                            <div class="card-body">
+                                <ul>
+                                    <li>{{ _('Estiramiento de cuello y hombros') }}</li>
+                                    <li>{{ _('Estiramiento de espalda') }}</li>
+                                    <li>{{ _('Estiramiento de muñecas') }}</li>
+                                    <li>{{ _('Rotación de tobillos') }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Actividades Recomendadas -->
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ _('Actividades Físicas') }}</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="card border-0">
+                            <div class="card-body text-center">
+                                <i class="feather icon-wind text-primary" style="font-size: 2.5rem;"></i>
+                                <h6 class="mt-3">{{ _('Yoga') }}</h6>
+                                <p class="text-muted small">{{ _('Ideal para reducir el estrés y mejorar la concentración') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card border-0">
+                            <div class="card-body text-center">
+                                <i class="feather icon-trending-up text-success" style="font-size: 2.5rem;"></i>
+                                <h6 class="mt-3">{{ _('Caminata') }}</h6>
+                                <p class="text-muted small">{{ _('30 minutos diarios para despejar la mente') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card border-0">
+                            <div class="card-body text-center">
+                                <i class="feather icon-droplet text-info" style="font-size: 2.5rem;"></i>
+                                <h6 class="mt-3">{{ _('Natación') }}</h6>
+                                <p class="text-muted small">{{ _('Excelente ejercicio de bajo impacto') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card border-0">
+                            <div class="card-body text-center">
+                                <i class="feather icon-users text-warning" style="font-size: 2.5rem;"></i>
+                                <h6 class="mt-3">{{ _('Deportes Grupales') }}</h6>
+                                <p class="text-muted small">{{ _('Socializa mientras haces ejercicio') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Consejos y Beneficios -->
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ _('Beneficios del Ejercicio para Reducir el Estrés') }}</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="media">
+                            <i class="feather icon-battery-charging text-success m-r-15" style="font-size: 2rem;"></i>
+                            <div class="media-body">
+                                <h6>{{ _('Aumenta la Energía') }}</h6>
+                                <p class="text-muted">{{ _('Mejora los niveles de energía y reduce la fatiga') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="media">
+                            <i class="feather icon-sun text-warning m-r-15" style="font-size: 2rem;"></i>
+                            <div class="media-body">
+                                <h6>{{ _('Mejora el Estado de Ánimo') }}</h6>
+                                <p class="text-muted">{{ _('Libera endorfinas que reducen el estrés y la ansiedad') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="media">
+                            <i class="feather icon-clock text-primary m-r-15" style="font-size: 2rem;"></i>
+                            <div class="media-body">
+                                <h6>{{ _('Mejora el Sueño') }}</h6>
+                                <p class="text-muted">{{ _('Ayuda a regular los patrones de sueño') }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ contenido principal ] end -->
+{% endblock inner_content %}
+
+{% block javascripts %}
+<script>
+    // Marcar el menú activo
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('#menu-help').classList.add('active');
+    });
+</script>
+{% endblock javascripts %}

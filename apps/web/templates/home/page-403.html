@@ -1,0 +1,31 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %} 403 Error {% endblock %}
+
+{% block wrapper_class %} maintance  {% endblock %}
+
+{% block content %}
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="text-center">
+                    
+                    <img src="/static/assets/images/maintance/500.png" alt="" class="img-fluid">
+                    <h5 class="mt-4">Acceso denegado</h5>
+                    <p class="text-muted">
+                        Lo sentimos, no tienes permiso para acceder a esta secci n. Por favor, inicia sesi n con una cuenta con permisos suficientes.
+                    </p>
+                    <form action="/" >
+                        <button class="btn waves-effect waves-light btn-danger mb-4">
+                            <i class="feather icon-user-check mr-2"></i>Iniciar sesión</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

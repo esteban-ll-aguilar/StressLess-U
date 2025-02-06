@@ -1,0 +1,182 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Contactos de Bienestar Académico') }} {% endblock %}
+
+{% block inner_content %}
+<!-- [ breadcrumb ] start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title d-flex justify-content-between align-items-center">
+                    <h5 class="m-b-10">
+                        <i class="feather icon-users m-r-5"></i>
+                        {{ _('Contactos de Bienestar Académico') }}
+                    </h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="{{ url_for('estudiante.recomendaciones') }}">{{ _('Recomendaciones') }}</a></li>
+                    <li class="breadcrumb-item active">{{ _('Contactos') }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ breadcrumb ] end -->
+
+<!-- [ contenido principal ] start -->
+<div class="row">
+    <!-- Información del Departamento -->
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ _('Departamento de Bienestar Académico') }}</h5>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <p class="text-muted">
+                            {{ _('El Departamento de Bienestar Académico está comprometido con tu bienestar y desarrollo integral. Contamos con un equipo de profesionales especializados listos para apoyarte.') }}
+                        </p>
+                        <div class="mt-4">
+                            <h6>{{ _('Horario de Atención') }}</h6>
+                            <p class="text-muted">
+                                {{ _('Lunes a Viernes: 8:00 AM - 5:00 PM') }}<br>
+                                {{ _('Sábados: 9:00 AM - 1:00 PM') }}
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-center">
+                            <i class="feather icon-heart text-danger" style="font-size: 4rem;"></i>
+                            <h4 class="mt-3">{{ _('¿Necesitas ayuda inmediata?') }}</h4>
+                            <p class="text-muted">{{ _('Línea de emergencia 24/7') }}</p>
+                            <h3 class="text-primary">1-800-AYUDA</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profesionales -->
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ _('Nuestro Equipo de Profesionales') }}</h5>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <!-- Psicólogo -->
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-none">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="feather icon-smile text-success" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5>{{ _('Psicología') }}</h5>
+                                <p class="text-muted mb-3">{{ _('Apoyo emocional y orientación psicológica') }}</p>
+                                <div class="contact-info">
+                                    <p><i class="feather icon-mail mr-2"></i>psicologia@universidad.edu</p>
+                                    <p><i class="feather icon-phone mr-2"></i>+123 456 7890</p>
+                                    <button class="btn btn-outline-primary mt-2" onclick="agendarCita('psicologia')">
+                                        {{ _('Agendar Cita') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Consejero Académico -->
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-none">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="feather icon-book-open text-primary" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5>{{ _('Consejería Académica') }}</h5>
+                                <p class="text-muted mb-3">{{ _('Orientación académica y planificación de estudios') }}</p>
+                                <div class="contact-info">
+                                    <p><i class="feather icon-mail mr-2"></i>consejeria@universidad.edu</p>
+                                    <p><i class="feather icon-phone mr-2"></i>+123 456 7891</p>
+                                    <button class="btn btn-outline-primary mt-2" onclick="agendarCita('consejeria')">
+                                        {{ _('Agendar Cita') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trabajador Social -->
+                    <div class="col-md-4">
+                        <div class="card border-0 shadow-none">
+                            <div class="card-body text-center">
+                                <div class="mb-3">
+                                    <i class="feather icon-users text-warning" style="font-size: 3rem;"></i>
+                                </div>
+                                <h5>{{ _('Trabajo Social') }}</h5>
+                                <p class="text-muted mb-3">{{ _('Apoyo socioeconómico y recursos estudiantiles') }}</p>
+                                <div class="contact-info">
+                                    <p><i class="feather icon-mail mr-2"></i>tsocial@universidad.edu</p>
+                                    <p><i class="feather icon-phone mr-2"></i>+123 456 7892</p>
+                                    <button class="btn btn-outline-primary mt-2" onclick="agendarCita('tsocial')">
+                                        {{ _('Agendar Cita') }}
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Ubicación -->
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header">
+                <h5>{{ _('Ubicación') }}</h5>
+            </div>
+            <div class="card-body">
+                <div class="row align-items-center">
+                    <div class="col-md-6">
+                        <h6>{{ _('Dirección') }}</h6>
+                        <p class="text-muted">
+                            {{ _('Edificio de Bienestar Estudiantil') }}<br>
+                            {{ _('Piso 2, Oficina 201') }}<br>
+                            {{ _('Campus Principal') }}
+                        </p>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="text-center">
+                            <i class="feather icon-map-pin text-danger" style="font-size: 3rem;"></i>
+                            <p class="mt-3">
+                                <a href="#" class="btn btn-outline-primary">
+                                    <i class="feather icon-map mr-2"></i>
+                                    {{ _('Ver en el Mapa') }}
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ contenido principal ] end -->
+{% endblock inner_content %}
+
+{% block javascripts %}
+<script>
+    // Marcar el menú activo
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelector('#menu-help').classList.add('active');
+    });
+
+    function agendarCita(tipo) {
+        // Aquí iría la lógica para agendar citas
+        alert("{{ _('Sistema de agendamiento en desarrollo. Por favor, contacta directamente al departamento.') }}");
+    }
+</script>
+{% endblock javascripts %}

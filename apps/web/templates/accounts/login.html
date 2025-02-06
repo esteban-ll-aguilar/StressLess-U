@@ -1,0 +1,288 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %} {{ _('Login') }} {% endblock %}
+
+{% block wrapper_class %} align-items-stretch aut-bg-img {% endblock %}
+
+{% block content %}
+<div class="flex-grow-1">
+    <div class="h-100 d-md-flex align-items-center auth-side-img">
+        <div class="col-sm-10 auth-content w-auto">
+            <img src="/static/assets/images/logo.jpg" alt="" class="img-fluid mb-4 d-none d-md-block rounded rounded-circle" style="width: 70px;">
+            <h1 class="text-white my-4">{{ _('Stress Less U te da la bienvenida') }}</h1>
+            <h4 class="text-white font-weight-normal">{{ _('Inicia sesión para acceder a tu cuenta') }}</h4>
+            <!-- <h6 class="text-white font-weight-normal">{{ _('If you need view the components for usin in this template, click here.') }}</h6>
+            <a href="/components" class="btn btn-primary btn-sm"><b>{{ _('View Components') }}</b></a> -->
+        </div>
+    </div>
+    <div class="auth-side-form" style="background-color: #ffffffdb;">
+        <div class="auth-content">
+            <h3 class="mb-4 f-w-400 text-center"><b>{{ _('Login') }}</b></h3>
+
+            <div id="loading-spinner" class="text-center" style="display: none;">
+                <div class="spinner-border text-primary" role="status">
+                    <span class="sr-only">{{ _('Loading...') }}</span>
+                </div>
+                <p class="mt-2">{{ _('Logging in...') }}</p>
+            </div>
+
+            <!-- Botón de Google -->
+            <button id="google-login" class="btn btn-block btn-outline-secondary mb-4">
+                <img src="https://www.google.com/favicon.ico" alt="Google" style="width: 20px; margin-right: 10px;">
+                {{ _('Sign in with Google') }}
+            </button>
+
+            <div class="divider">
+                <span class="divider-text">{{ _('or') }}</span>
+            </div>
+
+            <form id="login-form" role="form" method="post" action="{{ url_for('autenticacion.login') }}">
+
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="feather icon-mail"></i></span>
+                    </div>
+                    {{ form.email(placeholder=_("Email"), class="form-control", id="email") }}
+                </div>
+                {% for error in form.email.errors %}
+                    <div class="text-danger mb-3">{{ error }}</div>
+                {% endfor %}
+
+                <div class="input-group mb-4">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text"><i class="feather icon-lock"></i></span>
+                    </div>
+                    {{ form.password(placeholder=_("Password"), class="form-control", type="password", id="password") }}
+                    <div class="input-group-append">
+                        <span class="input-group-text" style="cursor: pointer;" id="password-toggle">
+                            <i class="feather icon-eye"></i>
+                        </span>
+                    </div>
+                </div>
+                {% for error in form.password.errors %}
+                    <div class="text-danger mb-3">{{ error }}</div>
+                {% endfor %}
+
+                <div class="form-group text-left mt-2">
+                    <div class="checkbox checkbox-primary d-inline">
+                        {{ form.remember(class="checkbox-primary", id="remember") }}
+                        <label for="remember" class="cr">{{ _('Remember Me') }}</label>
+                    </div>
+                </div>
+
+                <button type="submit" name="login" id="login-button" class="btn btn-block btn-primary mb-4">{{ _('Login') }}</button>
+            </form>
+            
+            <div class="text-center">
+                <p class="mb-2 text-muted">{{ _('Forgot your password?') }} <a href="{{ url_for('autenticacion.olvido_contrasena') }}" class="f-w-400">{{ _('Reset') }}</a></p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    flex: 1;
+    border-bottom: 1px solid #dee2e6;
+}
+
+.divider-text {
+    padding: 0 10px;
+    color: #6c757d;
+    background: #fff;
+}
+</style>
+{% endblock content %}
+
+{% block javascripts %}
+<script src="/static/assets/js/waves.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<!-- SweetAlert2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+<script>
+    // Error handling function
+    function showMessage(type, message) {
+        let icon = type === 'success' ? 'success' : 'error';
+        Swal.fire({
+            icon: icon,
+            title: message,
+            timer: 3000,
+            showConfirmButton: false,
+            toast: true,
+            position: 'bottom-end',
+            showClass: {
+                popup: 'animate__animated animate__zoomInDown'
+            },
+            hideClass: {
+                popup: 'animate__animated animate__slideOutUp'
+            }
+        });
+    }
+
+    // Initialize Firebase
+    var firebaseConfig = JSON.parse('{{ firebase_config | safe }}');
+    firebase.initializeApp(firebaseConfig);
+
+    function showLoading() {
+        document.getElementById('loading-spinner').style.display = 'block';
+        document.getElementById('login-button').disabled = true;
+        document.getElementById('google-login').disabled = true;
+    }
+
+    function hideLoading() {
+        document.getElementById('loading-spinner').style.display = 'none';
+        document.getElementById('login-button').disabled = false;
+        document.getElementById('google-login').disabled = false;
+    }
+
+    // Google Sign In
+    document.getElementById('google-login').addEventListener('click', function() {
+        showLoading();
+        var provider = new firebase.auth.GoogleAuthProvider();
+        provider.setCustomParameters({
+            prompt: 'select_account'
+        })
+        firebase.auth().signInWithPopup(provider)
+            .then(function(result) {
+                return result.user.getIdToken();
+            })
+            .then(function(idToken) {
+                return fetch('{{ url_for("autenticacion.login") }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        idToken: idToken,
+                        remember: true,
+                    }),
+                });
+            })
+            .then(function(response) {
+                return response.json().then(data => ({
+                    ok: response.ok,
+                    data: data
+                }));
+            })
+            .then(function(result) {
+                if (result.ok && result.data.success) {
+                    showMessage('success', '{{ _("Login successful") }}');
+                    setTimeout(() => {
+                        window.location.href = result.data.redirect;
+                    }, 1000);
+                } else {
+                    throw new Error(result.data.error || result.data.message || "{{ _('Unknown error') }}");
+                }
+            })
+            .catch(function(error) {
+                hideLoading();
+                showMessage('error', error.message);
+            });
+    });
+
+    document.getElementById('login-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+        showLoading();
+        var email = document.getElementById('email').value;
+        var password = document.getElementById('password').value;
+        var remember = document.getElementById('remember').checked;
+
+        firebase.auth().signInWithEmailAndPassword(email, password)
+            .then(function(userCredential) {
+                var user = userCredential.user;
+                return user.getIdToken();
+            })
+            .then(function(idToken) {
+                return fetch('{{ url_for("autenticacion.login") }}', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        idToken: idToken, 
+                        remember: remember,
+                    }),
+                });
+            })
+            .then(function(response) {
+                return response.json().then(data => ({
+                    ok: response.ok,
+                    data: data
+                }));
+            })
+            .then(function(result) {
+                if (result.ok && result.data.success) {
+                    showMessage('success', '{{ _("Login successful") }}');
+                    setTimeout(() => {
+                        window.location.href = result.data.redirect;
+                    }, 1000);
+                } else {
+                    throw new Error(result.data.error || result.data.message || "{{ _('Unknown error') }}");
+                }
+            })
+            .catch(function(error) {
+                hideLoading();
+                console.log('Error completo:', error);
+                
+                // Si el error es INVALID_LOGIN_CREDENTIALS, asumimos que la cuenta está vinculada a Google
+                if (error.code === 'auth/invalid-login-credentials' || 
+                    (error.message && error.message.includes('INVALID_LOGIN_CREDENTIALS'))) {
+                    Swal.fire({
+                        icon: 'info',
+                        title: '{{ _("Google Sign-In Required") }}',
+                        text: '{{ _("This account is now linked to Google. Please use the Google Sign-In button above.") }}',
+                        confirmButtonText: '{{ _("Use Google Sign-In") }}',
+                        showClass: {
+                            popup: 'animate__animated animate__fadeInDown'
+                        },
+                        hideClass: {
+                            popup: 'animate__animated animate__fadeOutUp'
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            document.getElementById('google-login').click();
+                        }
+                    });
+                } else {
+                    let errorMessage = '{{ _("An error occurred during login. Please try again.") }}';
+                    if (error.code === 'auth/user-not-found') {
+                        errorMessage = '{{ _("No account found with this email.") }}';
+                    } else if (error.code === 'auth/wrong-password') {
+                        errorMessage = '{{ _("Incorrect password. Please try again.") }}';
+                    }
+                    showMessage('error', errorMessage);
+                }
+            });
+    });
+
+
+    document.getElementById('password-toggle').addEventListener('click', function() {
+        var passwordInput = document.getElementById('password');
+        var type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+        passwordInput.setAttribute('type', type);
+        var icon = this.querySelector('i');
+        icon.classList.toggle('icon-eye');
+        icon.classList.toggle('icon-eye-off');
+    });
+
+    document.addEventListener('DOMContentLoaded', function() {
+        const flashMessages = JSON.parse('{{ get_flashed_messages(with_categories=True) | tojson | safe }}');
+        flashMessages.forEach(([category, message]) => {
+            showMessage(category === 'success' ? 'success' : 'error', message);
+        });
+    });
+</script>
+{% endblock javascripts %}

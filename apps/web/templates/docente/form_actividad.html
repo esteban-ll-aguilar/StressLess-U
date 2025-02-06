@@ -1,0 +1,215 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} 
+    {% if actividad %}
+        {{ _('Editar Actividad') }}
+    {% else %}
+        {{ _('Crear Actividad') }}
+    {% endif %}
+{% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">
+                                        {% if actividad %}
+                                            {{ _('Editar Actividad') }}
+                                        {% else %}
+                                            {{ _('Crear Actividad') }}
+                                        {% endif %}
+                                    </h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item"><a href="{{ url_for('docente.ver_paralelos') }}">{{ _('Paralelos') }}</a></li>
+                                    <li class="breadcrumb-item"><a href="{{ url_for('docente.ver_actividades', paralelo_uid=paralelo.uid) }}">{{ _('Actividades') }}</a></li>
+                                    <li class="breadcrumb-item">
+                                        {% if actividad %}
+                                            {{ _('Editar') }}
+                                        {% else %}
+                                            {{ _('Crear') }}
+                                        {% endif %}
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Información de la Actividad') }}</h5>
+                                <span class="text-muted">{{ _('Paralelo') }}: {{ paralelo.nombre }} - {{ materia.nombre }}</span>
+                            </div>
+                            <div class="card-body">
+                                <form method="POST" class="needs-validation" novalidate>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="nombre">{{ _('Nombre') }} *</label>
+                                            <input type="text" class="form-control" id="nombre" name="nombre" 
+                                                value="{{ actividad.nombre if actividad else '' }}" required>
+                                            <div class="invalid-feedback">
+                                                {{ _('Por favor ingrese un nombre') }}
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="fecha_entrega">{{ _('Fecha de Entrega') }} *</label>
+                                            <input type="datetime-local" class="form-control" id="fecha_entrega" 
+                                                name="fecha_entrega" value="{{ actividad.fecha_entrega if actividad else '' }}" required>
+                                            <div class="invalid-feedback">
+                                                {{ _('Por favor seleccione una fecha de entrega') }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="descripcion">{{ _('Descripción') }} *</label>
+                                        <textarea class="form-control" id="descripcion" name="descripcion" 
+                                            rows="4" required>{{ actividad.descripcion if actividad else '' }}</textarea>
+                                        <div class="invalid-feedback">
+                                            {{ _('Por favor ingrese una descripción') }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="test_estres">{{ _('Formulario de Test') }} *</label>
+                                        <select class="form-control" id="test_estres" name="test_estres" required>
+                                            <option value="">{{ _('Seleccione un formulario') }}</option>
+                                            {% for form in google_forms %}
+                                            <option value="{{ form.id }}" {% if actividad and actividad.test_estres == form.id %}selected{% endif %}>
+                                                {{ form.name }}
+                                            </option>
+                                            {% endfor %}
+                                        </select>
+                                        <div class="invalid-feedback">
+                                            {{ _('Por favor seleccione un formulario') }}
+                                        </div>
+                                        <small class="form-text text-muted">
+                                            {{ _('Se creará una copia del formulario seleccionado para esta actividad') }}
+                                        </small>
+                                    </div>
+
+                                    <div class="form-group">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="es_grupal" 
+                                                name="es_grupal" {% if actividad and actividad.es_grupal %}checked{% endif %}>
+                                            <label class="custom-control-label" for="es_grupal">{{ _('Actividad Grupal') }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" id="estudiantes_grupo" style="display: none;">
+                                        <label for="estudiantes">{{ _('Seleccionar Estudiantes') }}</label>
+                                        <select class="form-control" id="estudiantes" name="estudiantes" multiple>
+                                            {% for estudiante in estudiantes %}
+                                            <option value="{{ estudiante.uid }}" {% if actividad and estudiante.uid in actividad.estudiantes %}selected{% endif %}>
+                                                {{ estudiante.primer_nombre }} {{ estudiante.primer_apellido }}
+                                            </option>
+                                            {% endfor %}
+                                        </select>
+                                        <small class="form-text text-muted">
+                                            {{ _('Mantenga presionado Ctrl para seleccionar múltiples estudiantes') }}
+                                        </small>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="esta_activa" 
+                                                name="esta_activa" {% if actividad and actividad.esta_activa %}checked{% endif %}>
+                                            <label class="custom-control-label" for="esta_activa">{{ _('Actividad Activa') }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="es_obligatoria" 
+                                                name="es_obligatoria" {% if actividad and actividad.es_obligatoria %}checked{% endif %}>
+                                            <label class="custom-control-label" for="es_obligatoria">{{ _('Actividad Obligatoria') }}</label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="custom-control custom-switch">
+                                            <input type="checkbox" class="custom-control-input" id="es_publico" 
+                                                name="es_publico" {% if actividad and actividad.es_publico %}checked{% endif %}>
+                                            <label class="custom-control-label" for="es_publico">{{ _('Resultados Públicos') }}</label>
+                                        </div>
+                                        <small class="form-text text-muted">
+                                            {{ _('Si está activado, los resultados serán visibles para todos los estudiantes del paralelo') }}
+                                        </small>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary">
+                                        {% if actividad %}
+                                            {{ _('Actualizar Actividad') }}
+                                        {% else %}
+                                            {{ _('Crear Actividad') }}
+                                        {% endif %}
+                                    </button>
+                                    <a href="{{ url_for('docente.ver_actividades', paralelo_uid=paralelo.uid) }}" class="btn btn-secondary">
+                                        {{ _('Cancelar') }}
+                                    </a>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock inner_content %}
+
+{% block stylesheets %}
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+{% endblock stylesheets %}
+
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+// Validación del formulario
+(function() {
+    'use strict';
+    window.addEventListener('load', function() {
+        var forms = document.getElementsByClassName('needs-validation');
+        var validation = Array.prototype.filter.call(forms, function(form) {
+            form.addEventListener('submit', function(event) {
+                if (form.checkValidity() === false) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                }
+                form.classList.add('was-validated');
+            }, false);
+        });
+
+        // Inicializar select2 para el selector de estudiantes
+        $('#estudiantes').select2({
+            placeholder: "{{ _('Seleccione los estudiantes') }}",
+            allowClear: true,
+            width: '100%'
+        });
+
+        // Mostrar/ocultar selector de estudiantes
+        var esGrupalSwitch = document.getElementById('es_grupal');
+        var estudiantesGrupo = document.getElementById('estudiantes_grupo');
+        var estudiantesSelect = document.getElementById('estudiantes');
+
+        function toggleEstudiantesGrupo() {
+            if (esGrupalSwitch.checked) {
+                estudiantesGrupo.style.display = 'block';
+                estudiantesSelect.required = true;
+            } else {
+                estudiantesGrupo.style.display = 'none';
+                estudiantesSelect.required = false;
+            }
+        }
+
+        // Inicializar estado
+        toggleEstudiantesGrupo();
+
+        // Escuchar cambios en el switch
+        esGrupalSwitch.addEventListener('change', toggleEstudiantesGrupo);
+    }, false);
+})();
+</script>
+{% endblock javascripts %}

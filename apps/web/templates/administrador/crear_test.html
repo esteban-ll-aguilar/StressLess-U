@@ -1,0 +1,189 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} {{ _('Crear Test de Estrés') }} {% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="page-body">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5>{{ _('Crear Nuevo Test de Estrés') }}</h5>
+                                    <span class="text-muted">{{ _('Cada pregunta tendrá 4 opciones que representan diferentes niveles de estrés') }}</span>
+                                </div>
+                                <div class="card-block">
+                                    <form id="testForm" method="POST">
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">{{ _('Descripción del Test') }}</label>
+                                            <div class="col-sm-10">
+                                                <textarea class="form-control" name="descripcion" rows="3" required 
+                                                    placeholder="{{ _('Ejemplo: Test para evaluar el nivel de estrés en estudiantes universitarios') }}"></textarea>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">{{ _('Fecha') }}</label>
+                                            <div class="col-sm-10">
+                                                <input type="date" class="form-control" name="fecha" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label class="col-sm-2 col-form-label">{{ _('Estado') }}</label>
+                                            <div class="col-sm-10">
+                                                <select class="form-control" name="estado" required>
+                                                    <option value="activo">{{ _('Activo') }}</option>
+                                                    <option value="inactivo">{{ _('Inactivo') }}</option>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <!-- Sección de Preguntas -->
+                                        <div id="preguntasContainer">
+                                            <div class="card-header">
+                                                <h5>{{ _('Preguntas del Test') }}</h5>
+                                                <span class="text-muted">{{ _('Cada pregunta debe tener 4 opciones de respuesta que indiquen diferentes niveles de estrés') }}</span>
+                                            </div>
+                                            <div id="preguntas">
+                                                <!-- Las preguntas se agregarán aquí dinámicamente -->
+                                            </div>
+                                            <div class="form-group row">
+                                                <div class="col-sm-12 text-right">
+                                                    <button type="button" class="btn btn-primary" onclick="agregarPregunta()">
+                                                        {{ _('Agregar Pregunta') }}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <div class="col-sm-12 text-right">
+                                                <button type="submit" class="btn btn-success">{{ _('Guardar Test') }}</button>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock inner_content %}
+
+{% block javascripts %}
+<script>
+    let preguntaCount = 0;
+
+    function agregarPregunta() {
+        const preguntasDiv = document.getElementById('preguntas');
+        preguntaCount++;
+
+        const nuevaPregunta = `
+            <div class="pregunta-item card-block" id="pregunta-${preguntaCount}">
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">{{ _('Pregunta') }} ${preguntaCount}</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="preguntas[${preguntaCount}][pregunta]" 
+                            placeholder="{{ _('Ejemplo: ¿Con qué frecuencia te sientes abrumado por tus responsabilidades académicas?') }}" required>
+                    </div>
+                    <div class="col-sm-2">
+                        <button type="button" class="btn btn-danger btn-sm" onclick="eliminarPregunta(${preguntaCount})">
+                            {{ _('Eliminar') }}
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Respuestas con niveles de estrés predefinidos -->
+                <div class="respuestas-container">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ _('Nivel 1 - Poco o Nada') }}</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="preguntas[${preguntaCount}][respuestas][0][respuesta]" 
+                                placeholder="{{ _('Ejemplo: Nunca me siento abrumado') }}" required>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" name="preguntas[${preguntaCount}][respuestas][0][valor]" value="1" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ _('Nivel 2 - Leve') }}</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="preguntas[${preguntaCount}][respuestas][1][respuesta]" 
+                                placeholder="{{ _('Ejemplo: Ocasionalmente me siento abrumado') }}" required>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" name="preguntas[${preguntaCount}][respuestas][1][valor]" value="2" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ _('Nivel 3 - Moderado') }}</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="preguntas[${preguntaCount}][respuestas][2][respuesta]" 
+                                placeholder="{{ _('Ejemplo: Frecuentemente me siento abrumado') }}" required>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" name="preguntas[${preguntaCount}][respuestas][2][valor]" value="3" readonly>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">{{ _('Nivel 4 - Severo') }}</label>
+                        <div class="col-sm-8">
+                            <input type="text" class="form-control" name="preguntas[${preguntaCount}][respuestas][3][respuesta]" 
+                                placeholder="{{ _('Ejemplo: Constantemente me siento abrumado') }}" required>
+                        </div>
+                        <div class="col-sm-2">
+                            <input type="number" class="form-control" name="preguntas[${preguntaCount}][respuestas][3][valor]" value="4" readonly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+        preguntasDiv.insertAdjacentHTML('beforeend', nuevaPregunta);
+    }
+
+    function eliminarPregunta(id) {
+        const pregunta = document.getElementById(`pregunta-${id}`);
+        pregunta.remove();
+    }
+
+    document.getElementById('testForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formData = new FormData(this);
+        const test = {
+            descripcion: formData.get('descripcion'),
+            fecha: formData.get('fecha'),
+            estado: formData.get('estado'),
+            preguntas: []
+        };
+
+        // Procesar las preguntas y sus respuestas
+        const preguntasElements = document.querySelectorAll('.pregunta-item');
+        preguntasElements.forEach((pregunta, index) => {
+            const preguntaObj = {
+                pregunta: formData.get(`preguntas[${index + 1}][pregunta]`),
+                respuestas: []
+            };
+
+            // Procesar las 4 respuestas de cada pregunta
+            for(let i = 0; i < 4; i++) {
+                preguntaObj.respuestas.push({
+                    respuesta: formData.get(`preguntas[${index + 1}][respuestas][${i}][respuesta]`),
+                    valor: parseInt(formData.get(`preguntas[${index + 1}][respuestas][${i}][valor]`))
+                });
+            }
+
+            test.preguntas.push(preguntaObj);
+        });
+
+        console.log(test);
+        // Aquí puedes enviar 'test' al servidor
+    });
+</script>
+{% endblock javascripts %}

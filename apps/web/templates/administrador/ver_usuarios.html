@@ -1,0 +1,401 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Ver Usuarios') }} {% endblock %}
+
+{% block inner_content %}
+<div class="pcoded-content">
+    <div class="pcoded-inner-content">
+        <div class="main-body">
+            <div class="page-wrapper">
+                <div class="page-header">
+                    <div class="page-block">
+                        <div class="row align-items-center">
+                            <div class="col-md-12">
+                                <div class="page-header-title">
+                                    <h5 class="m-b-10">{{ _('Gestión de Usuarios') }}</h5>
+                                </div>
+                                <ul class="breadcrumb">
+                                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                                    <li class="breadcrumb-item">{{ _('Usuarios') }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Filtros -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Filtros') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <form id="filtroForm" method="GET" action="{{ url_for('administrador.ver_usuarios') }}">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-4">
+                                            <label for="tipo">{{ _('Tipo de Usuario') }}</label>
+                                            <select class="form-control" id="tipo" name="tipo">
+                                                <option value="todos" {% if tipo_actual == 'todos' %}selected{% endif %}>{{ _('Todos') }}</option>
+                                                <option value="estudiante" {% if tipo_actual == 'estudiante' %}selected{% endif %}>{{ _('Estudiantes') }}</option>
+                                                <option value="docente" {% if tipo_actual == 'docente' %}selected{% endif %}>{{ _('Docentes') }}</option>
+                                                <option value="administrador" {% if tipo_actual == 'administrador' %}selected{% endif %}>{{ _('Administradores') }}</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="estado">{{ _('Estado') }}</label>
+                                            <select class="form-control" id="estado" name="estado">
+                                                <option value="todos" {% if estado_actual == 'todos' %}selected{% endif %}>{{ _('Todos') }}</option>
+                                                <option value="activo" {% if estado_actual == 'activo' %}selected{% endif %}>{{ _('Activo') }}</option>
+                                                <option value="inactivo" {% if estado_actual == 'inactivo' %}selected{% endif %}>{{ _('Inactivo') }}</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-4">
+                                            <label for="busqueda">{{ _('Búsqueda') }}</label>
+                                            <div class="input-group">
+                                                <input type="text" class="form-control" id="busqueda" name="busqueda" 
+                                                    placeholder="{{ _('Nombre, apellido o correo') }}"
+                                                    value="{{ busqueda_actual }}">
+                                                <div class="input-group-append">
+                                                    <button class="btn btn-primary" type="submit">
+                                                        <i class="feather icon-search"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tabla de Usuarios -->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="card">
+                            <div class="card-header">
+                                <h5>{{ _('Lista de Usuarios') }}</h5>
+                            </div>
+                            <div class="card-body">
+                                <div class="table-responsive">
+                                    <table class="table table-hover" id="tablaUsuarios">
+                                        <thead>
+                                            <tr>
+                                                <th>{{ _('Nombre') }}</th>
+                                                <th>{{ _('Apellido') }}</th>
+                                                <th>{{ _('Correo') }}</th>
+                                                <th>{{ _('Tipo') }}</th>
+                                                <th>{{ _('Estado') }}</th>
+                                                <th>{{ _('Acciones') }}</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for usuario in usuarios %}
+                                            <tr>
+                                                <td>{{ usuario.primer_nombre }}</td>
+                                                <td>{{ usuario.primer_apellido }}</td>
+                                                <td>{{ usuario.correo }}</td>
+                                                <td>
+                                                    <span class="badge {% if usuario.rol == 'administrador' %}badge-danger{% elif usuario.rol == 'docente' %}badge-success{% else %}badge-primary{% endif %}">
+                                                        {% if usuario.rol == 'estudiante' %}
+                                                            {{ _('Estudiante') }}
+                                                        {% elif usuario.rol == 'docente' %}
+                                                            {{ _('Docente') }}
+                                                        {% elif usuario.rol == 'administrador' %}
+                                                            {{ _('Administrador') }}
+                                                        {% endif %}
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    {% if usuario.esta_activo %}
+                                                        <span class="badge badge-success">{{ _('Activo') }}</span>
+                                                    {% else %}
+                                                        <span class="badge badge-danger">{{ _('Inactivo') }}</span>
+                                                    {% endif %}
+                                                </td>
+                                                <td>
+                                                    <div class="btn-group">
+                                                        <button class="btn btn-info btn-sm" onclick="editarUsuario('{{ usuario.uid }}')"
+                                                                title="{{ _('Editar') }}">
+                                                            <i class="feather icon-edit"></i>
+                                                        </button>
+                                                        <button class="btn btn-primary btn-sm" onclick="gestionarRol('{{ usuario.uid }}')"
+                                                                title="{{ _('Gestionar Rol') }}">
+                                                            <i class="feather icon-user"></i>
+                                                        </button>
+                                                    </div>
+                                                    {% if usuario.esta_activo %}
+                                                    <button class="btn btn-danger btn-sm" onclick="darDeBaja('{{ usuario.uid }}')"
+                                                            title="{{ _('Dar de baja') }}">
+                                                        <i class="feather icon-user-x"></i>
+                                                    </button>
+                                                    {% else %}
+                                                    <button class="btn btn-success btn-sm" onclick="activarUsuario('{{ usuario.uid }}')"
+                                                            title="{{ _('Activar') }}">
+                                                        <i class="feather icon-user-check"></i>
+                                                    </button>
+                                                    {% endif %}
+                                                </td>
+                                            </tr>
+                                            {% endfor %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Gestión de Rol -->
+<div class="modal fade" id="gestionRolModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ _('Gestionar Rol') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="usuarioRolId">
+                
+                <!-- Rol actual -->
+                <div class="mb-3">
+                    <h6>{{ _('Rol Actual') }}</h6>
+                    <div id="rolActual" class="mb-3"></div>
+                </div>
+
+                <!-- Cambiar rol -->
+                <div class="form-group">
+                    <label for="nuevoRol">{{ _('Cambiar Rol') }}</label>
+                    <select class="form-control" id="nuevoRol">
+                        <option value="">{{ _('Seleccionar rol...') }}</option>
+                        <option value="estudiante">{{ _('Estudiante') }}</option>
+                        <option value="docente">{{ _('Docente') }}</option>
+                        <option value="administrador">{{ _('Administrador') }}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" onclick="eliminarRol()">{{ _('Eliminar Rol') }}</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _('Cerrar') }}</button>
+                <button type="button" class="btn btn-primary" onclick="cambiarRol()">{{ _('Cambiar Rol') }}</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Edición -->
+<div class="modal fade" id="editarUsuarioModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{ _('Editar Usuario') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form id="editarUsuarioForm">
+                <div class="modal-body">
+                    <input type="hidden" id="usuarioId" name="usuarioId">
+                    <div class="form-group">
+                        <label for="primerNombre">{{ _('Primer Nombre') }} *</label>
+                        <input type="text" class="form-control" id="primerNombre" name="primerNombre" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="segundoNombre">{{ _('Segundo Nombre') }}</label>
+                        <input type="text" class="form-control" id="segundoNombre" name="segundoNombre">
+                    </div>
+                    <div class="form-group">
+                        <label for="primerApellido">{{ _('Primer Apellido') }} *</label>
+                        <input type="text" class="form-control" id="primerApellido" name="primerApellido" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="segundoApellido">{{ _('Segundo Apellido') }}</label>
+                        <input type="text" class="form-control" id="segundoApellido" name="segundoApellido">
+                    </div>
+                    <div class="form-group">
+                        <label for="correo">{{ _('Correo Electrónico') }} *</label>
+                        <input type="email" class="form-control" id="correo" name="correo" required>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _('Cancelar') }}</button>
+                    <button type="submit" class="btn btn-primary">{{ _('Guardar Cambios') }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+<script>
+function gestionarRol(uid) {
+    $('#usuarioRolId').val(uid);
+    
+    // Obtener datos actuales del usuario
+    $.get(`/administrador/usuarios/${uid}`, function(data) {
+        const rolDiv = $('#rolActual');
+        rolDiv.empty();
+        
+        // Mostrar rol actual
+        const badge = $('<span>').addClass('badge badge-primary')
+                               .text(data.rol ? data.rol.charAt(0).toUpperCase() + data.rol.slice(1) : 'Sin rol');
+        rolDiv.append(badge);
+        
+        $('#gestionRolModal').modal('show');
+    });
+}
+
+function cambiarRol() {
+    const uid = $('#usuarioRolId').val();
+    const nuevoRol = $('#nuevoRol').val();
+    
+    if (!nuevoRol) {
+        alert('{{ _("Por favor seleccione un rol") }}');
+        return;
+    }
+    
+    if (confirm('{{ _("¿Está seguro de cambiar el rol de este usuario?") }}')) {
+        $.ajax({
+            url: `/administrador/usuarios/${uid}/rol/cambiar`,
+            type: 'PUT',
+            contentType: 'application/json',
+            data: JSON.stringify({ rol: nuevoRol }),
+            success: function(response) {
+                if (response.success) {
+                    location.reload();
+                } else {
+                    alert(response.message || '{{ _("Error al cambiar rol") }}');
+                }
+            },
+            error: function() {
+                alert('{{ _("Error al cambiar rol") }}');
+            }
+        });
+    }
+}
+
+function eliminarRol() {
+    const uid = $('#usuarioRolId').val();
+    
+    if (confirm('{{ _("¿Está seguro de eliminar el rol de este usuario?") }}')) {
+        $.ajax({
+            url: `/administrador/usuarios/${uid}/rol/eliminar`,
+            type: 'PUT',
+            success: function(response) {
+                if (response.success) {
+                    location.reload();
+                } else {
+                    alert(response.message || '{{ _("Error al eliminar rol") }}');
+                }
+            },
+            error: function() {
+                alert('{{ _("Error al eliminar rol") }}');
+            }
+        });
+    }
+}
+</script>
+<script>
+$(document).ready(function() {
+    // Inicializar DataTable
+    var table = $('#tablaUsuarios').DataTable({
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Spanish.json"
+        }
+    });
+
+    // Manejar cambios en los filtros
+    $('#tipo, #estado').change(function() {
+        $('#filtroForm').submit();
+    });
+});
+
+function editarUsuario(uid) {
+    // Obtener datos del usuario
+    $.get(`/administrador/usuarios/${uid}`, function(data) {
+        $('#usuarioId').val(uid);
+        $('#primerNombre').val(data.primer_nombre);
+        $('#segundoNombre').val(data.segundo_nombre);
+        $('#primerApellido').val(data.primer_apellido);
+        $('#segundoApellido').val(data.segundo_apellido);
+        $('#correo').val(data.correo);
+        $('#editarUsuarioModal').modal('show');
+    });
+}
+
+$('#editarUsuarioForm').submit(function(e) {
+    e.preventDefault();
+    var uid = $('#usuarioId').val();
+    var formData = {
+        primer_nombre: $('#primerNombre').val(),
+        segundo_nombre: $('#segundoNombre').val(),
+        primer_apellido: $('#primerApellido').val(),
+        segundo_apellido: $('#segundoApellido').val(),
+        correo: $('#correo').val()
+    };
+
+    $.ajax({
+        url: `/administrador/usuarios/${uid}/actualizar`,
+        type: 'PUT',
+        contentType: 'application/json',
+        data: JSON.stringify(formData),
+        success: function(response) {
+            if (response.success) {
+                location.reload();
+            } else {
+                alert(response.message || '{{ _("Error al actualizar usuario") }}');
+            }
+        },
+        error: function() {
+            alert('{{ _("Error al actualizar usuario") }}');
+        }
+    });
+});
+
+function darDeBaja(uid) {
+    if (confirm('{{ _("¿Está seguro de dar de baja a este usuario?") }}')) {
+        $.ajax({
+            url: `/administrador/usuarios/${uid}/dar-baja`,
+            type: 'PUT',
+            success: function(response) {
+                if (response.success) {
+                    location.reload();
+                } else {
+                    alert(response.message || '{{ _("Error al dar de baja al usuario") }}');
+                }
+            },
+            error: function() {
+                alert('{{ _("Error al dar de baja al usuario") }}');
+            }
+        });
+    }
+}
+
+function activarUsuario(uid) {
+    if (confirm('{{ _("¿Está seguro de activar a este usuario?") }}')) {
+        $.ajax({
+            url: `/administrador/usuarios/${uid}/activar`,
+            type: 'PUT',
+            success: function(response) {
+                if (response.success) {
+                    location.reload();
+                } else {
+                    alert(response.message || '{{ _("Error al activar al usuario") }}');
+                }
+            },
+            error: function() {
+                alert('{{ _("Error al activar al usuario") }}');
+            }
+        });
+    }
+}
+</script>
+{% endblock %}

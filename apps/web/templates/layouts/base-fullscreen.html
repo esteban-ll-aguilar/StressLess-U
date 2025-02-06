@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+	<title>
+		Flask Gradient - {% block title %}{% endblock %}
+	</title>
+	<!-- HTML5 Shim and Respond.js IE11 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 11]>
+		<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+		<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+		<![endif]-->
+	<!-- Meta -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="" />
+	<meta name="keywords" content="">
+	<meta name="author" content="Codedthemes" />
+	<!-- Favicon icon -->
+	<link rel="icon" href="/static/assets/images/favicon.ico" type="image/x-icon">
+
+	<!-- vendor css -->
+	<link rel="stylesheet" href="/static/assets/css/style.css">
+
+	<!-- Specific CSS goes HERE -->
+	{% block stylesheets %}{% endblock stylesheets %}
+
+	<style>
+		.bg-image {
+			background-image: url('/static/assets/images/We-Are-Beyond-Hero-Image.jpg');
+			background-size: cover;
+			background-position: center;
+			min-height: 100vh;
+		}
+	</style>
+
+</head>
+
+<body>
+
+	<!-- [ auth-signin ] start -->
+	<div class="auth-wrapper bg-image {% block wrapper_class %}{% endblock %}">
+
+		{% block content %}{% endblock content %}
+
+	</div>
+	<!-- [ auth-signin ] end -->
+
+	<script src="/static/assets/js/vendor-all.min.js"></script>
+	<script src="/static/assets/js/plugins/bootstrap.min.js"></script>
+	<script src="/static/assets/js/waves.min.js"></script>
+
+	<!-- SweetAlert2 -->
+	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const flashMessages = JSON.parse('{{ get_flashed_messages(with_categories=True) | tojson | safe }}');
+			flashMessages.forEach(([category, message]) => {
+				let icon;
+				switch (category) {
+					case 'success':
+						icon = 'success';
+						break;
+					case 'error':
+						icon = 'error';
+						break;
+					case 'info':
+						icon = 'info';
+						break;
+					case 'warning':
+						icon = 'warning';
+						break;
+					default:
+						icon = 'info';
+				}
+
+				Swal.fire({
+					icon: icon,
+					title: message,
+					timer: 3000,
+					showConfirmButton: false,
+					toast: true,
+					position: 'bottom-end',
+					showClass: {
+						popup: 'animate__animated animate__zoomInDown'
+					},
+					hideClass: {
+						popup: 'animate__animated animate__slideOutUp'
+					}
+				});
+			});
+		});
+	</script>
+
+
+	<!-- Specific Page JS goes HERE  -->
+
+	{% block javascripts %}{% endblock javascripts %}
+
+</body>
+
+</html>

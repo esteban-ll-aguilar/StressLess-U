@@ -1,0 +1,23 @@
+
+<div class="dropdown drp-user">
+    <a href="#!" class="dropdown-toggle" data-toggle="dropdown">
+        <img src="{{ current_user.foto_url}}" class="img-radius wid-40" alt="Imagen de Perfil">
+        <!-- <img src="{% if current_user.foto_url %}{{ current_user.foto_url }}{% else %}/static/assets/images/user/avatar-5.jpg{% endif %}" class="img-radius wid-40" alt="Imagen de Perfil"> -->
+    </a>
+    <div class="dropdown-menu dropdown-menu-right profile-notification">
+        <div class="pro-head">
+            <img src="{{ current_user.foto_url }}" class="img-radius" alt="Imagen de Perfil">
+            <!-- <img src="{% if current_user.foto_url %}{{ current_user.foto_url }}{% else %}/static/assets/images/user/avatar-5.jpg{% endif %}" class="img-radius" alt="Imagen de Perfil"> -->
+            <span>
+                {{ current_user.primer_nombre }} {{ current_user.primer_apellido }} {{ current_user.segundo_apellido }}
+            </span>
+            <a href="{{ url_for('autenticacion.logout') }}" class="dud-logout" title="{{  _('Logout') }}">
+                <i class="feather icon-log-out"></i>
+            </a>
+        </div>
+        <ul class="pro-body">
+            <li><a href="{{ url_for('home_blueprint.profile') }}" class="dropdown-item"><i class="feather icon-user"></i>{{ _('Profile') }}</a></li>
+            <!-- <li><a href="/email_inbox.html" class="dropdown-item"><i class="feather icon-mail"></i> My Messages</a></li> -->
+        </ul>
+    </div>
+</div>

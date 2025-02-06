@@ -1,0 +1,263 @@
+{% extends "layouts/base_Proyect.html" %}
+
+{% block title %} {{ _('Mis Tests') }} {% endblock %}
+
+{% block stylesheets %}
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<style>
+    .select2-container {
+        z-index: 9999;
+    }
+    .select2-dropdown {
+        z-index: 9999;
+    }
+    .modal {
+        z-index: 1050 !important;
+    }
+    .modal-backdrop {
+        z-index: 1040 !important;
+    }
+    .swal2-container {
+        z-index: 10000 !important;
+    }
+</style>
+{% endblock stylesheets %}
+
+{% block javascripts %}
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+{% endblock javascripts %}
+
+{% block inner_content %}
+
+<!-- [ breadcrumb ] start -->
+<div class="page-header">
+    <div class="page-block">
+        <div class="row align-items-center">
+            <div class="col-md-12">
+                <div class="page-header-title d-flex justify-content-between align-items-center">
+                    <h5 class="m-b-10">
+                        <i class="feather icon-list m-r-5"></i>
+                        {{ _('Mis Tests') }}
+                        <i class="feather icon-info m-r-5" data-toggle="tooltip" data-placement="top" data-original-title="{{ _('Se reflejan todos los test de tu cuenta') }}"></i>
+                    </h5>
+                </div>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="/"><i class="feather icon-home"></i></a></li>
+                    <li class="breadcrumb-item"><a href="#!">{{ _('Tests') }}</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">{{ _('Mis Tests') }}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- [ breadcrumb ] end -->
+
+<!-- [ content ] start -->
+<div class="container mt-4">
+    {% if lista %}
+    <div class="row">
+        {% for test in lista %}
+        <div class="col-md-6 col-lg-4 mb-4">
+            <div class="card shadow-sm border-light rounded">
+                <div class="card-body">
+                    <h5 class="card-title font-weight-bold">{{ test.name }}</h5>
+                    <div class="input-group mb-3">
+                        <input type="text" class="form-control" value="{{ test.id }}" id="{{ test.id }}" readonly>
+                        <div class="input-group-append">
+                            <button id="copy-btn-{{ test.id }}" class="btn btn-outline-secondary" type="button" onclick="copyToClipboard('{{ test.id }}')">{{ _('Copiar Link') }}</button>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <a href="{{ url_for('c.detalle_test', id=test.id) }}" class="btn btn-outline-info btn-sm">
+                                <i class="feather icon-eye"></i> {{ _('Ver Detalles') }}
+                            </a>
+                            {% if current_user.rol == 'administrador' %}
+                            <button class="btn btn-outline-primary btn-sm" onclick="mostrarModalCompartir('{{ test.id }}')">
+                                <i class="feather icon-share-2"></i> {{ _('Compartir') }}
+                            </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-warning" role="alert">
+        <i class="feather icon-alert-circle"></i>
+         {{ _('No hay encuestas disponibles,  ve a tu perfil y autenticate si no lo has hecho') }}
+        <a href="{{ url_for('home_blueprint.profile') }}" class="alert-link">{{ _('Ir a mi perfil') }}</a>
+
+    </div>
+    {% endif %}
+</div>
+<!-- [ content ] end -->
+
+<script>
+    function copyToClipboard(testId) {
+        const input = document.getElementById(testId);
+        input.select();
+        input.setSelectionRange(0, 99999); 
+        document.execCommand("copy");
+        navigator.clipboard.writeText(input.value).then(() => {
+            console.log('Async: Copying to clipboard was successful!');
+            Swal.fire({
+                icon: 'success',
+                title: '¡Copiado!',
+                text: 'Link copiado al portapapeles',
+                timer: 1500,
+                showConfirmButton: false
+            });
+        }, (err) => {
+            console.error('Async: Could not copy text: ', err);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'No se pudo copiar el link',
+            });
+        });
+    }
+</script>
+
+<!-- Modal para compartir test -->
+<div class="modal fade" id="modalCompartir" tabindex="-1" role="dialog" aria-labelledby="modalCompartirLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalCompartirLabel">{{ _('Compartir Test con Docentes') }}</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="selectDocentes">{{ _('Seleccionar Docentes') }}</label>
+                    <select class="form-control select2-multiple" id="selectDocentes" multiple="multiple" style="width: 100%">
+                        <!-- Los docentes se cargarán dinámicamente -->
+                    </select>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ _('Cancelar') }}</button>
+                <button type="button" class="btn btn-primary" id="btnCompartir" onclick="compartirTest()">
+                    <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                    <span class="btn-text">{{ _('Compartir') }}</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+let testIdSeleccionado = '';
+
+function mostrarModalCompartir(testId) {
+    testIdSeleccionado = testId;
+    $('#selectDocentes').empty();
+    $('#modalCompartir').modal('show');
+    cargarDocentes();
+}
+
+function cargarDocentes() {
+    $('#selectDocentes').select2({
+        placeholder: "{{ _('Buscar docentes...') }}",
+        allowClear: true,
+        dropdownParent: $('#modalCompartir'),
+        ajax: {
+            url: '/administrador/obtener-docentes',
+            dataType: 'json',
+            delay: 250,
+            headers: {
+            },
+            data: function (params) {
+                return {
+                    term: params.term
+                };
+            },
+            processResults: function (data) {
+                return {
+                    results: data.map(docente => ({
+                        id: docente.email,
+                        text: `${docente.nombre} (${docente.email})`
+                    }))
+                };
+            },
+            cache: true
+        },
+        minimumInputLength: 2,
+        language: {
+            inputTooShort: function() {
+                return "{{ _('Por favor ingrese 2 o más caracteres') }}";
+            },
+            noResults: function() {
+                return "{{ _('No se encontraron docentes') }}";
+            },
+            searching: function() {
+                return "{{ _('Buscando...') }}";
+            }
+        }
+    });
+}
+
+function compartirTest() {
+    const btnCompartir = document.getElementById('btnCompartir');
+    const spinner = btnCompartir.querySelector('.spinner-border');
+    const btnText = btnCompartir.querySelector('.btn-text');
+    const docentesSeleccionados = $('#selectDocentes').select2('data').map(item => item.id);
+    
+    if (docentesSeleccionados.length === 0) {
+        Swal.fire({
+            icon: 'warning',
+            title: '{{ _("Atención") }}',
+            text: '{{ _("Por favor seleccione al menos un docente") }}'
+        });
+        return;
+    }
+
+    // Deshabilitar botón y mostrar spinner
+    btnCompartir.disabled = true;
+    spinner.classList.remove('d-none');
+    btnText.textContent = "{{ _('Compartiendo...') }}";
+
+    fetch('/administrador/compartir-test', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            test_id: testIdSeleccionado,
+            docentes: docentesSeleccionados
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            $('#modalCompartir').modal('hide');
+            Swal.fire({
+                icon: 'success',
+                title: '{{ _("Éxito") }}',
+                text: '{{ _("Test compartido correctamente") }}'
+            });
+        } else {
+            throw new Error(data.message || '{{ _("Error al compartir el test") }}');
+        }
+    })
+    .catch(error => {
+        console.error('Error al compartir test:', error);
+        Swal.fire({
+            icon: 'error',
+            title: '{{ _("Error") }}',
+            text: error.message || '{{ _("Error al compartir el test") }}'
+        });
+    })
+    .finally(() => {
+        // Restaurar estado del botón
+        btnCompartir.disabled = false;
+        spinner.classList.add('d-none');
+        btnText.textContent = "{{ _('Compartir') }}";
+    });
+}
+</script>
+{% endblock inner_content %}
