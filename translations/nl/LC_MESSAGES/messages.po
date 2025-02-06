@@ -1,0 +1,2711 @@
+# English translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-12-14 23:05-0500\n"
+"PO-Revision-Date: 2024-11-06 00:33-0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: apps/routes/administrador/routes.py:23 apps/routes/docente/routes.py:17
+#: apps/routes/estudiante/routes.py:17
+#, fuzzy
+msgid "✅ Accediendo a la página principal del dashboard"
+msgstr "{{ _('Toegang tot de hoofdpagina van het dashboard') }}"
+
+#: apps/routes/administrador/routes.py:35
+#, fuzzy
+msgid "✅ Accediendo a la página de creación de usuarios"
+msgstr "{{ _('Toegang tot de rapportpagina') }}"
+
+#: apps/routes/administrador/routes.py:63
+msgid "Estudiante creado exitosamente"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:68
+#, fuzzy
+msgid "Error al crear estudiante: {}"
+msgstr "Fout bij aanmaken van gebruiker: {}"
+
+#: apps/routes/administrador/routes.py:93
+msgid "Docente creado exitosamente"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:98
+#, fuzzy
+msgid "Error al crear docente: {}"
+msgstr "Fout bij aanmaken van gebruiker: {}"
+
+#: apps/routes/administrador/routes.py:120
+msgid "Administrador creado exitosamente"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:125
+#, fuzzy
+msgid "Error al crear administrador: {}"
+msgstr "Fout bij aanmaken van gebruiker: {}"
+
+#: apps/routes/administrador/routes.py:136
+#: apps/routes/administrador/routes.py:221
+msgid "No se encontró el archivo"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:140
+#: apps/routes/administrador/routes.py:225
+msgid "No se seleccionó ningún archivo"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:153
+#: apps/routes/administrador/routes.py:238
+msgid "El archivo no tiene el formato correcto"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:203
+msgid "Estudiantes importados exitosamente"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:210
+#: apps/routes/administrador/routes.py:295
+#, fuzzy
+msgid "Error al procesar el archivo: {}"
+msgstr "Fout van API: {}"
+
+#: apps/routes/administrador/routes.py:288
+msgid "Docentes importados exitosamente"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:49
+msgid "Invalid JSON request"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:53
+#, fuzzy
+msgid "No JSON data provided"
+msgstr "ID-token niet verstrekt"
+
+#: apps/routes/authentication/routes.py:57
+msgid "ID token not provided"
+msgstr "ID-token niet verstrekt"
+
+#: apps/routes/authentication/routes.py:63
+msgid "Authentication error"
+msgstr "Authenticatiefout"
+
+#: apps/routes/authentication/routes.py:75
+msgid "You have successfully logged out"
+msgstr "Je bent succesvol uitgelogd"
+
+#: apps/routes/authentication/routes.py:100
+msgid "Ya tienes credenciales válidas para Google Forms"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:128
+msgid "Autenticación con Google Forms completada exitosamente"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:143
+msgid "Unauthorized access. Please log in."
+msgstr "Ongeautoriseerde toegang. "
+
+#: apps/routes/authentication/routes.py:150
+msgid "Access forbidden. You do not have permission to access this page."
+msgstr "Toegang verboden. "
+
+#: apps/routes/authentication/services.py:21
+#, fuzzy
+msgid "Invalid user information"
+msgstr "Financiële informatie"
+
+#: apps/routes/authentication/services.py:36
+msgid "User not found in database"
+msgstr ""
+
+#: apps/routes/authentication/services.py:40
+msgid "Invalid user data"
+msgstr ""
+
+#: apps/routes/authentication/services.py:78
+msgid "Email is not registered."
+msgstr "E-mail is niet geregistreerd."
+
+#: apps/routes/authentication/services.py:80
+#: apps/templates/accounts/login.html:272
+msgid "Incorrect password. Please try again."
+msgstr "Onjuist wachtwoord. "
+
+#: apps/routes/home/routes.py:22
+msgid "User {} accessing home page"
+msgstr "Gebruiker {} heeft toegang tot de startpagina"
+
+#: apps/routes/home/routes.py:42 apps/routes/home/routes.py:83
+msgid "Profile updated successfully"
+msgstr "Profiel succesvol bijgewerkt"
+
+#: apps/routes/home/routes.py:44 apps/routes/home/routes.py:48
+#: apps/routes/home/routes.py:85
+msgid "Error updating profile: {}"
+msgstr "Fout bij bijwerken profiel: {}"
+
+#: apps/routes/home/routes.py:49
+msgid "Error updating profile"
+msgstr "Fout bij bijwerken van profiel"
+
+#: apps/routes/home/routes.py:52
+msgid "User {} accessing their profile"
+msgstr "Gebruiker {} heeft toegang tot zijn profiel"
+
+#: apps/routes/home/routes.py:63
+msgid "Layout updated successfully"
+msgstr "Lay-out succesvol bijgewerkt"
+
+#: apps/routes/home/routes.py:65 apps/routes/home/routes.py:68
+msgid "Error updating layout: {}"
+msgstr "Fout bij bijwerken van lay-out: {}"
+
+#: apps/routes/home/routes.py:69
+msgid "Error updating layout"
+msgstr "Fout bij het bijwerken van de lay-out"
+
+#: apps/routes/home/routes.py:109
+msgid "Template not found: {}"
+msgstr "Sjabloon niet gevonden: {}"
+
+#: apps/routes/home/routes.py:112
+msgid "Error rendering template {}: {}"
+msgstr "Fout bij het renderen van sjabloon {}: {}"
+
+#: apps/routes/home/routes.py:122
+#, fuzzy
+msgid "Error getting segment: {}"
+msgstr "Fout bij ophalen van leadgegevens: {}"
+
+#: apps/templates/accounts/login.html:3 apps/templates/accounts/login.html:21
+#: apps/templates/accounts/login.html:75
+#: apps/templates/accounts/register.html:80 apps/templates/errors/401.html:29
+#: apps/templates/errors/401.html:52 apps/templates/errors/403.html:51
+msgid "Login"
+msgstr "Inloggen"
+
+#: apps/templates/accounts/login.html:12
+msgid "Welcome Back!"
+msgstr "Welkom terug!"
+
+#: apps/templates/accounts/login.html:13
+msgid "Sign in to your account and explore the Flask Gradient."
+msgstr "Meld u aan bij uw account en verken het Kolfverloop."
+
+#: apps/templates/accounts/login.html:14
+msgid "If you need view the components for usin in this template, click here."
+msgstr ""
+"Als u de componenten voor gebruik in deze sjabloon wilt bekijken, klik "
+"dan hier."
+
+#: apps/templates/accounts/login.html:15
+msgid "View Components"
+msgstr "Componenten bekijken"
+
+#: apps/templates/accounts/login.html:25
+#: apps/templates/accounts/register.html:26
+msgid "Loading..."
+msgstr "Laden..."
+
+#: apps/templates/accounts/login.html:27
+msgid "Logging in..."
+msgstr "Inloggen..."
+
+#: apps/templates/accounts/login.html:33
+msgid "Sign in with Google"
+msgstr "Log in met Google"
+
+#: apps/templates/accounts/login.html:37
+#, fuzzy
+msgid "or"
+msgstr "OF"
+
+#: apps/templates/accounts/login.html:47
+#: apps/templates/accounts/profile/modals/edit_profile.html:51
+#: apps/templates/accounts/profile/modals/edit_profile.html:107
+#: apps/templates/accounts/profile/profile.html:121
+#: apps/templates/accounts/register.html:48
+msgid "Email"
+msgstr "E-mail"
+
+#: apps/templates/accounts/login.html:57
+#: apps/templates/accounts/register.html:58 apps/templates/errors/401.html:48
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: apps/templates/accounts/login.html:71
+msgid "Remember Me"
+msgstr "Onthoud mij"
+
+#: apps/templates/accounts/login.html:79
+msgid "Forgot your password?"
+msgstr "Uw wachtwoord vergeten?"
+
+#: apps/templates/accounts/login.html:79
+#: apps/templates/accounts/profile/layouts_config.html:17
+msgid "Reset"
+msgstr "Resetten"
+
+#: apps/templates/accounts/login.html:187
+#: apps/templates/accounts/login.html:236
+msgid "Login successful"
+msgstr "Inloggen succesvol"
+
+#: apps/templates/accounts/login.html:192
+#: apps/templates/accounts/login.html:241
+#: apps/templates/accounts/register.html:231
+msgid "Unknown error"
+msgstr "Onbekende fout"
+
+#: apps/templates/accounts/login.html:253
+msgid "Google Sign-In Required"
+msgstr ""
+
+#: apps/templates/accounts/login.html:254
+msgid ""
+"This account is now linked to Google. Please use the Google Sign-In "
+"button above."
+msgstr ""
+
+#: apps/templates/accounts/login.html:255
+msgid "Use Google Sign-In"
+msgstr ""
+
+#: apps/templates/accounts/login.html:268
+#, fuzzy
+msgid "An error occurred during login. Please try again."
+msgstr "Er is een fout opgetreden tijdens de registratie. "
+
+#: apps/templates/accounts/login.html:270
+#, fuzzy
+msgid "No account found with this email."
+msgstr "Er zijn geen contacten gevonden voor deze lead."
+
+#: apps/templates/accounts/register.html:3
+#: apps/templates/accounts/register.html:22
+#: apps/templates/accounts/register.html:76 apps/templates/errors/401.html:62
+msgid "Register"
+msgstr "Registreren"
+
+#: apps/templates/accounts/register.html:12
+msgid "Welcome to Flask Gradient!"
+msgstr "Welkom bij Kolfverloop!"
+
+#: apps/templates/accounts/register.html:13
+msgid ""
+"Create your account and start using the Flask Gradient. \n"
+"                This is a template that you can use as a starting point "
+"for your own web application. <br>\n"
+"                Already have an account? <a href=\"/auth-login.html\" "
+"class=\"text-white f-w-400\">Login</a>\n"
+"                "
+msgstr "Maak uw account aan en begin met het gebruiken van de Flask Gradient. "
+
+#: apps/templates/accounts/register.html:28
+msgid "Processing registration..."
+msgstr "Registratie verwerken..."
+
+#: apps/templates/accounts/register.html:38 apps/templates/errors/401.html:38
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: apps/templates/accounts/register.html:72
+msgid "I accept the"
+msgstr "Ik accepteer de"
+
+#: apps/templates/accounts/register.html:72
+msgid "terms and conditions"
+msgstr "algemene voorwaarden"
+
+#: apps/templates/accounts/register.html:80
+msgid "Already have an account?"
+msgstr "Heb je al een account?"
+
+#: apps/templates/accounts/register.html:101
+msgid "An error occurred during registration. Please try again later."
+msgstr "Er is een fout opgetreden tijdens de registratie. "
+
+#: apps/templates/accounts/register.html:104
+msgid "This email is already in use. Please use another one or login."
+msgstr "Deze e-mail is al in gebruik. "
+
+#: apps/templates/accounts/register.html:106
+msgid "Invalid email. Please verify and try again."
+msgstr "Ongeldige e-mail. "
+
+#: apps/templates/accounts/register.html:108
+msgid "Password is too weak. Please choose a stronger password."
+msgstr "Wachtwoord is te zwak. "
+
+#: apps/templates/accounts/register.html:149
+msgid "Only @unl.edu.ec email addresses are allowed."
+msgstr ""
+
+#: apps/templates/accounts/register.html:166
+msgid "You must accept the terms and conditions to continue."
+msgstr "Je moet de algemene voorwaarden accepteren om door te kunnen gaan."
+
+#: apps/templates/accounts/profile/dropdown-user.html:14
+msgid "Logout"
+msgstr "Uitloggen"
+
+#: apps/templates/accounts/profile/dropdown-user.html:19
+msgid "Profile"
+msgstr "Profiel"
+
+#: apps/templates/accounts/profile/layouts_config.html:4
+msgid "Appearance"
+msgstr "Uiterlijk"
+
+#: apps/templates/accounts/profile/layouts_config.html:9
+msgid "Layouts"
+msgstr "Indelingen"
+
+#: apps/templates/accounts/profile/layouts_config.html:12
+msgid "Default Layout"
+msgstr "Standaardindeling"
+
+#: apps/templates/accounts/profile/layouts_config.html:14
+msgid "Light"
+msgstr "Licht"
+
+#: apps/templates/accounts/profile/layouts_config.html:16
+msgid "Dark"
+msgstr "Donker"
+
+#: apps/templates/accounts/profile/layouts_config.html:21
+msgid "Header background color"
+msgstr "Achtergrondkleur koptekst"
+
+#: apps/templates/accounts/profile/layouts_config.html:42
+msgid "RTL"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:50
+msgid "Sidebar Fixed"
+msgstr "Zijbalk opgelost"
+
+#: apps/templates/accounts/profile/layouts_config.html:58
+msgid "Header Fixed"
+msgstr "Koptekst opgelost"
+
+#: apps/templates/accounts/profile/layouts_config.html:66
+msgid "Box Layouts"
+msgstr "Boxindelingen"
+
+#: apps/templates/accounts/profile/layouts_config.html:74
+msgid "Breadcrumb sticky"
+msgstr "Broodkruimel plakkerig"
+
+#: apps/templates/accounts/profile/profile.html:3
+msgid "My Profile"
+msgstr "Mijn profiel"
+
+#: apps/templates/accounts/profile/profile.html:38
+msgid "Imagen de Perfil"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:69
+#, fuzzy
+msgid "Autenticar Google Forms"
+msgstr "Authenticatiefout"
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:91
+#: apps/templates/accounts/profile/profile.html:73
+#: apps/templates/accounts/profile/profile.html:171
+msgid "Language"
+msgstr "Taal"
+
+#: apps/templates/accounts/profile/profile.html:74
+#: apps/templates/accounts/profile/profile.html:163
+msgid "Not set"
+msgstr "Niet ingesteld"
+
+#: apps/templates/accounts/profile/profile.html:83
+msgid "Overview"
+msgstr "Overzicht"
+
+#: apps/templates/accounts/profile/profile.html:90
+msgid "Appearance "
+msgstr "Uiterlijk "
+
+#: apps/templates/accounts/profile/profile.html:107
+msgid "Personal Information and Settings"
+msgstr "Persoonlijke informatie en instellingen"
+
+#: apps/templates/accounts/profile/profile.html:110
+msgid "Edit"
+msgstr "Bewerken"
+
+#: apps/templates/accounts/profile/profile.html:115
+msgid "Personal Information"
+msgstr "Persoonlijke informatie"
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:62
+#: apps/templates/accounts/profile/profile.html:130
+msgid "Phone"
+msgstr "Telefoon"
+
+#: apps/templates/accounts/profile/profile.html:139
+msgid "Registration Date"
+msgstr "Registratiedatum"
+
+#: apps/templates/accounts/profile/profile.html:148
+msgid "Last Access"
+msgstr "Laatste toegang"
+
+#: apps/templates/accounts/profile/profile.html:156
+#: apps/templates/includes/side_bar.html:141
+#: apps/templates/includes/side_bars/side_bar_docente.html:141
+msgid "Settings"
+msgstr "Instellingen"
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:78
+#: apps/templates/accounts/profile/profile.html:162
+msgid "Time Zone"
+msgstr "Tijdzone"
+
+#: apps/templates/accounts/profile/profile.html:172
+msgid ""
+"Not\n"
+"                                            set"
+msgstr ""
+"Niet\n"
+" ingesteld"
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:7
+msgid "Edit Profile"
+msgstr "Profiel bewerken"
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:23
+msgid "Basic Info"
+msgstr "Basisinformatie"
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:28
+msgid "Preferences"
+msgstr "Voorkeuren"
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:42
+msgid "Display Name"
+msgstr "Weergavenaam"
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:57
+msgid "Email cannot be changed"
+msgstr "E-mailadres kan niet worden gewijzigd"
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:103
+#: apps/templates/includes/side_bar.html:77
+#: apps/templates/includes/side_bar.html:146
+#: apps/templates/includes/side_bars/side_bar_docente.html:77
+#: apps/templates/includes/side_bars/side_bar_docente.html:146
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:75
+msgid "Notifications"
+msgstr "Meldingen"
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:112
+msgid "Push"
+msgstr "Duwen"
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:123
+#: apps/templates/errors/500.html:143
+msgid "Cancel"
+msgstr "Annuleren"
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:126
+msgid "Save Changes"
+msgstr "Wijzigingen opslaan"
+
+#: apps/templates/administrador/crear_test.html:3
+msgid "Crear Test de Estrés"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:15
+msgid "Crear Nuevo Test de Estrés"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:16
+msgid ""
+"Cada pregunta tendrá 4 opciones que representan diferentes niveles de "
+"estrés"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:21
+msgid "Descripción del Test"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:24
+msgid ""
+"Ejemplo: Test para evaluar el nivel de estrés en estudiantes "
+"universitarios"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:28
+msgid "Fecha"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:34
+msgid "Estado"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:37
+#, fuzzy
+msgid "Activo"
+msgstr "Actief"
+
+#: apps/templates/administrador/crear_test.html:38
+#, fuzzy
+msgid "Inactivo"
+msgstr "Inactief"
+
+#: apps/templates/administrador/crear_test.html:46
+msgid "Preguntas del Test"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:47
+msgid ""
+"Cada pregunta debe tener 4 opciones de respuesta que indiquen diferentes "
+"niveles de estrés"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:55
+msgid "Agregar Pregunta"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:63
+msgid "Guardar Test"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:89
+msgid "Pregunta"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:92
+msgid ""
+"Ejemplo: ¿Con qué frecuencia te sientes abrumado por tus "
+"responsabilidades académicas?"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:96
+msgid "Eliminar"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:104
+msgid "Nivel 1 - Poco o Nada"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:107
+msgid "Ejemplo: Nunca me siento abrumado"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:114
+msgid "Nivel 2 - Leve"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:117
+msgid "Ejemplo: Ocasionalmente me siento abrumado"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:124
+msgid "Nivel 3 - Moderado"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:127
+msgid "Ejemplo: Frecuentemente me siento abrumado"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:134
+msgid "Nivel 4 - Severo"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:137
+msgid "Ejemplo: Constantemente me siento abrumado"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:3
+#: apps/templates/administrador/crear_usuario.html:26
+msgid "Crear Usuario"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:20
+msgid "Creación de Usuarios"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:25
+#: apps/templates/includes/side_bars/side_bar_administrador.html:72
+#, fuzzy
+msgid "Configuraciones"
+msgstr "Configuratie"
+
+#: apps/templates/administrador/crear_usuario.html:38
+msgid "Gestión de Usuarios"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:45
+#: apps/templates/administrador/crear_usuario.html:96
+msgid "Crear Estudiante"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:50
+#: apps/templates/administrador/crear_usuario.html:159
+#, fuzzy
+msgid "Crear Docente"
+msgstr "Gemaakt"
+
+#: apps/templates/administrador/crear_usuario.html:55
+#: apps/templates/administrador/crear_usuario.html:222
+msgid "Crear Administrador"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:69
+#: apps/templates/administrador/crear_usuario.html:132
+#: apps/templates/administrador/crear_usuario.html:195
+msgid "Correo Electrónico"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:73
+#: apps/templates/administrador/crear_usuario.html:136
+#: apps/templates/administrador/crear_usuario.html:199
+msgid "Cédula"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:77
+#: apps/templates/administrador/crear_usuario.html:140
+#: apps/templates/administrador/crear_usuario.html:203
+msgid "Primer Nombre"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:81
+#: apps/templates/administrador/crear_usuario.html:144
+#: apps/templates/administrador/crear_usuario.html:207
+msgid "Segundo Nombre"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:85
+#: apps/templates/administrador/crear_usuario.html:148
+#: apps/templates/administrador/crear_usuario.html:211
+msgid "Primer Apellido"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:89
+#: apps/templates/administrador/crear_usuario.html:152
+#: apps/templates/administrador/crear_usuario.html:215
+msgid "Segundo Apellido"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:93
+#: apps/templates/administrador/crear_usuario.html:156
+#: apps/templates/administrador/crear_usuario.html:219
+msgid "Fecha de Nacimiento"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:102
+msgid "Cargar Estudiantes desde Excel"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:110
+#: apps/templates/administrador/crear_usuario.html:173
+#: apps/templates/administrador/crear_usuario.html:245
+msgid "Arrastra aquí el archivo Excel o haz clic para seleccionarlo"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:116
+#: apps/templates/administrador/crear_usuario.html:179
+msgid "Descargar Plantilla"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:165
+msgid "Cargar Docentes desde Excel"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:246
+msgid "Tu navegador no soporta la carga de archivos mediante arrastrar y soltar"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:247
+msgid ""
+"El archivo es demasiado grande ({{filesize}}MB). Tamaño máximo: "
+"{{maxFilesize}}MB"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:248
+msgid "No puedes subir archivos de este tipo"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:249
+msgid "Error al subir el archivo: {{statusCode}}"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:250
+msgid "Cancelar subida"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:251
+msgid "Subida cancelada"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:252
+msgid "Eliminar archivo"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:253
+msgid "No puedes subir más archivos"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:298
+msgid ""
+"Arrastra aquí el archivo Excel de estudiantes o haz clic para "
+"seleccionarlo"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:304
+msgid "Arrastra aquí el archivo Excel de docentes o haz clic para seleccionarlo"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:318
+msgid "La cédula debe tener 10 dígitos"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:332
+msgid "Debe usar un correo institucional (@unl.edu.ec)"
+msgstr ""
+
+#: apps/templates/components/ver_tests.html:3
+#: apps/templates/components/ver_tests.html:22
+#: apps/templates/components/ver_tests.html:28
+msgid "Ver Tests"
+msgstr ""
+
+#: apps/templates/components/ver_tests.html:27
+#, fuzzy
+msgid "Tests"
+msgstr "Huidige status"
+
+#: apps/templates/errors/401.html:3
+msgid "Unauthorized"
+msgstr "Ongeautoriseerd"
+
+#: apps/templates/errors/401.html:19
+msgid "Authentication Required!"
+msgstr "Authenticatie vereist!"
+
+#: apps/templates/errors/401.html:21
+msgid "You need to login to access this page."
+msgstr "Je moet inloggen om toegang te krijgen tot deze pagina."
+
+#: apps/templates/errors/401.html:65 apps/templates/errors/403.html:54
+#: apps/templates/errors/404.html:54 apps/templates/errors/500.html:79
+msgid "Home"
+msgstr "Thuis"
+
+#: apps/templates/errors/401.html:77 apps/templates/errors/403.html:66
+#: apps/templates/errors/404.html:66 apps/templates/errors/500.html:104
+msgid "Technical Details"
+msgstr "Technische details"
+
+#: apps/templates/errors/401.html:81 apps/templates/errors/403.html:70
+#: apps/templates/errors/404.html:70 apps/templates/errors/500.html:108
+msgid "Copy"
+msgstr "Kopiëren"
+
+#: apps/templates/errors/403.html:3
+msgid "Access Denied"
+msgstr "Toegang geweigerd"
+
+#: apps/templates/errors/403.html:19
+msgid "Access Denied!"
+msgstr "Toegang geweigerd!"
+
+#: apps/templates/errors/403.html:21
+msgid "You do not have permission to access this page."
+msgstr "U heeft geen toestemming om deze pagina te openen."
+
+#: apps/templates/errors/403.html:29
+msgid "Why does this happen?"
+msgstr "Waarom gebeurt dit?"
+
+#: apps/templates/errors/403.html:33
+msgid "You do not have the necessary permissions"
+msgstr "U beschikt niet over de benodigde rechten"
+
+#: apps/templates/errors/403.html:37
+msgid "Your session may have expired"
+msgstr "Uw sessie is mogelijk verlopen"
+
+#: apps/templates/errors/403.html:41
+msgid "The resource is restricted"
+msgstr "De bron is beperkt"
+
+#: apps/templates/errors/404.html:3
+msgid "Page Not Found"
+msgstr "Pagina niet gevonden"
+
+#: apps/templates/errors/404.html:19
+msgid "Page Not Found!"
+msgstr "Pagina niet gevonden!"
+
+#: apps/templates/errors/404.html:21
+msgid "The page you are looking for seems to be lost in cyberspace."
+msgstr "De pagina die u zoekt lijkt verloren te zijn gegaan in cyberspace."
+
+#: apps/templates/errors/404.html:29
+msgid "What can you do?"
+msgstr "Wat kun je doen?"
+
+#: apps/templates/errors/404.html:33
+msgid "Check the URL for typing errors"
+msgstr "Controleer de URL op typefouten"
+
+#: apps/templates/errors/404.html:37
+msgid "Go back to the previous page"
+msgstr "Ga terug naar de vorige pagina"
+
+#: apps/templates/errors/404.html:41
+msgid "Go to the home page"
+msgstr "Ga naar de startpagina"
+
+#: apps/templates/errors/404.html:51
+msgid "Back"
+msgstr "Terug"
+
+#: apps/templates/errors/500.html:3
+msgid "Server Error"
+msgstr "Serverfout"
+
+#: apps/templates/errors/500.html:20
+msgid "Server Error!"
+msgstr "Serverfout!"
+
+#: apps/templates/errors/500.html:22
+msgid "An internal server error has occurred."
+msgstr "Er is een interne serverfout opgetreden."
+
+#: apps/templates/errors/500.html:30
+msgid "System Status"
+msgstr "Systeemstatus"
+
+#: apps/templates/errors/500.html:36
+msgid "Server"
+msgstr ""
+
+#: apps/templates/errors/500.html:38
+msgid "Error"
+msgstr "Fout"
+
+#: apps/templates/errors/500.html:48
+msgid "Database"
+msgstr ""
+
+#: apps/templates/errors/500.html:50 apps/templates/errors/500.html:62
+msgid "Operational"
+msgstr "Operationeel"
+
+#: apps/templates/errors/500.html:60
+msgid "Storage"
+msgstr "Opslag"
+
+#: apps/templates/errors/500.html:76
+msgid "Reload"
+msgstr "Herladen"
+
+#: apps/templates/errors/500.html:87
+msgid "Need help?"
+msgstr "Hulp nodig?"
+
+#: apps/templates/errors/500.html:88
+msgid "Our technical team has been notified and is working on the solution."
+msgstr "Ons technisch team is op de hoogte gebracht en werkt aan de oplossing."
+
+#: apps/templates/errors/500.html:90 apps/templates/errors/500.html:125
+msgid "Contact Support"
+msgstr "Neem contact op met de ondersteuning"
+
+#: apps/templates/errors/500.html:133
+msgid "Describe the problem"
+msgstr "Beschrijf het probleem"
+
+#: apps/templates/errors/500.html:134
+msgid "What were you doing when the error occurred?"
+msgstr "Wat was u aan het doen toen de fout optrad?"
+
+#: apps/templates/errors/500.html:137
+msgid "How can we contact you?"
+msgstr "Hoe kunnen we contact met u opnemen?"
+
+#: apps/templates/errors/500.html:138
+msgid "Your email"
+msgstr "Uw e-mail"
+
+#: apps/templates/errors/500.html:146
+msgid "Send"
+msgstr "Verzenden"
+
+#: apps/templates/errors/500.html:265
+msgid "Your message has been sent. We will contact you soon."
+msgstr "Uw bericht is verzonden. "
+
+#: apps/templates/errors/500.html:271
+msgid "Error details copied to clipboard"
+msgstr "Foutdetails gekopieerd naar klembord"
+
+#: apps/templates/includes/navbar.html:9
+msgid "Stress Less U"
+msgstr ""
+
+#: apps/templates/includes/navbar.html:23
+msgid "Search..."
+msgstr "Zoeken..."
+
+#: apps/templates/includes/navbar.html:24
+msgid "Close"
+msgstr "Sluiten"
+
+#: apps/templates/includes/side_bar.html:16
+#: apps/templates/includes/side_bars/side_bar_docente.html:16
+msgid "Navigation"
+msgstr "Navigatie"
+
+#: apps/templates/includes/side_bar.html:23
+#: apps/templates/includes/side_bars/side_bar_docente.html:23
+msgid "Dashboard"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:26
+#: apps/templates/includes/side_bars/side_bar_docente.html:26
+msgid "Default"
+msgstr "Standaard"
+
+#: apps/templates/includes/side_bar.html:27
+#: apps/templates/includes/side_bars/side_bar_docente.html:27
+msgid "Analytics"
+msgstr "Analyses"
+
+#: apps/templates/includes/side_bar.html:28
+#: apps/templates/includes/side_bars/side_bar_docente.html:28
+msgid "Reports"
+msgstr "Rapporten"
+
+#: apps/templates/includes/side_bar.html:34
+#: apps/templates/includes/side_bars/side_bar_docente.html:34
+msgid "User Management"
+msgstr "Gebruikersbeheer"
+
+#: apps/templates/includes/side_bar.html:41
+#: apps/templates/includes/side_bars/side_bar_docente.html:41
+msgid "Users"
+msgstr "Gebruikers"
+
+#: apps/templates/includes/side_bar.html:44
+#: apps/templates/includes/side_bars/side_bar_docente.html:44
+msgid "User List"
+msgstr "Gebruikerslijst"
+
+#: apps/templates/includes/side_bar.html:45
+#: apps/templates/includes/side_bars/side_bar_docente.html:45
+msgid "Roles"
+msgstr "Rollen"
+
+#: apps/templates/includes/side_bar.html:46
+#: apps/templates/includes/side_bars/side_bar_docente.html:46
+msgid "Permissions"
+msgstr "Toestemmingen"
+
+#: apps/templates/includes/side_bar.html:52
+#: apps/templates/includes/side_bars/side_bar_docente.html:52
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:50
+msgid "UI Components"
+msgstr "UI-componenten"
+
+#: apps/templates/includes/side_bar.html:59
+#: apps/templates/includes/side_bars/side_bar_docente.html:59
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:57
+msgid "Basic"
+msgstr "Basis"
+
+#: apps/templates/includes/side_bar.html:62
+#: apps/templates/includes/side_bars/side_bar_docente.html:62
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:60
+msgid "Alerts"
+msgstr "Waarschuwingen"
+
+#: apps/templates/includes/side_bar.html:63
+#: apps/templates/includes/side_bars/side_bar_docente.html:63
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:61
+msgid "Buttons"
+msgstr "Knoppen"
+
+#: apps/templates/includes/side_bar.html:64
+#: apps/templates/includes/side_bars/side_bar_docente.html:64
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:62
+msgid "Cards"
+msgstr "Kaarten"
+
+#: apps/templates/includes/side_bar.html:65
+#: apps/templates/includes/side_bars/side_bar_docente.html:65
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:63
+msgid "Badges"
+msgstr "Insignes"
+
+#: apps/templates/includes/side_bar.html:73
+#: apps/templates/includes/side_bars/side_bar_docente.html:73
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:71
+msgid "Advanced"
+msgstr "Geavanceerd"
+
+#: apps/templates/includes/side_bar.html:76
+#: apps/templates/includes/side_bars/side_bar_docente.html:76
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:74
+msgid "Modals"
+msgstr "Modalen"
+
+#: apps/templates/includes/side_bar.html:78
+#: apps/templates/includes/side_bars/side_bar_docente.html:78
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:76
+msgid "Carousel"
+msgstr "Carrousel"
+
+#: apps/templates/includes/side_bar.html:79
+#: apps/templates/includes/side_bars/side_bar_docente.html:79
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:77
+msgid "Range Slider"
+msgstr "Bereikschuifregelaar"
+
+#: apps/templates/includes/side_bar.html:85
+#: apps/templates/includes/side_bars/side_bar_docente.html:85
+msgid "Tables & Data"
+msgstr "Tabellen"
+
+#: apps/templates/includes/side_bar.html:92
+#: apps/templates/includes/side_bars/side_bar_administrador.html:22
+#: apps/templates/includes/side_bars/side_bar_docente.html:92
+msgid "Tables"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:95
+#: apps/templates/includes/side_bars/side_bar_administrador.html:25
+#: apps/templates/includes/side_bars/side_bar_docente.html:95
+msgid "Basic Tables"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:96
+#: apps/templates/includes/side_bars/side_bar_administrador.html:26
+#: apps/templates/includes/side_bars/side_bar_docente.html:96
+msgid "Data Tables"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:97
+#: apps/templates/includes/side_bars/side_bar_administrador.html:27
+#: apps/templates/includes/side_bars/side_bar_docente.html:97
+msgid "Editable Tables"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:105
+#: apps/templates/includes/side_bars/side_bar_administrador.html:35
+#: apps/templates/includes/side_bars/side_bar_docente.html:105
+msgid "Charts"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:108
+#: apps/templates/includes/side_bars/side_bar_administrador.html:38
+#: apps/templates/includes/side_bars/side_bar_docente.html:108
+msgid "Apex Charts"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:109
+#: apps/templates/includes/side_bars/side_bar_administrador.html:39
+#: apps/templates/includes/side_bars/side_bar_docente.html:109
+msgid "Chart.js"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:115
+#: apps/templates/includes/side_bars/side_bar_docente.html:115
+msgid "Forms & Inputs"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:122
+#: apps/templates/includes/side_bars/side_bar_docente.html:122
+msgid "Forms"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:125
+#: apps/templates/includes/side_bars/side_bar_docente.html:125
+msgid "Form Elements"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:126
+#: apps/templates/includes/side_bars/side_bar_docente.html:126
+msgid "Form Validation"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:127
+#: apps/templates/includes/side_bars/side_bar_docente.html:127
+msgid "Form Wizard"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:128
+#: apps/templates/includes/side_bars/side_bar_docente.html:128
+msgid "File Upload"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:134
+#: apps/templates/includes/side_bars/side_bar_administrador.html:65
+#: apps/templates/includes/side_bars/side_bar_docente.html:134
+msgid "Settings & Help"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:144
+#: apps/templates/includes/side_bars/side_bar_docente.html:144
+msgid "General"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:145
+#: apps/templates/includes/side_bars/side_bar_docente.html:145
+msgid "Security"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:154
+#: apps/templates/includes/side_bars/side_bar_administrador.html:91
+#: apps/templates/includes/side_bars/side_bar_docente.html:154
+msgid "Documentation"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:162
+#: apps/templates/includes/side_bars/side_bar_administrador.html:99
+#: apps/templates/includes/side_bars/side_bar_docente.html:162
+msgid "Support"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:51
+#, fuzzy
+msgid "Tests"
+msgstr "Resetten"
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:56
+msgid "Ver Tests"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:59
+#, fuzzy
+msgid "Crear Test"
+msgstr "Lijst maken"
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:77
+msgid "Crear Usuarios"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:80
+msgid "Seguridad"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:83
+#, fuzzy
+msgid "Notificaciones"
+msgstr "Meldingen"
+
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:22
+#, fuzzy
+msgid "Actividades"
+msgstr "Actief"
+
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:26
+#, fuzzy
+msgid "Ver Actividades"
+msgstr "Gebruikersactiviteit"
+
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:28
+msgid "Calendario"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:40
+#, fuzzy
+msgid "Análisis"
+msgstr "Lijsten"
+
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:44
+msgid "Historial de Estrés"
+msgstr ""
+
+#~ msgid "Invalid authentication token."
+#~ msgstr ""
+
+#~ msgid "Invalid or expired token."
+#~ msgstr ""
+
+#~ msgid "Server error: {}"
+#~ msgstr ""
+
+#~ msgid "Nexudus login successful"
+#~ msgstr ""
+
+#~ msgid "Error logging in with Nexudus: {}"
+#~ msgstr ""
+
+#~ msgid "HubSpot access token updated successfully"
+#~ msgstr ""
+
+#~ msgid "Error updating HubSpot access token: {}"
+#~ msgstr ""
+
+#~ msgid "Accessing the main dashboard page"
+#~ msgstr ""
+
+#~ msgid "Error getting locations: {}"
+#~ msgstr ""
+
+#~ msgid "Accessing the dashboard locations page"
+#~ msgstr ""
+
+#~ msgid "Filters"
+#~ msgstr ""
+
+#~ msgid "LinkedIn"
+#~ msgstr ""
+
+#~ msgid "WhatsApp"
+#~ msgstr ""
+
+#~ msgid "SMS"
+#~ msgstr ""
+
+#~ msgid "leads"
+#~ msgstr ""
+
+#~ msgid "Norm"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "There are no leads in this list yet. Start by adding new leads or\n"
+#~ "                                adjusting your scraping settings."
+#~ msgstr ""
+
+#~ msgid "Score"
+#~ msgstr ""
+
+#~ msgid "Website"
+#~ msgstr ""
+
+#~ msgid "Status"
+#~ msgstr ""
+
+#~ msgid "Nexudus"
+#~ msgstr ""
+
+#~ msgid "HubSpot"
+#~ msgstr ""
+
+#~ msgid "Details"
+#~ msgstr ""
+
+#~ msgid "m"
+#~ msgstr ""
+
+#~ msgid "Authentication error: {}"
+#~ msgstr "Authenticatiefout: {}"
+
+#~ msgid "Registration successful"
+#~ msgstr "Registratie succesvol"
+
+#~ msgid "Settings updated successfully"
+#~ msgstr "Instellingen succesvol bijgewerkt"
+
+#~ msgid "Error updating settings: {}"
+#~ msgstr "Fout bij updaten van instellingen: {}"
+
+#~ msgid "{{ _('Accediendo a la página de análisis') }}"
+#~ msgstr "{{ _('Toegang tot de analysepagina') }}"
+
+#~ msgid "Unauthorized access: {}"
+#~ msgstr "Ongeautoriseerde toegang: {}"
+
+#~ msgid "Access forbidden: {}"
+#~ msgstr "Toegang verboden: {}"
+
+#~ msgid "Error 404: {}"
+#~ msgstr "Fout 404: {}"
+
+#~ msgid "Username or Email"
+#~ msgstr "Gebruikersnaam of e-mailadres"
+
+#~ msgid "Don't have an account?"
+#~ msgstr "Heeft u geen account?"
+
+#~ msgid "Sign Up"
+#~ msgstr "Aanmelden"
+
+#~ msgid "An unexpected error occurred. Please try again."
+#~ msgstr "Er is een onverwachte fout opgetreden. "
+
+#~ msgid "Invalid credentials. Please try again."
+#~ msgstr "Ongeldige inloggegevens. "
+
+#~ msgid "Login cancelled. Please try again."
+#~ msgstr "Aanmelding geannuleerd. "
+
+#~ msgid "Popup blocked. Please allow popups for this site."
+#~ msgstr "Pop-up geblokkeerd. "
+
+#~ msgid "User Image"
+#~ msgstr "Gebruikersafbeelding"
+
+#~ msgid "Role"
+#~ msgstr "Rol"
+
+#~ msgid "Time zone"
+#~ msgstr "Tijdzone"
+
+#~ msgid "User Analytics"
+#~ msgstr "Gebruikersanalyse"
+
+#~ msgid "Key Metrics"
+#~ msgstr "Belangrijke statistieken"
+
+#~ msgid "Sessions"
+#~ msgstr "Sessies"
+
+#~ msgid "Bounce Rate"
+#~ msgstr "Bouncepercentage"
+
+#~ msgid "Session Duration"
+#~ msgstr "Sessieduur"
+
+#~ msgid "Active Users"
+#~ msgstr "Actieve gebruikers"
+
+#~ msgid "Total Users"
+#~ msgstr "Totaal aantal gebruikers"
+
+#~ msgid "Total Revenue"
+#~ msgstr "Totale omzet"
+
+#~ msgid "Growth"
+#~ msgstr "Groei"
+
+#~ msgid "Daily Active"
+#~ msgstr "Dagelijks actief"
+
+#~ msgid "Weekly"
+#~ msgstr "Wekelijks"
+
+#~ msgid "Conversion Rate"
+#~ msgstr "Conversieratio"
+
+#~ msgid "Monthly Users"
+#~ msgstr "Maandelijkse gebruikers"
+
+#~ msgid "Recent Activities"
+#~ msgstr "Recente activiteiten"
+
+#~ msgid "Performance Overview"
+#~ msgstr "Prestatieoverzicht"
+
+#~ msgid "Date Range"
+#~ msgstr "Datumbereik"
+
+#~ msgid "Last 7 days"
+#~ msgstr "Afgelopen 7 dagen"
+
+#~ msgid "Last 30 days"
+#~ msgstr "Afgelopen 30 dagen"
+
+#~ msgid "Last 90 days"
+#~ msgstr "Afgelopen 90 dagen"
+
+#~ msgid "Custom"
+#~ msgstr "Aangepast"
+
+#~ msgid "Report Type"
+#~ msgstr "Rapporttype"
+
+#~ msgid "Performance"
+#~ msgstr "Prestaties"
+
+#~ msgid "Revenue"
+#~ msgstr "Inkomsten"
+
+#~ msgid "Format"
+#~ msgstr "Formaat"
+
+#~ msgid "Generate Report"
+#~ msgstr "Rapport genereren"
+
+#~ msgid "Recent Reports"
+#~ msgstr "Recente rapporten"
+
+#~ msgid "Report Name"
+#~ msgstr "Rapportnaam"
+
+#~ msgid "Type"
+#~ msgstr "Typ"
+
+#~ msgid "Date Generated"
+#~ msgstr "Datum gegenereerd"
+
+#~ msgid "Size"
+#~ msgstr "Grootte"
+
+#~ msgid "Actions"
+#~ msgstr "Acties"
+
+#~ msgid "User Activity Report"
+#~ msgstr "Rapport gebruikersactiviteiten"
+
+#~ msgid "Activity"
+#~ msgstr "Activiteit"
+
+#~ msgid "Monthly Performance"
+#~ msgstr "Maandelijkse prestaties"
+
+#~ msgid "Revenue Analysis"
+#~ msgstr "Omzetanalyse"
+
+#~ msgid "Reports Generated Over Time"
+#~ msgstr "Rapporten gegenereerd in de loop van de tijd"
+
+#~ msgid "Reports Generated"
+#~ msgstr "Rapporten gegenereerd"
+
+#~ msgid "WeAreBeyond logo"
+#~ msgstr "WeAreBeyond-logo"
+
+#~ msgid "Accessing the dashboard workspaces page"
+#~ msgstr "Toegang tot de pagina met dashboardwerkruimten"
+
+#~ msgid "User {} accessing DEV home page"
+#~ msgstr "Gebruiker {} heeft toegang tot de DEV-startpagina"
+
+#~ msgid "User {} accessed template: {}"
+#~ msgstr "Gebruiker {} heeft toegang gekregen tot sjabloon: {}"
+
+#~ msgid "User {} accessing the locations page"
+#~ msgstr "Gebruiker {} heeft toegang tot de locatiepagina"
+
+#~ msgid "Error getting leads"
+#~ msgstr "Fout bij ophalen van leads"
+
+#~ msgid "Scraping settings updated successfully"
+#~ msgstr "Schraapinstellingen succesvol bijgewerkt"
+
+#~ msgid "Error updating scraping settings"
+#~ msgstr "Fout bij het bijwerken van de scraping-instellingen"
+
+#~ msgid "Error updating scraping settings: {}"
+#~ msgstr "Fout bij bijwerken van scraping-instellingen: {}"
+
+#~ msgid "Lead warming settings updated successfully"
+#~ msgstr "Instellingen voor leadopwarming succesvol bijgewerkt"
+
+#~ msgid "Error updating lead warming settings"
+#~ msgstr "Fout bij het updaten van de instellingen voor loodverwarming"
+
+#~ msgid "Error updating lead warming settings: {}"
+#~ msgstr "Fout bij updaten van instellingen voor leadwarming: {}"
+
+#~ msgid "Lead list exported successfully to HubSpot"
+#~ msgstr "Leadlijst succesvol geëxporteerd naar HubSpot"
+
+#~ msgid "Error exporting lead list: {}"
+#~ msgstr "Fout bij exporteren van leadlijst: {}"
+
+#~ msgid "Error exporting lead list"
+#~ msgstr "Fout bij het exporteren van de leadlijst"
+
+#~ msgid "Lead list added successfully"
+#~ msgstr "Leadlijst succesvol toegevoegd"
+
+#~ msgid "Error adding lead list: {}"
+#~ msgstr "Fout bij toevoegen van leadlijst: {}"
+
+#~ msgid "Lead list edited successfully"
+#~ msgstr "Leadlijst succesvol bewerkt"
+
+#~ msgid "Error editing lead list: {}"
+#~ msgstr "Fout bij bewerken van leadlijst: {}"
+
+#~ msgid "Added lead list successfully to location"
+#~ msgstr "Leadlijst succesvol toegevoegd aan locatie"
+
+#~ msgid "Note added successfully"
+#~ msgstr "Notitie succesvol toegevoegd"
+
+#~ msgid "Error adding note"
+#~ msgstr "Fout bij het toevoegen van notitie"
+
+#~ msgid "Error adding note: {}"
+#~ msgstr "Fout bij het toevoegen van notitie: {}"
+
+#~ msgid "Warming lead status updated successfully"
+#~ msgstr "Status van de verwarmingsdraad is succesvol bijgewerkt"
+
+#~ msgid "Error updating warming lead status"
+#~ msgstr "Fout bij bijwerken van de status van de verwarmingsdraad"
+
+#~ msgid "Error updating warming lead status: {}"
+#~ msgstr "Fout bij bijwerken van de status van de verwarmingsdraad: {}"
+
+#~ msgid "New location added successfully"
+#~ msgstr "Nieuwe locatie succesvol toegevoegd"
+
+#~ msgid "Error saving new location"
+#~ msgstr "Fout bij opslaan van nieuwe locatie"
+
+#~ msgid "Error saving new location: {}"
+#~ msgstr "Fout bij opslaan van nieuwe locatie: {}"
+
+#~ msgid "Error getting leads data"
+#~ msgstr "Fout bij ophalen van leadgegevens"
+
+#~ msgid "Added existing lead list successfully"
+#~ msgstr "Bestaande leadlijst succesvol toegevoegd"
+
+#~ msgid "Error adding existing lead list: {}"
+#~ msgstr "Fout bij toevoegen van bestaande leadlijst: {}"
+
+#~ msgid "Error getting Nexudus locations: {}"
+#~ msgstr "Fout bij ophalen van Nexudus-locaties: {}"
+
+#~ msgid "Updated Nexudus connection successfully"
+#~ msgstr "Nexudus-verbinding succesvol bijgewerkt"
+
+#~ msgid "Error updating Nexudus connection: {}"
+#~ msgstr "Fout bij bijwerken van Nexudus-verbinding: {}"
+
+#~ msgid "Error getting workspace data: {}"
+#~ msgstr "Fout bij ophalen van werkruimtegegevens: {}"
+
+#~ msgid "Error getting workspace data"
+#~ msgstr "Fout bij ophalen van werkruimtegegevens"
+
+#~ msgid "New workspace added successfully"
+#~ msgstr "Nieuwe werkruimte succesvol toegevoegd"
+
+#~ msgid "Error saving new workspace"
+#~ msgstr "Fout bij het opslaan van nieuwe werkruimte"
+
+#~ msgid "Error saving new workspace: {}"
+#~ msgstr "Fout bij het opslaan van nieuwe werkruimte: {}"
+
+#~ msgid "Status updated successfully"
+#~ msgstr "Status succesvol bijgewerkt"
+
+#~ msgid "Error updating workspace status {}"
+#~ msgstr "Fout bij bijwerken van werkruimtestatus {}"
+
+#~ msgid "Error updating workspace status: {}"
+#~ msgstr "Fout bij bijwerken van werkruimtestatus: {}"
+
+#~ msgid "Error updating workspace status"
+#~ msgstr "Fout bij bijwerken van de status van de werkruimte"
+
+#~ msgid "Workspace updated successfully"
+#~ msgstr "Werkruimte succesvol bijgewerkt"
+
+#~ msgid "Error updating workspace {}: {}"
+#~ msgstr "Fout bij bijwerken van werkruimte {}: {}"
+
+#~ msgid "Sign up with Google"
+#~ msgstr "Aanmelden bij Google"
+
+#~ msgid "Registration cancelled. Please try again."
+#~ msgstr "Registratie geannuleerd. "
+
+#~ msgid "Browser blocked the popup. Please allow popups and try again."
+#~ msgstr "Browser heeft de pop-up geblokkeerd. "
+
+#~ msgid "Statistics"
+#~ msgstr "Statistieken"
+
+#~ msgid "Leads"
+#~ msgstr "Leidingen"
+
+#~ msgid "Quick Actions"
+#~ msgstr "Snelle acties"
+
+#~ msgid "New List"
+#~ msgstr "Nieuwe lijst"
+
+#~ msgid "Create a new lead list"
+#~ msgstr "Maak een nieuwe leadlijst"
+
+#~ msgid "Export Data"
+#~ msgstr "Gegevens exporteren"
+
+#~ msgid "Download information in CSV"
+#~ msgstr "Informatie downloaden in CSV"
+
+#~ msgid "HubSpot Access Token"
+#~ msgstr "HubSpot-toegangstoken"
+
+#~ msgid "Enter your HubSpot Access Token"
+#~ msgstr "Voer uw HubSpot-toegangstoken in"
+
+#~ msgid "HubSpot Access Token has been updated"
+#~ msgstr "HubSpot-toegangstoken is bijgewerkt"
+
+#~ msgid "HubSpot Access Token has not been updated"
+#~ msgstr "HubSpot-toegangstoken is niet bijgewerkt"
+
+#~ msgid "Save"
+#~ msgstr "Opslaan"
+
+#~ msgid "Nexudus Connection"
+#~ msgstr "Nexudus-verbinding"
+
+#~ msgid "Connect your Nexudus account to sync locations"
+#~ msgstr "Verbind uw Nexudus-account om locaties te synchroniseren"
+
+#~ msgid "Connected to Nexudus"
+#~ msgstr "Verbonden met Nexudus"
+
+#~ msgid "Last sync"
+#~ msgstr "Laatste synchronisatie"
+
+#~ msgid "Never"
+#~ msgstr "Nooit"
+
+#~ msgid "Not connected"
+#~ msgstr "Niet verbonden"
+
+#~ msgid "Connect to Nexudus to sync locations"
+#~ msgstr "Maak verbinding met Nexudus om locaties te synchroniseren"
+
+#~ msgid "Connect with Nexudus"
+#~ msgstr "Maak verbinding met Nexudus"
+
+#~ msgid "Update your personal information"
+#~ msgstr "Werk uw persoonlijke gegevens bij"
+
+#~ msgid "Name"
+#~ msgstr "Naam"
+
+#~ msgid "Spanish"
+#~ msgstr "Spaans"
+
+#~ msgid "English"
+#~ msgstr "Engels"
+
+#~ msgid "Dutch"
+#~ msgstr "Nederlands"
+
+#~ msgid "Enter your Nexudus credentials"
+#~ msgstr "Voer uw Nexudus-inloggegevens in"
+
+#~ msgid "Workspace"
+#~ msgstr "Werkruimte"
+
+#~ msgid "subdomain"
+#~ msgstr "subdomein"
+
+#~ msgid "Enter your Nexudus space subdomain"
+#~ msgstr "Voer uw Nexudus-ruimtesubdomein in"
+
+#~ msgid "Client Username"
+#~ msgstr "Gebruikersnaam van client"
+
+#~ msgid "Client Password"
+#~ msgstr "Clientwachtwoord"
+
+#~ msgid "Where can I find these credentials?"
+#~ msgstr "Waar kan ik deze inloggegevens vinden?"
+
+#~ msgid "Log in to your Nexudus admin panel"
+#~ msgstr "Meld u aan bij uw Nexudus-beheerpaneel"
+
+#~ msgid "Go to Settings > Integrations > API"
+#~ msgstr "Ga naar Instellingen > Integraties > API"
+
+#~ msgid "Create a new application or use an existing one"
+#~ msgstr "Maak een nieuwe applicatie of gebruik een bestaande"
+
+#~ msgid "Copy the Client ID and Client Secret"
+#~ msgstr "Kopieer de client-ID en het clientgeheim"
+
+#~ msgid "Your credentials are secure and encrypted"
+#~ msgstr "Uw inloggegevens zijn veilig en gecodeerd"
+
+#~ msgid "Leads generation progress"
+#~ msgstr "Voortgang van het genereren van leads"
+
+#~ msgid "Leads generated"
+#~ msgstr "Leads gegenereerd"
+
+#~ msgid "Conversion rate"
+#~ msgstr "Conversieratio"
+
+#~ msgid "Total visitors"
+#~ msgstr "Totaal aantal bezoekers"
+
+#~ msgid "Total Locations"
+#~ msgstr "Totaal aantal locaties"
+
+#~ msgid "Occupied"
+#~ msgstr "Bezet"
+
+#~ msgid "Total Work Spaces"
+#~ msgstr "Totaal aantal werkruimten"
+
+#~ msgid "Avg Occupancy Rate"
+#~ msgstr "Gemiddelde bezettingsgraad"
+
+#~ msgid "Avg Cost"
+#~ msgstr "gemiddelde kosten"
+
+#~ msgid "Locations Overview"
+#~ msgstr "Locatieoverzicht"
+
+#~ msgid "Location Name"
+#~ msgstr "Locatienaam"
+
+#~ msgid "City"
+#~ msgstr "Stad"
+
+#~ msgid "Country"
+#~ msgstr "Land"
+
+#~ msgid "Occupancy Rate"
+#~ msgstr "Bezettingsgraad"
+
+#~ msgid "Active clients"
+#~ msgstr "Actieve klanten"
+
+#~ msgid "Potential clients"
+#~ msgstr "Potentiële klanten"
+
+#~ msgid "P Clients into visitors"
+#~ msgstr "P Klanten worden bezoekers"
+
+#~ msgid "Revenue Overview"
+#~ msgstr "Omzetoverzicht"
+
+#~ msgid "Performance Metrics"
+#~ msgstr "Prestatiestatistieken"
+
+#~ msgid "Occupancy rate trend"
+#~ msgstr "Trend bezettingsgraad"
+
+#~ msgid "Lead rate trend"
+#~ msgstr "Trend in leadsnelheid"
+
+#~ msgid "Expenses"
+#~ msgstr "Uitgaven"
+
+#~ msgid "Lead Management"
+#~ msgstr "Leadbeheer"
+
+#~ msgid "Lead Scraping"
+#~ msgstr "Lood schrapen"
+
+#~ msgid "Lead Lists"
+#~ msgstr "Leadlijsten"
+
+#~ msgid "Lead Generation"
+#~ msgstr "Leadgeneratie"
+
+#~ msgid "Location Management"
+#~ msgstr "Locatiebeheer"
+
+#~ msgid "Locations"
+#~ msgstr "Locaties"
+
+#~ msgid "View Locations"
+#~ msgstr "Locaties bekijken"
+
+#~ msgid "Help"
+#~ msgstr "Hulp"
+
+#~ msgid "Logo of"
+#~ msgstr "Logo van"
+
+#~ msgid "Enterprise"
+#~ msgstr "Onderneming"
+
+#~ msgid "Enterprise Info"
+#~ msgstr "Bedrijfsinfo"
+
+#~ msgid "Contacts"
+#~ msgstr "Contacten"
+
+#~ msgid "Chronology"
+#~ msgstr "Chronologie"
+
+#~ msgid "Notes"
+#~ msgstr "Notities"
+
+#~ msgid "Add New List"
+#~ msgstr "Nieuwe lijst toevoegen"
+
+#~ msgid "Total Lists"
+#~ msgstr "Totaallijsten"
+
+#~ msgid "Active Lists"
+#~ msgstr "Actieve lijsten"
+
+#~ msgid "Paused Lists"
+#~ msgstr "Gepauzeerde lijsten"
+
+#~ msgid "Completed Lists"
+#~ msgstr "Voltooide lijsten"
+
+#~ msgid "Reset Filters"
+#~ msgstr "Filters opnieuw instellen"
+
+#~ msgid "Search lists..."
+#~ msgstr "Zoeklijsten..."
+
+#~ msgid "All Status"
+#~ msgstr "Alle status"
+
+#~ msgid "Paused"
+#~ msgstr "Gepauzeerd"
+
+#~ msgid "Completed"
+#~ msgstr "Voltooid"
+
+#~ msgid "All Types"
+#~ msgstr "Alle typen"
+
+#~ msgid "Static"
+#~ msgstr "Statisch"
+
+#~ msgid "Dynamic"
+#~ msgstr "Dynamisch"
+
+#~ msgid "All Locations"
+#~ msgstr "Alle locaties"
+
+#~ msgid "Not available"
+#~ msgstr "Niet beschikbaar"
+
+#~ msgid "Monthly"
+#~ msgstr "Maandelijks"
+
+#~ msgid "Total"
+#~ msgstr "Totaal"
+
+#~ msgid "Max leads per day"
+#~ msgstr "Max. aantal leads per dag"
+
+#~ msgid "Industries"
+#~ msgstr "Industrieën"
+
+#~ msgid "Excluded"
+#~ msgstr "Uitgesloten"
+
+#~ msgid "Warming"
+#~ msgstr "Opwarming"
+
+#~ msgid "View Leads"
+#~ msgstr "Leads bekijken"
+
+#~ msgid "Updated"
+#~ msgstr "Bijgewerkt"
+
+#~ msgid "Leads by List"
+#~ msgstr "Leads per lijst"
+
+#~ msgid "Leads Management"
+#~ msgstr "Leadbeheer"
+
+#~ msgid "List Settings"
+#~ msgstr "Lijstinstellingen"
+
+#~ msgid "Scraping Settings"
+#~ msgstr "Schraapinstellingen"
+
+#~ msgid "Warning Settings"
+#~ msgstr "Waarschuwingsinstellingen"
+
+#~ msgid "Start Warming"
+#~ msgstr "Start opwarming"
+
+#~ msgid "Export to excel"
+#~ msgstr "Exporteren naar Excel"
+
+#~ msgid "Export to HubSpot"
+#~ msgstr "Exporteren naar HubSpot"
+
+#~ msgid "High Potential"
+#~ msgstr "Hoog potentieel"
+
+#~ msgid "High"
+#~ msgstr "Hoog"
+
+#~ msgid "Mid Potential"
+#~ msgstr "Gemiddeld potentieel"
+
+#~ msgid "Mid"
+#~ msgstr "Midden"
+
+#~ msgid "Normal"
+#~ msgstr "Normaal"
+
+#~ msgid "No Leads Available"
+#~ msgstr "Geen leads beschikbaar"
+
+#~ msgid "Company"
+#~ msgstr "Bedrijf"
+
+#~ msgid "Current Office Status"
+#~ msgstr "Huidige kantoorstatus"
+
+#~ msgid "Lead Status"
+#~ msgstr "Leadstatus"
+
+#~ msgid "Location"
+#~ msgstr "Locatie"
+
+#~ msgid "Age"
+#~ msgstr "Leeftijd"
+
+#~ msgid "View Details"
+#~ msgstr "Details bekijken"
+
+#~ msgid "Search leads..."
+#~ msgstr "Zoek leads..."
+
+#~ msgid "Showing"
+#~ msgstr "Tonen"
+
+#~ msgid "to"
+#~ msgstr "tot"
+
+#~ msgid "of"
+#~ msgstr "van"
+
+#~ msgid "entries"
+#~ msgstr "inzendingen"
+
+#~ msgid "Showing 0 to 0 of 0 entries"
+#~ msgstr "Toon 0 tot 0 van 0 vermeldingen"
+
+#~ msgid "filtered from"
+#~ msgstr "gefilterd uit"
+
+#~ msgid "total entries"
+#~ msgstr "totaal aantal inschrijvingen"
+
+#~ msgid "Show"
+#~ msgstr "Tonen"
+
+#~ msgid "No matching records found"
+#~ msgstr "Geen overeenkomende records gevonden"
+
+#~ msgid "Please select at least one lead to start warming"
+#~ msgstr "Selecteer ten minste één afleiding om het opwarmen te starten"
+
+#~ msgid "Created by"
+#~ msgstr "Gemaakt door"
+
+#~ msgid "Assigned"
+#~ msgstr "Toegewezen"
+
+#~ msgid "Assigned to"
+#~ msgstr "Toegewezen aan"
+
+#~ msgid "Last Modified"
+#~ msgstr "Laatst gewijzigd"
+
+#~ msgid "Lead updated"
+#~ msgstr "Lead bijgewerkt"
+
+#~ msgid "Last Enriched"
+#~ msgstr "Laatst verrijkt"
+
+#~ msgid "Data enriched"
+#~ msgstr "Gegevens verrijkt"
+
+#~ msgid "Activity Summary"
+#~ msgstr "Activiteitensamenvatting"
+
+#~ msgid "Last Activity"
+#~ msgstr "Laatste activiteit"
+
+#~ msgid "No recent activity"
+#~ msgstr "Geen recente activiteit"
+
+#~ msgid "View LinkedIn Profile"
+#~ msgstr "LinkedIn-profiel bekijken"
+
+#~ msgid "Contact Information"
+#~ msgstr "Contactgegevens"
+
+#~ msgid "Additional Information"
+#~ msgstr "Aanvullende informatie"
+
+#~ msgid "Mobile"
+#~ msgstr "Mobiel"
+
+#~ msgid "Send Message"
+#~ msgstr "Bericht verzenden"
+
+#~ msgid "Connect"
+#~ msgstr "Verbinden"
+
+#~ msgid "No contacts available"
+#~ msgstr "Geen contacten beschikbaar"
+
+#~ msgid "General Information"
+#~ msgstr "Algemene informatie"
+
+#~ msgid "Foundation Year"
+#~ msgstr "oprichtingsjaar"
+
+#~ msgid "years"
+#~ msgstr "jaar"
+
+#~ msgid "View Profile"
+#~ msgstr "Profiel bekijken"
+
+#~ msgid "Rental Amount"
+#~ msgstr "Huurbedrag"
+
+#~ msgid "month"
+#~ msgstr "maand"
+
+#~ msgid "Budget Indication"
+#~ msgstr "Begrotingsindicatie"
+
+#~ msgid "Preferred Language"
+#~ msgstr "Voorkeurstaal"
+
+#~ msgid "Lead Source"
+#~ msgstr "Hoofdbron"
+
+#~ msgid "Location and Description"
+#~ msgstr "Locatie en beschrijving"
+
+#~ msgid "Address"
+#~ msgstr "Adres"
+
+#~ msgid "Description"
+#~ msgstr "Beschrijving"
+
+#~ msgid "Company Details"
+#~ msgstr "Bedrijfsgegevens"
+
+#~ msgid "Employees"
+#~ msgstr "Werknemers"
+
+#~ msgid "Growing"
+#~ msgstr "Groeien"
+
+#~ msgid "Current Flex Office Provider"
+#~ msgstr "Huidige Flex Office-aanbieder"
+
+#~ msgid "Not specified"
+#~ msgstr "Niet gespecificeerd"
+
+#~ msgid "Recent Funding"
+#~ msgstr "Recente financiering"
+
+#~ msgid "Amount"
+#~ msgstr "Bedrag"
+
+#~ msgid "Date"
+#~ msgstr "Datum"
+
+#~ msgid "Funding Round"
+#~ msgstr "Financieringsronde"
+
+#~ msgid "Investors"
+#~ msgstr "Investeerders"
+
+#~ msgid "Employee Count Increase"
+#~ msgstr "Toename van het aantal werknemers"
+
+#~ msgid "Yes"
+#~ msgstr "Ja"
+
+#~ msgid "No"
+#~ msgstr "Nee"
+
+#~ msgid "Discussing Hybrid Office Return"
+#~ msgstr "Bespreking van hybride kantoorretour"
+
+#~ msgid "Existing Customer"
+#~ msgstr "Bestaande klant"
+
+#~ msgid "Add Note"
+#~ msgstr "Voeg notitie toe"
+
+#~ msgid "Write your note here..."
+#~ msgstr "Schrijf hier uw notitie..."
+
+#~ msgid "Save Note"
+#~ msgstr "Opmerking opslaan"
+
+#~ msgid "Delete"
+#~ msgstr "Verwijderen"
+
+#~ msgid "No notes"
+#~ msgstr "Geen aantekeningen"
+
+#~ msgid "No notes have been added for this lead."
+#~ msgstr "Er zijn geen aantekeningen toegevoegd voor deze lead."
+
+#~ msgid "Edit Lead List"
+#~ msgstr "Leadlijst bewerken"
+
+#~ msgid "Basic Information"
+#~ msgstr "Basisinformatie"
+
+#~ msgid "Enter list name"
+#~ msgstr "Voer lijstnaam in"
+
+#~ msgid "Location Selection"
+#~ msgstr "Locatieselectie"
+
+#~ msgid "Select one or more locations"
+#~ msgstr "Selecteer een of meer locaties"
+
+#~ msgid "Dynamic Scraping"
+#~ msgstr "Dynamisch schrapen"
+
+#~ msgid "Static Scraping"
+#~ msgstr "Statisch schrapen"
+
+#~ msgid "Archived"
+#~ msgstr "Gearchiveerd"
+
+#~ msgid "Enter estimated cost"
+#~ msgstr "Geschatte kosten invoeren"
+
+#~ msgid "Lead Warming Settings"
+#~ msgstr "Instellingen voor loodverwarming"
+
+#~ msgid "Communication Channels"
+#~ msgstr "Communicatiekanalen"
+
+#~ msgid "Sequence"
+#~ msgstr "Volgorde"
+
+#~ msgid "Step"
+#~ msgstr "Stap"
+
+#~ msgid "Channel"
+#~ msgstr "Kanaal"
+
+#~ msgid "Select channel"
+#~ msgstr "Kanaal selecteren"
+
+#~ msgid "Delay (days)"
+#~ msgstr "Vertraging (dagen)"
+
+#~ msgid "Message Template"
+#~ msgstr "Berichtsjabloon"
+
+#~ msgid "Remove"
+#~ msgstr "Verwijderen"
+
+#~ msgid "Add Step"
+#~ msgstr "Stap toevoegen"
+
+#~ msgid "Language Preference"
+#~ msgstr "Taalvoorkeur"
+
+#~ msgid "Removing..."
+#~ msgstr "Verwijderen..."
+
+#~ msgid "New Lead List"
+#~ msgstr "Nieuwe hoofdlijst"
+
+#~ msgid "Create a new list for lead scraping"
+#~ msgstr "Maak een nieuwe lijst voor het schrapen van leads"
+
+#~ msgid "Enter total cost"
+#~ msgstr "Voer de totale kosten in"
+
+#~ msgid "Company Information"
+#~ msgstr "Bedrijfsinformatie"
+
+#~ msgid "Add industry"
+#~ msgstr "Industrie toevoegen"
+
+#~ msgid "Employee Range"
+#~ msgstr "Werknemersbereik"
+
+#~ msgid "Minimum"
+#~ msgstr "Minimaal"
+
+#~ msgid "Maximum"
+#~ msgstr "Maximaal"
+
+#~ msgid "Company Age"
+#~ msgstr "Bedrijfstijdperk"
+
+#~ msgid "Budget Range"
+#~ msgstr "Budgetbereik"
+
+#~ msgid "Geographic Filters"
+#~ msgstr "Geografische filters"
+
+#~ msgid "Countries"
+#~ msgstr "Landen"
+
+#~ msgid "Add country"
+#~ msgstr "Voeg land toe"
+
+#~ msgid "Cities"
+#~ msgstr "Steden"
+
+#~ msgid "Add city"
+#~ msgstr "Stad toevoegen"
+
+#~ msgid "Radius (km)"
+#~ msgstr "Straal (km)"
+
+#~ msgid "Additional Filters"
+#~ msgstr "Extra filters"
+
+#~ msgid "Exclude Companies"
+#~ msgstr "Bedrijven uitsluiten"
+
+#~ msgid "Add company to exclude"
+#~ msgstr "Voeg bedrijf toe om uit te sluiten"
+
+#~ msgid "Current Flex Workspace Providers"
+#~ msgstr "Huidige aanbieders van flexibele werkplekken"
+
+#~ msgid "Add provider"
+#~ msgstr "Provider toevoegen"
+
+#~ msgid "Currently in Flexible Workspace"
+#~ msgstr "Momenteel in flexibele werkruimte"
+
+#~ msgid "Scraping Configuration"
+#~ msgstr "Schrapconfiguratie"
+
+#~ msgid "Auto"
+#~ msgstr "Automatisch"
+
+#~ msgid "Maximum Leads per Day"
+#~ msgstr "Maximale leads per dag"
+
+#~ msgid "Keywords"
+#~ msgstr "Trefwoorden"
+
+#~ msgid "Add keyword"
+#~ msgstr "Trefwoord toevoegen"
+
+#~ msgid "Funding Status"
+#~ msgstr "Financieringsstatus"
+
+#~ msgid "Add funding status"
+#~ msgstr "Voeg financieringsstatus toe"
+
+#~ msgid "Purchase Signals"
+#~ msgstr "Aankoopsignalen"
+
+#~ msgid "Add purchase signal"
+#~ msgstr "Aankoopsignaal toevoegen"
+
+#~ msgid "Selected Leads for Warming"
+#~ msgstr "Geselecteerde leads voor opwarming"
+
+#~ msgid "Select Status"
+#~ msgstr "Selecteer Status"
+
+#~ msgid "Scraping"
+#~ msgstr "Schrapen"
+
+#~ msgid "Visited"
+#~ msgstr "Bezocht"
+
+#~ msgid "Ready to Heat"
+#~ msgstr "Klaar om te verwarmen"
+
+#~ msgid "Warm Up"
+#~ msgstr "Opwarming"
+
+#~ msgid "Apply Status"
+#~ msgstr "Status toepassen"
+
+#~ msgid "Please select at least one lead to start warming."
+#~ msgstr "Selecteer ten minste één leiding om de opwarming te starten."
+
+#~ msgid "Total Selected"
+#~ msgstr "Totaal geselecteerd"
+
+#~ msgid "Remove from Selection"
+#~ msgstr "Verwijderen uit selectie"
+
+#~ msgid "Synchronize with nexudus"
+#~ msgstr "Synchroniseren met Nexudus"
+
+#~ msgid "Search for locations..."
+#~ msgstr "Zoek naar locaties..."
+
+#~ msgid "All"
+#~ msgstr "Alles"
+
+#~ msgid "Add New Location"
+#~ msgstr "Nieuwe locatie toevoegen"
+
+#~ msgid "Workspaces"
+#~ msgstr "Werkruimtes"
+
+#~ msgid "Occupation Rate"
+#~ msgstr "Bezettingsgraad"
+
+#~ msgid "Integrations"
+#~ msgstr "Integraties"
+
+#~ msgid "Connected"
+#~ msgstr "Verbonden"
+
+#~ msgid "Unlinked"
+#~ msgstr "Ontkoppeld"
+
+#~ msgid "Not Connected"
+#~ msgstr "Niet verbonden"
+
+#~ msgid "View Workspaces"
+#~ msgstr "Werkruimten bekijken"
+
+#~ msgid "More Info"
+#~ msgstr "meer informatie"
+
+#~ msgid "Synchronizing with Nexudus"
+#~ msgstr "Synchroniseren met Nexudus"
+
+#~ msgid "Processing all users in the background"
+#~ msgstr "Alle gebruikers op de achtergrond verwerken"
+
+#~ msgid "Synchronization Started"
+#~ msgstr "Synchronisatie gestart"
+
+#~ msgid "OK"
+#~ msgstr "Oké"
+
+#~ msgid "Sync failed"
+#~ msgstr "Synchronisatie mislukt"
+
+#~ msgid "Synchronization Error"
+#~ msgstr "Synchronisatiefout"
+
+#~ msgid "An error occurred while synchronizing with Nexudus"
+#~ msgstr "Er is een fout opgetreden tijdens het synchroniseren met Nexudus"
+
+#~ msgid "No locations found matching the search."
+#~ msgstr "Geen locaties gevonden die overeenkomen met de zoekopdracht."
+
+#~ msgid "Loading locations..."
+#~ msgstr "Laadlocaties..."
+
+#~ msgid "Select a Nexudus Location"
+#~ msgstr "Selecteer een Nexudus-locatie"
+
+#~ msgid "Nexudus Location 1"
+#~ msgstr "Nexudus-locatie 1"
+
+#~ msgid "Nexudus Location 2"
+#~ msgstr "Nexudus-locatie 2"
+
+#~ msgid "Nexudus Location 3"
+#~ msgstr "Nexudus-locatie 3"
+
+#~ msgid "Error loading locations:"
+#~ msgstr "Fout bij laadlocaties:"
+
+#~ msgid "Error loading locations"
+#~ msgstr "Fout bij het laden van locaties"
+
+#~ msgid "Workspace Management"
+#~ msgstr "Werkruimtebeheer"
+
+#~ msgid "Search for workspaces..."
+#~ msgstr "Zoeken naar werkruimtes..."
+
+#~ msgid "Office"
+#~ msgstr "Kantoor"
+
+#~ msgid "Hot Desk"
+#~ msgstr "Hotdesk"
+
+#~ msgid "Dedicated Desk"
+#~ msgstr "Speciaal bureau"
+
+#~ msgid "Other"
+#~ msgstr "Anders"
+
+#~ msgid "Available"
+#~ msgstr "Beschikbaar"
+
+#~ msgid "Add New Workspace"
+#~ msgstr "Nieuwe werkruimte toevoegen"
+
+#~ msgid "Price"
+#~ msgstr "Prijs"
+
+#~ msgid "Start"
+#~ msgstr "Begin"
+
+#~ msgid "End"
+#~ msgstr "Einde"
+
+#~ msgid "Included"
+#~ msgstr "Inbegrepen"
+
+#~ msgid "View"
+#~ msgstr "Uitzicht"
+
+#~ msgid "No workspaces found at this location."
+#~ msgstr "Geen werkruimtes gevonden op deze locatie."
+
+#~ msgid "Loading more workspaces..."
+#~ msgstr "Meer werkruimten laden..."
+
+#~ msgid "No results found"
+#~ msgstr "Geen resultaten gevonden"
+
+#~ msgid "It seems that there are no workspaces matching your search criteria."
+#~ msgstr ""
+#~ "Het lijkt erop dat er geen "
+#~ "werkruimten zijn die aan uw zoekcriteria"
+#~ " voldoen."
+
+#~ msgid "Try adjusting your search:"
+#~ msgstr "Probeer uw zoekopdracht aan te passen:"
+
+#~ msgid "Check for typos in your search term"
+#~ msgstr "Controleer op typefouten in uw zoekterm"
+
+#~ msgid "Try using different filters"
+#~ msgstr "Probeer verschillende filters te gebruiken"
+
+#~ msgid "Use more general search terms"
+#~ msgstr "Gebruik meer algemene zoektermen"
+
+#~ msgid "Associate with an Existing Lead List"
+#~ msgstr "Koppelen aan een bestaande leadlijst"
+
+#~ msgid "Lead List"
+#~ msgstr "Hoofdlijst"
+
+#~ msgid "Select a Lead List"
+#~ msgstr "Selecteer een leadlijst"
+
+#~ msgid "Save Lead List"
+#~ msgstr "Leadlijst opslaan"
+
+#~ msgid "Loading lead lists..."
+#~ msgstr "Leadlijsten laden..."
+
+#~ msgid "Error loading Lead Lists"
+#~ msgstr "Fout bij het laden van leadlijsten"
+
+#~ msgid "Create a new list for location"
+#~ msgstr "Maak een nieuwe lijst voor locatie"
+
+#~ msgid "List Name"
+#~ msgstr "Lijstnaam"
+
+#~ msgid "Scraping Type"
+#~ msgstr "Schraaptype"
+
+#~ msgid "Estimated Monthly Costs"
+#~ msgstr "Geschatte maandelijkse kosten"
+
+#~ msgid "Total Actual Costs"
+#~ msgstr "Totale werkelijke kosten"
+
+#~ msgid "Associate with Nexudus"
+#~ msgstr "Associatie met Nexudus"
+
+#~ msgid "Nexudus Location"
+#~ msgstr "Nexudus-locatie"
+
+#~ msgid "Select nexudus location"
+#~ msgstr "Selecteer Nexudus-locatie"
+
+#~ msgid "Associate"
+#~ msgstr "Medewerker"
+
+#~ msgid "Postal Code"
+#~ msgstr "Postcode"
+
+#~ msgid "Total Size"
+#~ msgstr "Totale grootte"
+
+#~ msgid "Total Size Measurement Unit"
+#~ msgstr "Totale maateenheid"
+
+#~ msgid "Latitude"
+#~ msgstr "Breedtegraad"
+
+#~ msgid "Longitude"
+#~ msgstr "Lengtegraad"
+
+#~ msgid "Total Spaces"
+#~ msgstr "Totaal aantal spaties"
+
+#~ msgid "Location coordinates not available"
+#~ msgstr "Locatiecoördinaten niet beschikbaar"
+
+#~ msgid "New Location"
+#~ msgstr "Nieuwe locatie"
+
+#~ msgid "Add a new location to your portfolio"
+#~ msgstr "Voeg een nieuwe locatie toe aan uw portfolio"
+
+#~ msgid "Enter location name"
+#~ msgstr "Voer locatienaam in"
+
+#~ msgid "Enter address"
+#~ msgstr "Voer adres in"
+
+#~ msgid "Location Details"
+#~ msgstr "Locatiedetails"
+
+#~ msgid "Enter city"
+#~ msgstr "Voer de stad in"
+
+#~ msgid "Enter postal code"
+#~ msgstr "Voer postcode in"
+
+#~ msgid "Enter country"
+#~ msgstr "Voer land in"
+
+#~ msgid "Coordinates"
+#~ msgstr "Coördinaten"
+
+#~ msgid "Enter longitude (-180 to 180)"
+#~ msgstr "Lengtegraad invoeren (-180 tot 180)"
+
+#~ msgid "Enter latitude (-90 to 90)"
+#~ msgstr "Voer de breedtegraad in (-90 tot 90)"
+
+#~ msgid "Size Information"
+#~ msgstr "Maatinformatie"
+
+#~ msgid "Enter total size"
+#~ msgstr "Voer de totale grootte in"
+
+#~ msgid "1 for m², 2 for ft²"
+#~ msgstr "1 voor m², 2 voor ft²"
+
+#~ msgid "Enter description"
+#~ msgstr "Voer beschrijving in"
+
+#~ msgid "Save Location"
+#~ msgstr "Locatie opslaan"
+
+#~ msgid "Location Lead Lists"
+#~ msgstr "Lijst met locatieleads"
+
+#~ msgid "Error loading lead lists"
+#~ msgstr "Fout bij het laden van leadlijsten"
+
+#~ msgid "Retry"
+#~ msgstr "Opnieuw proberen"
+
+#~ msgid "No lead lists available"
+#~ msgstr "Geen leadlijsten beschikbaar"
+
+#~ msgid "Create New List"
+#~ msgstr "Nieuwe lijst maken"
+
+#~ msgid "Monthly Cost"
+#~ msgstr "Maandelijkse kosten"
+
+#~ msgid "Total Costs"
+#~ msgstr "Totale kosten"
+
+#~ msgid "Last Update"
+#~ msgstr "Laatste update"
+
+#~ msgid "Add Existing List"
+#~ msgstr "Bestaande lijst toevoegen"
+
+#~ msgid "System"
+#~ msgstr "Systeem"
+
+#~ msgid "Not Set"
+#~ msgstr "Niet ingesteld"
+
+#~ msgid "Delete List"
+#~ msgstr "Lijst verwijderen"
+
+#~ msgid "Change Status"
+#~ msgstr "Status wijzigen"
+
+#~ msgid "Availability Status"
+#~ msgstr "Beschikbaarheidsstatus"
+
+#~ msgid "Exclude from Scraping"
+#~ msgstr "Uitsluiten van schrapen"
+
+#~ msgid "Edit Workspace"
+#~ msgstr "Werkruimte bewerken"
+
+#~ msgid "Public Name"
+#~ msgstr "Openbare naam"
+
+#~ msgid "Internal Code"
+#~ msgstr "Interne code"
+
+#~ msgid "Floor"
+#~ msgstr "Vloer"
+
+#~ msgid "Desk Count"
+#~ msgstr "Aantal bureaus"
+
+#~ msgid "Capacity"
+#~ msgstr "Capaciteit"
+
+#~ msgid "Pricing"
+#~ msgstr "Prijzen"
+
+#~ msgid "Price (per month)"
+#~ msgstr "Prijs (per maand)"
+
+#~ msgid "Additional Properties"
+#~ msgstr "Extra eigenschappen"
+
+#~ msgid "Enter additional properties here"
+#~ msgstr "Voer hier aanvullende eigenschappen in"
+
+#~ msgid "Workspace Details"
+#~ msgstr "Details van de werkruimte"
+
+#~ msgid "List Price"
+#~ msgstr "Catalogusprijs"
+
+#~ msgid "Availability"
+#~ msgstr "Beschikbaarheid"
+
+#~ msgid "Occupied until"
+#~ msgstr "Bezet tot"
+
+#~ msgid "Scraping Status"
+#~ msgstr "Schrapstatus"
+
+#~ msgid "New Workspace"
+#~ msgstr "Nieuwe werkruimte"
+
+#~ msgid "Add a new workspace to"
+#~ msgstr "Voeg een nieuwe werkruimte toe"
+
+#~ msgid "Letters and numbers only"
+#~ msgstr "Alleen letters en cijfers"
+
+#~ msgid "Size and Capacity"
+#~ msgstr "Grootte en capaciteit"
+
+#~ msgid "Number of Desks"
+#~ msgstr "Aantal bureaus"
+
+#~ msgid "Minimum Price"
+#~ msgstr "Minimumprijs"
+

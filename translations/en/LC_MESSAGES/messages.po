@@ -1,0 +1,2728 @@
+# English translations for PROJECT.
+# Copyright (C) 2024 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2024-12-14 23:05-0500\n"
+"PO-Revision-Date: 2024-11-06 00:33-0500\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: en\n"
+"Language-Team: en <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.16.0\n"
+
+#: apps/routes/administrador/routes.py:23 apps/routes/docente/routes.py:17
+#: apps/routes/estudiante/routes.py:17
+msgid "✅ Accediendo a la página principal del dashboard"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:35
+msgid "✅ Accediendo a la página de creación de usuarios"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:63
+msgid "Estudiante creado exitosamente"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:68
+msgid "Error al crear estudiante: {}"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:93
+msgid "Docente creado exitosamente"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:98
+msgid "Error al crear docente: {}"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:120
+msgid "Administrador creado exitosamente"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:125
+msgid "Error al crear administrador: {}"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:136
+#: apps/routes/administrador/routes.py:221
+msgid "No se encontró el archivo"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:140
+#: apps/routes/administrador/routes.py:225
+msgid "No se seleccionó ningún archivo"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:153
+#: apps/routes/administrador/routes.py:238
+msgid "El archivo no tiene el formato correcto"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:203
+msgid "Estudiantes importados exitosamente"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:210
+#: apps/routes/administrador/routes.py:295
+msgid "Error al procesar el archivo: {}"
+msgstr ""
+
+#: apps/routes/administrador/routes.py:288
+msgid "Docentes importados exitosamente"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:49
+msgid "Invalid JSON request"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:53
+msgid "No JSON data provided"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:57
+msgid "ID token not provided"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:63
+msgid "Authentication error"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:75
+msgid "You have successfully logged out"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:100
+msgid "Ya tienes credenciales válidas para Google Forms"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:128
+msgid "Autenticación con Google Forms completada exitosamente"
+msgstr ""
+
+#: apps/routes/authentication/routes.py:143
+msgid "Unauthorized access. Please log in."
+msgstr ""
+
+#: apps/routes/authentication/routes.py:150
+msgid "Access forbidden. You do not have permission to access this page."
+msgstr ""
+
+#: apps/routes/authentication/services.py:21
+msgid "Invalid user information"
+msgstr ""
+
+#: apps/routes/authentication/services.py:36
+msgid "User not found in database"
+msgstr ""
+
+#: apps/routes/authentication/services.py:40
+msgid "Invalid user data"
+msgstr ""
+
+#: apps/routes/authentication/services.py:78
+msgid "Email is not registered."
+msgstr ""
+
+#: apps/routes/authentication/services.py:80
+#: apps/templates/accounts/login.html:272
+msgid "Incorrect password. Please try again."
+msgstr ""
+
+#: apps/routes/home/routes.py:22
+msgid "User {} accessing home page"
+msgstr ""
+
+#: apps/routes/home/routes.py:42 apps/routes/home/routes.py:83
+msgid "Profile updated successfully"
+msgstr ""
+
+#: apps/routes/home/routes.py:44 apps/routes/home/routes.py:48
+#: apps/routes/home/routes.py:85
+msgid "Error updating profile: {}"
+msgstr ""
+
+#: apps/routes/home/routes.py:49
+msgid "Error updating profile"
+msgstr ""
+
+#: apps/routes/home/routes.py:52
+msgid "User {} accessing their profile"
+msgstr ""
+
+#: apps/routes/home/routes.py:63
+msgid "Layout updated successfully"
+msgstr ""
+
+#: apps/routes/home/routes.py:65 apps/routes/home/routes.py:68
+msgid "Error updating layout: {}"
+msgstr ""
+
+#: apps/routes/home/routes.py:69
+msgid "Error updating layout"
+msgstr ""
+
+#: apps/routes/home/routes.py:109
+msgid "Template not found: {}"
+msgstr ""
+
+#: apps/routes/home/routes.py:112
+msgid "Error rendering template {}: {}"
+msgstr ""
+
+#: apps/routes/home/routes.py:122
+msgid "Error getting segment: {}"
+msgstr ""
+
+#: apps/templates/accounts/login.html:3 apps/templates/accounts/login.html:21
+#: apps/templates/accounts/login.html:75
+#: apps/templates/accounts/register.html:80 apps/templates/errors/401.html:29
+#: apps/templates/errors/401.html:52 apps/templates/errors/403.html:51
+msgid "Login"
+msgstr ""
+
+#: apps/templates/accounts/login.html:12
+msgid "Welcome Back!"
+msgstr ""
+
+#: apps/templates/accounts/login.html:13
+msgid "Sign in to your account and explore the Flask Gradient."
+msgstr ""
+
+#: apps/templates/accounts/login.html:14
+msgid "If you need view the components for usin in this template, click here."
+msgstr ""
+
+#: apps/templates/accounts/login.html:15
+msgid "View Components"
+msgstr ""
+
+#: apps/templates/accounts/login.html:25
+#: apps/templates/accounts/register.html:26
+msgid "Loading..."
+msgstr ""
+
+#: apps/templates/accounts/login.html:27
+msgid "Logging in..."
+msgstr ""
+
+#: apps/templates/accounts/login.html:33
+msgid "Sign in with Google"
+msgstr ""
+
+#: apps/templates/accounts/login.html:37
+msgid "or"
+msgstr ""
+
+#: apps/templates/accounts/login.html:47
+#: apps/templates/accounts/profile/modals/edit_profile.html:51
+#: apps/templates/accounts/profile/modals/edit_profile.html:107
+#: apps/templates/accounts/profile/profile.html:121
+#: apps/templates/accounts/register.html:48
+msgid "Email"
+msgstr ""
+
+#: apps/templates/accounts/login.html:57
+#: apps/templates/accounts/register.html:58 apps/templates/errors/401.html:48
+msgid "Password"
+msgstr ""
+
+#: apps/templates/accounts/login.html:71
+msgid "Remember Me"
+msgstr ""
+
+#: apps/templates/accounts/login.html:79
+msgid "Forgot your password?"
+msgstr ""
+
+#: apps/templates/accounts/login.html:79
+#: apps/templates/accounts/profile/layouts_config.html:17
+msgid "Reset"
+msgstr ""
+
+#: apps/templates/accounts/login.html:187
+#: apps/templates/accounts/login.html:236
+msgid "Login successful"
+msgstr ""
+
+#: apps/templates/accounts/login.html:192
+#: apps/templates/accounts/login.html:241
+#: apps/templates/accounts/register.html:231
+msgid "Unknown error"
+msgstr ""
+
+#: apps/templates/accounts/login.html:253
+msgid "Google Sign-In Required"
+msgstr ""
+
+#: apps/templates/accounts/login.html:254
+msgid ""
+"This account is now linked to Google. Please use the Google Sign-In "
+"button above."
+msgstr ""
+
+#: apps/templates/accounts/login.html:255
+msgid "Use Google Sign-In"
+msgstr ""
+
+#: apps/templates/accounts/login.html:268
+msgid "An error occurred during login. Please try again."
+msgstr ""
+
+#: apps/templates/accounts/login.html:270
+msgid "No account found with this email."
+msgstr ""
+
+#: apps/templates/accounts/register.html:3
+#: apps/templates/accounts/register.html:22
+#: apps/templates/accounts/register.html:76 apps/templates/errors/401.html:62
+msgid "Register"
+msgstr ""
+
+#: apps/templates/accounts/register.html:12
+msgid "Welcome to Flask Gradient!"
+msgstr ""
+
+#: apps/templates/accounts/register.html:13
+msgid ""
+"Create your account and start using the Flask Gradient. \n"
+"                This is a template that you can use as a starting point "
+"for your own web application. <br>\n"
+"                Already have an account? <a href=\"/auth-login.html\" "
+"class=\"text-white f-w-400\">Login</a>\n"
+"                "
+msgstr ""
+
+#: apps/templates/accounts/register.html:28
+msgid "Processing registration..."
+msgstr ""
+
+#: apps/templates/accounts/register.html:38 apps/templates/errors/401.html:38
+msgid "Username"
+msgstr ""
+
+#: apps/templates/accounts/register.html:72
+msgid "I accept the"
+msgstr ""
+
+#: apps/templates/accounts/register.html:72
+msgid "terms and conditions"
+msgstr ""
+
+#: apps/templates/accounts/register.html:80
+msgid "Already have an account?"
+msgstr ""
+
+#: apps/templates/accounts/register.html:101
+msgid "An error occurred during registration. Please try again later."
+msgstr ""
+
+#: apps/templates/accounts/register.html:104
+msgid "This email is already in use. Please use another one or login."
+msgstr ""
+
+#: apps/templates/accounts/register.html:106
+msgid "Invalid email. Please verify and try again."
+msgstr ""
+
+#: apps/templates/accounts/register.html:108
+msgid "Password is too weak. Please choose a stronger password."
+msgstr ""
+
+#: apps/templates/accounts/register.html:149
+msgid "Only @unl.edu.ec email addresses are allowed."
+msgstr ""
+
+#: apps/templates/accounts/register.html:166
+msgid "You must accept the terms and conditions to continue."
+msgstr ""
+
+#: apps/templates/accounts/profile/dropdown-user.html:14
+msgid "Logout"
+msgstr ""
+
+#: apps/templates/accounts/profile/dropdown-user.html:19
+msgid "Profile"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:4
+msgid "Appearance"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:9
+msgid "Layouts"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:12
+msgid "Default Layout"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:14
+msgid "Light"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:16
+msgid "Dark"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:21
+msgid "Header background color"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:42
+msgid "RTL"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:50
+msgid "Sidebar Fixed"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:58
+msgid "Header Fixed"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:66
+msgid "Box Layouts"
+msgstr ""
+
+#: apps/templates/accounts/profile/layouts_config.html:74
+msgid "Breadcrumb sticky"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:3
+msgid "My Profile"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:38
+msgid "Imagen de Perfil"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:69
+msgid "Autenticar Google Forms"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:91
+#: apps/templates/accounts/profile/profile.html:73
+#: apps/templates/accounts/profile/profile.html:171
+msgid "Language"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:74
+#: apps/templates/accounts/profile/profile.html:163
+msgid "Not set"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:83
+msgid "Overview"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:90
+msgid "Appearance "
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:107
+msgid "Personal Information and Settings"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:110
+msgid "Edit"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:115
+msgid "Personal Information"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:62
+#: apps/templates/accounts/profile/profile.html:130
+msgid "Phone"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:139
+msgid "Registration Date"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:148
+msgid "Last Access"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:156
+#: apps/templates/includes/side_bar.html:141
+#: apps/templates/includes/side_bars/side_bar_docente.html:141
+msgid "Settings"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:78
+#: apps/templates/accounts/profile/profile.html:162
+msgid "Time Zone"
+msgstr ""
+
+#: apps/templates/accounts/profile/profile.html:172
+msgid ""
+"Not\n"
+"                                            set"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:7
+msgid "Edit Profile"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:23
+msgid "Basic Info"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:28
+msgid "Preferences"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:42
+msgid "Display Name"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:57
+msgid "Email cannot be changed"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:103
+#: apps/templates/includes/side_bar.html:77
+#: apps/templates/includes/side_bar.html:146
+#: apps/templates/includes/side_bars/side_bar_docente.html:77
+#: apps/templates/includes/side_bars/side_bar_docente.html:146
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:75
+msgid "Notifications"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:112
+msgid "Push"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:123
+#: apps/templates/errors/500.html:143
+msgid "Cancel"
+msgstr ""
+
+#: apps/templates/accounts/profile/modals/edit_profile.html:126
+msgid "Save Changes"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:3
+msgid "Crear Test de Estrés"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:15
+msgid "Crear Nuevo Test de Estrés"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:16
+msgid ""
+"Cada pregunta tendrá 4 opciones que representan diferentes niveles de "
+"estrés"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:21
+msgid "Descripción del Test"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:24
+msgid ""
+"Ejemplo: Test para evaluar el nivel de estrés en estudiantes "
+"universitarios"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:28
+msgid "Fecha"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:34
+msgid "Estado"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:37
+msgid "Activo"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:38
+msgid "Inactivo"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:46
+msgid "Preguntas del Test"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:47
+msgid ""
+"Cada pregunta debe tener 4 opciones de respuesta que indiquen diferentes "
+"niveles de estrés"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:55
+msgid "Agregar Pregunta"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:63
+msgid "Guardar Test"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:89
+msgid "Pregunta"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:92
+msgid ""
+"Ejemplo: ¿Con qué frecuencia te sientes abrumado por tus "
+"responsabilidades académicas?"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:96
+msgid "Eliminar"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:104
+msgid "Nivel 1 - Poco o Nada"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:107
+msgid "Ejemplo: Nunca me siento abrumado"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:114
+msgid "Nivel 2 - Leve"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:117
+msgid "Ejemplo: Ocasionalmente me siento abrumado"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:124
+msgid "Nivel 3 - Moderado"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:127
+msgid "Ejemplo: Frecuentemente me siento abrumado"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:134
+msgid "Nivel 4 - Severo"
+msgstr ""
+
+#: apps/templates/administrador/crear_test.html:137
+msgid "Ejemplo: Constantemente me siento abrumado"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:3
+#: apps/templates/administrador/crear_usuario.html:26
+msgid "Crear Usuario"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:20
+msgid "Creación de Usuarios"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:25
+#: apps/templates/includes/side_bars/side_bar_administrador.html:72
+msgid "Configuraciones"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:38
+msgid "Gestión de Usuarios"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:45
+#: apps/templates/administrador/crear_usuario.html:96
+msgid "Crear Estudiante"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:50
+#: apps/templates/administrador/crear_usuario.html:159
+msgid "Crear Docente"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:55
+#: apps/templates/administrador/crear_usuario.html:222
+msgid "Crear Administrador"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:69
+#: apps/templates/administrador/crear_usuario.html:132
+#: apps/templates/administrador/crear_usuario.html:195
+msgid "Correo Electrónico"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:73
+#: apps/templates/administrador/crear_usuario.html:136
+#: apps/templates/administrador/crear_usuario.html:199
+msgid "Cédula"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:77
+#: apps/templates/administrador/crear_usuario.html:140
+#: apps/templates/administrador/crear_usuario.html:203
+msgid "Primer Nombre"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:81
+#: apps/templates/administrador/crear_usuario.html:144
+#: apps/templates/administrador/crear_usuario.html:207
+msgid "Segundo Nombre"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:85
+#: apps/templates/administrador/crear_usuario.html:148
+#: apps/templates/administrador/crear_usuario.html:211
+msgid "Primer Apellido"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:89
+#: apps/templates/administrador/crear_usuario.html:152
+#: apps/templates/administrador/crear_usuario.html:215
+msgid "Segundo Apellido"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:93
+#: apps/templates/administrador/crear_usuario.html:156
+#: apps/templates/administrador/crear_usuario.html:219
+msgid "Fecha de Nacimiento"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:102
+msgid "Cargar Estudiantes desde Excel"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:110
+#: apps/templates/administrador/crear_usuario.html:173
+#: apps/templates/administrador/crear_usuario.html:245
+msgid "Arrastra aquí el archivo Excel o haz clic para seleccionarlo"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:116
+#: apps/templates/administrador/crear_usuario.html:179
+msgid "Descargar Plantilla"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:165
+msgid "Cargar Docentes desde Excel"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:246
+msgid "Tu navegador no soporta la carga de archivos mediante arrastrar y soltar"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:247
+msgid ""
+"El archivo es demasiado grande ({{filesize}}MB). Tamaño máximo: "
+"{{maxFilesize}}MB"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:248
+msgid "No puedes subir archivos de este tipo"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:249
+msgid "Error al subir el archivo: {{statusCode}}"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:250
+msgid "Cancelar subida"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:251
+msgid "Subida cancelada"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:252
+msgid "Eliminar archivo"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:253
+msgid "No puedes subir más archivos"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:298
+msgid ""
+"Arrastra aquí el archivo Excel de estudiantes o haz clic para "
+"seleccionarlo"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:304
+msgid "Arrastra aquí el archivo Excel de docentes o haz clic para seleccionarlo"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:318
+msgid "La cédula debe tener 10 dígitos"
+msgstr ""
+
+#: apps/templates/administrador/crear_usuario.html:332
+msgid "Debe usar un correo institucional (@unl.edu.ec)"
+msgstr ""
+
+#: apps/templates/components/ver_tests.html:3
+#: apps/templates/components/ver_tests.html:22
+#: apps/templates/components/ver_tests.html:28
+msgid "Ver Tests"
+msgstr ""
+
+#: apps/templates/components/ver_tests.html:27
+msgid "Tests"
+msgstr ""
+
+#: apps/templates/errors/401.html:3
+msgid "Unauthorized"
+msgstr ""
+
+#: apps/templates/errors/401.html:19
+msgid "Authentication Required!"
+msgstr ""
+
+#: apps/templates/errors/401.html:21
+msgid "You need to login to access this page."
+msgstr ""
+
+#: apps/templates/errors/401.html:65 apps/templates/errors/403.html:54
+#: apps/templates/errors/404.html:54 apps/templates/errors/500.html:79
+msgid "Home"
+msgstr ""
+
+#: apps/templates/errors/401.html:77 apps/templates/errors/403.html:66
+#: apps/templates/errors/404.html:66 apps/templates/errors/500.html:104
+msgid "Technical Details"
+msgstr ""
+
+#: apps/templates/errors/401.html:81 apps/templates/errors/403.html:70
+#: apps/templates/errors/404.html:70 apps/templates/errors/500.html:108
+msgid "Copy"
+msgstr ""
+
+#: apps/templates/errors/403.html:3
+msgid "Access Denied"
+msgstr ""
+
+#: apps/templates/errors/403.html:19
+msgid "Access Denied!"
+msgstr ""
+
+#: apps/templates/errors/403.html:21
+msgid "You do not have permission to access this page."
+msgstr ""
+
+#: apps/templates/errors/403.html:29
+msgid "Why does this happen?"
+msgstr ""
+
+#: apps/templates/errors/403.html:33
+msgid "You do not have the necessary permissions"
+msgstr ""
+
+#: apps/templates/errors/403.html:37
+msgid "Your session may have expired"
+msgstr ""
+
+#: apps/templates/errors/403.html:41
+msgid "The resource is restricted"
+msgstr ""
+
+#: apps/templates/errors/404.html:3
+msgid "Page Not Found"
+msgstr ""
+
+#: apps/templates/errors/404.html:19
+msgid "Page Not Found!"
+msgstr ""
+
+#: apps/templates/errors/404.html:21
+msgid "The page you are looking for seems to be lost in cyberspace."
+msgstr ""
+
+#: apps/templates/errors/404.html:29
+msgid "What can you do?"
+msgstr ""
+
+#: apps/templates/errors/404.html:33
+msgid "Check the URL for typing errors"
+msgstr ""
+
+#: apps/templates/errors/404.html:37
+msgid "Go back to the previous page"
+msgstr ""
+
+#: apps/templates/errors/404.html:41
+msgid "Go to the home page"
+msgstr ""
+
+#: apps/templates/errors/404.html:51
+msgid "Back"
+msgstr ""
+
+#: apps/templates/errors/500.html:3
+msgid "Server Error"
+msgstr ""
+
+#: apps/templates/errors/500.html:20
+msgid "Server Error!"
+msgstr ""
+
+#: apps/templates/errors/500.html:22
+msgid "An internal server error has occurred."
+msgstr ""
+
+#: apps/templates/errors/500.html:30
+msgid "System Status"
+msgstr ""
+
+#: apps/templates/errors/500.html:36
+msgid "Server"
+msgstr ""
+
+#: apps/templates/errors/500.html:38
+msgid "Error"
+msgstr ""
+
+#: apps/templates/errors/500.html:48
+msgid "Database"
+msgstr ""
+
+#: apps/templates/errors/500.html:50 apps/templates/errors/500.html:62
+msgid "Operational"
+msgstr ""
+
+#: apps/templates/errors/500.html:60
+msgid "Storage"
+msgstr ""
+
+#: apps/templates/errors/500.html:76
+msgid "Reload"
+msgstr ""
+
+#: apps/templates/errors/500.html:87
+msgid "Need help?"
+msgstr ""
+
+#: apps/templates/errors/500.html:88
+msgid "Our technical team has been notified and is working on the solution."
+msgstr ""
+
+#: apps/templates/errors/500.html:90 apps/templates/errors/500.html:125
+msgid "Contact Support"
+msgstr ""
+
+#: apps/templates/errors/500.html:133
+msgid "Describe the problem"
+msgstr ""
+
+#: apps/templates/errors/500.html:134
+msgid "What were you doing when the error occurred?"
+msgstr ""
+
+#: apps/templates/errors/500.html:137
+msgid "How can we contact you?"
+msgstr ""
+
+#: apps/templates/errors/500.html:138
+msgid "Your email"
+msgstr ""
+
+#: apps/templates/errors/500.html:146
+msgid "Send"
+msgstr ""
+
+#: apps/templates/errors/500.html:265
+msgid "Your message has been sent. We will contact you soon."
+msgstr ""
+
+#: apps/templates/errors/500.html:271
+msgid "Error details copied to clipboard"
+msgstr ""
+
+#: apps/templates/includes/navbar.html:9
+msgid "Stress Less U"
+msgstr ""
+
+#: apps/templates/includes/navbar.html:23
+msgid "Search..."
+msgstr ""
+
+#: apps/templates/includes/navbar.html:24
+msgid "Close"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:16
+#: apps/templates/includes/side_bars/side_bar_docente.html:16
+msgid "Navigation"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:23
+#: apps/templates/includes/side_bars/side_bar_docente.html:23
+msgid "Dashboard"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:26
+#: apps/templates/includes/side_bars/side_bar_docente.html:26
+msgid "Default"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:27
+#: apps/templates/includes/side_bars/side_bar_docente.html:27
+msgid "Analytics"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:28
+#: apps/templates/includes/side_bars/side_bar_docente.html:28
+msgid "Reports"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:34
+#: apps/templates/includes/side_bars/side_bar_docente.html:34
+msgid "User Management"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:41
+#: apps/templates/includes/side_bars/side_bar_docente.html:41
+msgid "Users"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:44
+#: apps/templates/includes/side_bars/side_bar_docente.html:44
+msgid "User List"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:45
+#: apps/templates/includes/side_bars/side_bar_docente.html:45
+msgid "Roles"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:46
+#: apps/templates/includes/side_bars/side_bar_docente.html:46
+msgid "Permissions"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:52
+#: apps/templates/includes/side_bars/side_bar_docente.html:52
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:50
+msgid "UI Components"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:59
+#: apps/templates/includes/side_bars/side_bar_docente.html:59
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:57
+msgid "Basic"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:62
+#: apps/templates/includes/side_bars/side_bar_docente.html:62
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:60
+msgid "Alerts"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:63
+#: apps/templates/includes/side_bars/side_bar_docente.html:63
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:61
+msgid "Buttons"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:64
+#: apps/templates/includes/side_bars/side_bar_docente.html:64
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:62
+msgid "Cards"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:65
+#: apps/templates/includes/side_bars/side_bar_docente.html:65
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:63
+msgid "Badges"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:73
+#: apps/templates/includes/side_bars/side_bar_docente.html:73
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:71
+msgid "Advanced"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:76
+#: apps/templates/includes/side_bars/side_bar_docente.html:76
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:74
+msgid "Modals"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:78
+#: apps/templates/includes/side_bars/side_bar_docente.html:78
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:76
+msgid "Carousel"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:79
+#: apps/templates/includes/side_bars/side_bar_docente.html:79
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:77
+msgid "Range Slider"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:85
+#: apps/templates/includes/side_bars/side_bar_docente.html:85
+msgid "Tables & Data"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:92
+#: apps/templates/includes/side_bars/side_bar_administrador.html:22
+#: apps/templates/includes/side_bars/side_bar_docente.html:92
+msgid "Tables"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:95
+#: apps/templates/includes/side_bars/side_bar_administrador.html:25
+#: apps/templates/includes/side_bars/side_bar_docente.html:95
+msgid "Basic Tables"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:96
+#: apps/templates/includes/side_bars/side_bar_administrador.html:26
+#: apps/templates/includes/side_bars/side_bar_docente.html:96
+msgid "Data Tables"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:97
+#: apps/templates/includes/side_bars/side_bar_administrador.html:27
+#: apps/templates/includes/side_bars/side_bar_docente.html:97
+msgid "Editable Tables"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:105
+#: apps/templates/includes/side_bars/side_bar_administrador.html:35
+#: apps/templates/includes/side_bars/side_bar_docente.html:105
+msgid "Charts"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:108
+#: apps/templates/includes/side_bars/side_bar_administrador.html:38
+#: apps/templates/includes/side_bars/side_bar_docente.html:108
+msgid "Apex Charts"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:109
+#: apps/templates/includes/side_bars/side_bar_administrador.html:39
+#: apps/templates/includes/side_bars/side_bar_docente.html:109
+msgid "Chart.js"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:115
+#: apps/templates/includes/side_bars/side_bar_docente.html:115
+msgid "Forms & Inputs"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:122
+#: apps/templates/includes/side_bars/side_bar_docente.html:122
+msgid "Forms"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:125
+#: apps/templates/includes/side_bars/side_bar_docente.html:125
+msgid "Form Elements"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:126
+#: apps/templates/includes/side_bars/side_bar_docente.html:126
+msgid "Form Validation"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:127
+#: apps/templates/includes/side_bars/side_bar_docente.html:127
+msgid "Form Wizard"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:128
+#: apps/templates/includes/side_bars/side_bar_docente.html:128
+msgid "File Upload"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:134
+#: apps/templates/includes/side_bars/side_bar_administrador.html:65
+#: apps/templates/includes/side_bars/side_bar_docente.html:134
+msgid "Settings & Help"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:144
+#: apps/templates/includes/side_bars/side_bar_docente.html:144
+msgid "General"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:145
+#: apps/templates/includes/side_bars/side_bar_docente.html:145
+msgid "Security"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:154
+#: apps/templates/includes/side_bars/side_bar_administrador.html:91
+#: apps/templates/includes/side_bars/side_bar_docente.html:154
+msgid "Documentation"
+msgstr ""
+
+#: apps/templates/includes/side_bar.html:162
+#: apps/templates/includes/side_bars/side_bar_administrador.html:99
+#: apps/templates/includes/side_bars/side_bar_docente.html:162
+msgid "Support"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:51
+msgid "Tests"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:56
+msgid "Ver Tests"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:59
+msgid "Crear Test"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:77
+msgid "Crear Usuarios"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:80
+msgid "Seguridad"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_administrador.html:83
+msgid "Notificaciones"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:22
+msgid "Actividades"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:26
+msgid "Ver Actividades"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:28
+msgid "Calendario"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:40
+msgid "Análisis"
+msgstr ""
+
+#: apps/templates/includes/side_bars/side_bar_estudiante.html:44
+msgid "Historial de Estrés"
+msgstr ""
+
+#~ msgid "Invalid authentication token."
+#~ msgstr ""
+
+#~ msgid "Invalid or expired token."
+#~ msgstr ""
+
+#~ msgid "Server error: {}"
+#~ msgstr ""
+
+#~ msgid "Nexudus login successful"
+#~ msgstr ""
+
+#~ msgid "Error logging in with Nexudus: {}"
+#~ msgstr ""
+
+#~ msgid "HubSpot access token updated successfully"
+#~ msgstr ""
+
+#~ msgid "Error updating HubSpot access token: {}"
+#~ msgstr ""
+
+#~ msgid "Accessing the main dashboard page"
+#~ msgstr ""
+
+#~ msgid "Error getting locations: {}"
+#~ msgstr ""
+
+#~ msgid "Accessing the dashboard locations page"
+#~ msgstr ""
+
+#~ msgid "Accessing the dashboard workspaces page"
+#~ msgstr ""
+
+#~ msgid "User {} accessing DEV home page"
+#~ msgstr ""
+
+#~ msgid "User {} accessed template: {}"
+#~ msgstr ""
+
+#~ msgid "User {} accessing the locations page"
+#~ msgstr ""
+
+#~ msgid "Error getting leads"
+#~ msgstr ""
+
+#~ msgid "Scraping settings updated successfully"
+#~ msgstr ""
+
+#~ msgid "Error updating scraping settings"
+#~ msgstr ""
+
+#~ msgid "Error updating scraping settings: {}"
+#~ msgstr ""
+
+#~ msgid "Lead warming settings updated successfully"
+#~ msgstr ""
+
+#~ msgid "Error updating lead warming settings"
+#~ msgstr ""
+
+#~ msgid "Error updating lead warming settings: {}"
+#~ msgstr ""
+
+#~ msgid "Lead list exported successfully to HubSpot"
+#~ msgstr ""
+
+#~ msgid "Error exporting lead list: {}"
+#~ msgstr ""
+
+#~ msgid "Error exporting lead list"
+#~ msgstr ""
+
+#~ msgid "Lead list added successfully"
+#~ msgstr ""
+
+#~ msgid "Error adding lead list: {}"
+#~ msgstr ""
+
+#~ msgid "Lead list edited successfully"
+#~ msgstr ""
+
+#~ msgid "Error editing lead list: {}"
+#~ msgstr ""
+
+#~ msgid "Error getting leads data: {}"
+#~ msgstr ""
+
+#~ msgid "Added lead list successfully to location"
+#~ msgstr ""
+
+#~ msgid "Note added successfully"
+#~ msgstr ""
+
+#~ msgid "Error adding note"
+#~ msgstr ""
+
+#~ msgid "Error adding note: {}"
+#~ msgstr ""
+
+#~ msgid "Warming lead status updated successfully"
+#~ msgstr ""
+
+#~ msgid "Error updating warming lead status"
+#~ msgstr ""
+
+#~ msgid "Error updating warming lead status: {}"
+#~ msgstr ""
+
+#~ msgid "New location added successfully"
+#~ msgstr ""
+
+#~ msgid "Error saving new location"
+#~ msgstr ""
+
+#~ msgid "Error saving new location: {}"
+#~ msgstr ""
+
+#~ msgid "Error getting leads data"
+#~ msgstr ""
+
+#~ msgid "Added existing lead list successfully"
+#~ msgstr ""
+
+#~ msgid "Error adding existing lead list: {}"
+#~ msgstr ""
+
+#~ msgid "Error getting Nexudus locations: {}"
+#~ msgstr ""
+
+#~ msgid "Updated Nexudus connection successfully"
+#~ msgstr ""
+
+#~ msgid "Error updating Nexudus connection: {}"
+#~ msgstr ""
+
+#~ msgid "Error getting workspace data: {}"
+#~ msgstr ""
+
+#~ msgid "Error getting workspace data"
+#~ msgstr ""
+
+#~ msgid "New workspace added successfully"
+#~ msgstr ""
+
+#~ msgid "Error saving new workspace"
+#~ msgstr ""
+
+#~ msgid "Error from API: {}"
+#~ msgstr ""
+
+#~ msgid "Error saving new workspace: {}"
+#~ msgstr ""
+
+#~ msgid "Status updated successfully"
+#~ msgstr ""
+
+#~ msgid "Error updating workspace status {}"
+#~ msgstr ""
+
+#~ msgid "Error updating workspace status: {}"
+#~ msgstr ""
+
+#~ msgid "Error updating workspace status"
+#~ msgstr ""
+
+#~ msgid "Workspace updated successfully"
+#~ msgstr ""
+
+#~ msgid "Error updating workspace {}: {}"
+#~ msgstr ""
+
+#~ msgid "Sign up with Google"
+#~ msgstr ""
+
+#~ msgid "Registration cancelled. Please try again."
+#~ msgstr ""
+
+#~ msgid "Browser blocked the popup. Please allow popups and try again."
+#~ msgstr ""
+
+#~ msgid "Statistics"
+#~ msgstr ""
+
+#~ msgid "Lists"
+#~ msgstr ""
+
+#~ msgid "Leads"
+#~ msgstr ""
+
+#~ msgid "Quick Actions"
+#~ msgstr ""
+
+#~ msgid "New List"
+#~ msgstr ""
+
+#~ msgid "Create a new lead list"
+#~ msgstr ""
+
+#~ msgid "Export Data"
+#~ msgstr ""
+
+#~ msgid "Download information in CSV"
+#~ msgstr ""
+
+#~ msgid "HubSpot Access Token"
+#~ msgstr ""
+
+#~ msgid "Enter your HubSpot Access Token"
+#~ msgstr ""
+
+#~ msgid "HubSpot Access Token has been updated"
+#~ msgstr ""
+
+#~ msgid "HubSpot Access Token has not been updated"
+#~ msgstr ""
+
+#~ msgid "Save"
+#~ msgstr ""
+
+#~ msgid "Nexudus Connection"
+#~ msgstr ""
+
+#~ msgid "Connect your Nexudus account to sync locations"
+#~ msgstr ""
+
+#~ msgid "Connected to Nexudus"
+#~ msgstr ""
+
+#~ msgid "Last sync"
+#~ msgstr ""
+
+#~ msgid "Never"
+#~ msgstr ""
+
+#~ msgid "Not connected"
+#~ msgstr ""
+
+#~ msgid "Connect to Nexudus to sync locations"
+#~ msgstr ""
+
+#~ msgid "Connect with Nexudus"
+#~ msgstr ""
+
+#~ msgid "Update your personal information"
+#~ msgstr ""
+
+#~ msgid "Name"
+#~ msgstr ""
+
+#~ msgid "Spanish"
+#~ msgstr ""
+
+#~ msgid "English"
+#~ msgstr ""
+
+#~ msgid "Dutch"
+#~ msgstr ""
+
+#~ msgid "Enter your Nexudus credentials"
+#~ msgstr ""
+
+#~ msgid "Workspace"
+#~ msgstr ""
+
+#~ msgid "subdomain"
+#~ msgstr ""
+
+#~ msgid "Enter your Nexudus space subdomain"
+#~ msgstr ""
+
+#~ msgid "Client Username"
+#~ msgstr ""
+
+#~ msgid "Client Password"
+#~ msgstr ""
+
+#~ msgid "Where can I find these credentials?"
+#~ msgstr ""
+
+#~ msgid "Log in to your Nexudus admin panel"
+#~ msgstr ""
+
+#~ msgid "Go to Settings > Integrations > API"
+#~ msgstr ""
+
+#~ msgid "Create a new application or use an existing one"
+#~ msgstr ""
+
+#~ msgid "Copy the Client ID and Client Secret"
+#~ msgstr ""
+
+#~ msgid "Your credentials are secure and encrypted"
+#~ msgstr ""
+
+#~ msgid "Leads generation progress"
+#~ msgstr ""
+
+#~ msgid "Leads generated"
+#~ msgstr ""
+
+#~ msgid "Conversion rate"
+#~ msgstr ""
+
+#~ msgid "Total visitors"
+#~ msgstr ""
+
+#~ msgid "Total Locations"
+#~ msgstr ""
+
+#~ msgid "Occupied"
+#~ msgstr ""
+
+#~ msgid "Total Work Spaces"
+#~ msgstr ""
+
+#~ msgid "Avg Occupancy Rate"
+#~ msgstr ""
+
+#~ msgid "Avg Cost"
+#~ msgstr ""
+
+#~ msgid "Locations Overview"
+#~ msgstr ""
+
+#~ msgid "Location Name"
+#~ msgstr ""
+
+#~ msgid "City"
+#~ msgstr ""
+
+#~ msgid "Country"
+#~ msgstr ""
+
+#~ msgid "Occupancy Rate"
+#~ msgstr ""
+
+#~ msgid "Active clients"
+#~ msgstr ""
+
+#~ msgid "Potential clients"
+#~ msgstr ""
+
+#~ msgid "P Clients into visitors"
+#~ msgstr ""
+
+#~ msgid "Revenue Overview"
+#~ msgstr ""
+
+#~ msgid "Performance Metrics"
+#~ msgstr ""
+
+#~ msgid "Occupancy rate trend"
+#~ msgstr ""
+
+#~ msgid "Lead rate trend"
+#~ msgstr ""
+
+#~ msgid "Expenses"
+#~ msgstr ""
+
+#~ msgid "Lead Management"
+#~ msgstr ""
+
+#~ msgid "Lead Scraping"
+#~ msgstr ""
+
+#~ msgid "Lead Lists"
+#~ msgstr ""
+
+#~ msgid "Lead Generation"
+#~ msgstr ""
+
+#~ msgid "Location Management"
+#~ msgstr ""
+
+#~ msgid "Locations"
+#~ msgstr ""
+
+#~ msgid "View Locations"
+#~ msgstr ""
+
+#~ msgid "Configuration"
+#~ msgstr ""
+
+#~ msgid "Help"
+#~ msgstr ""
+
+#~ msgid "Logo of"
+#~ msgstr ""
+
+#~ msgid "Enterprise"
+#~ msgstr ""
+
+#~ msgid "Enterprise Info"
+#~ msgstr ""
+
+#~ msgid "Contacts"
+#~ msgstr ""
+
+#~ msgid "Chronology"
+#~ msgstr ""
+
+#~ msgid "Notes"
+#~ msgstr ""
+
+#~ msgid "Add New List"
+#~ msgstr ""
+
+#~ msgid "Total Lists"
+#~ msgstr ""
+
+#~ msgid "Active Lists"
+#~ msgstr ""
+
+#~ msgid "Paused Lists"
+#~ msgstr ""
+
+#~ msgid "Completed Lists"
+#~ msgstr ""
+
+#~ msgid "Filters"
+#~ msgstr ""
+
+#~ msgid "Reset Filters"
+#~ msgstr ""
+
+#~ msgid "Search lists..."
+#~ msgstr ""
+
+#~ msgid "All Status"
+#~ msgstr ""
+
+#~ msgid "Paused"
+#~ msgstr ""
+
+#~ msgid "Completed"
+#~ msgstr ""
+
+#~ msgid "All Types"
+#~ msgstr ""
+
+#~ msgid "Static"
+#~ msgstr ""
+
+#~ msgid "Dynamic"
+#~ msgstr ""
+
+#~ msgid "All Locations"
+#~ msgstr ""
+
+#~ msgid "Created"
+#~ msgstr ""
+
+#~ msgid "Not available"
+#~ msgstr ""
+
+#~ msgid "Monthly"
+#~ msgstr ""
+
+#~ msgid "Total"
+#~ msgstr ""
+
+#~ msgid "Max leads per day"
+#~ msgstr ""
+
+#~ msgid "Industries"
+#~ msgstr ""
+
+#~ msgid "Excluded"
+#~ msgstr ""
+
+#~ msgid "Warming"
+#~ msgstr ""
+
+#~ msgid "LinkedIn"
+#~ msgstr ""
+
+#~ msgid "WhatsApp"
+#~ msgstr ""
+
+#~ msgid "SMS"
+#~ msgstr ""
+
+#~ msgid "View Leads"
+#~ msgstr ""
+
+#~ msgid "Updated"
+#~ msgstr ""
+
+#~ msgid "Leads by List"
+#~ msgstr ""
+
+#~ msgid "Leads Management"
+#~ msgstr ""
+
+#~ msgid "leads"
+#~ msgstr ""
+
+#~ msgid "List Settings"
+#~ msgstr ""
+
+#~ msgid "Scraping Settings"
+#~ msgstr ""
+
+#~ msgid "Warning Settings"
+#~ msgstr ""
+
+#~ msgid "Start Warming"
+#~ msgstr ""
+
+#~ msgid "Export to excel"
+#~ msgstr ""
+
+#~ msgid "Export to HubSpot"
+#~ msgstr ""
+
+#~ msgid "High Potential"
+#~ msgstr ""
+
+#~ msgid "High"
+#~ msgstr ""
+
+#~ msgid "Mid Potential"
+#~ msgstr ""
+
+#~ msgid "Mid"
+#~ msgstr ""
+
+#~ msgid "Normal"
+#~ msgstr ""
+
+#~ msgid "Norm"
+#~ msgstr ""
+
+#~ msgid "No Leads Available"
+#~ msgstr ""
+
+#~ msgid ""
+#~ "There are no leads in this list yet. Start by adding new leads or\n"
+#~ "                                adjusting your scraping settings."
+#~ msgstr ""
+
+#~ msgid "Company"
+#~ msgstr ""
+
+#~ msgid "Current Office Status"
+#~ msgstr ""
+
+#~ msgid "Lead Status"
+#~ msgstr ""
+
+#~ msgid "Score"
+#~ msgstr ""
+
+#~ msgid "Location"
+#~ msgstr ""
+
+#~ msgid "Age"
+#~ msgstr ""
+
+#~ msgid "Website"
+#~ msgstr ""
+
+#~ msgid "View Details"
+#~ msgstr ""
+
+#~ msgid "Search leads..."
+#~ msgstr ""
+
+#~ msgid "Showing"
+#~ msgstr ""
+
+#~ msgid "to"
+#~ msgstr ""
+
+#~ msgid "of"
+#~ msgstr ""
+
+#~ msgid "entries"
+#~ msgstr ""
+
+#~ msgid "Showing 0 to 0 of 0 entries"
+#~ msgstr ""
+
+#~ msgid "filtered from"
+#~ msgstr ""
+
+#~ msgid "total entries"
+#~ msgstr ""
+
+#~ msgid "Show"
+#~ msgstr ""
+
+#~ msgid "No matching records found"
+#~ msgstr ""
+
+#~ msgid "Please select at least one lead to start warming"
+#~ msgstr ""
+
+#~ msgid "Created by"
+#~ msgstr ""
+
+#~ msgid "Assigned"
+#~ msgstr ""
+
+#~ msgid "Assigned to"
+#~ msgstr ""
+
+#~ msgid "Last Modified"
+#~ msgstr ""
+
+#~ msgid "Lead updated"
+#~ msgstr ""
+
+#~ msgid "Last Enriched"
+#~ msgstr ""
+
+#~ msgid "Data enriched"
+#~ msgstr ""
+
+#~ msgid "Activity Summary"
+#~ msgstr ""
+
+#~ msgid "Current Status"
+#~ msgstr ""
+
+#~ msgid "Last Activity"
+#~ msgstr ""
+
+#~ msgid "No recent activity"
+#~ msgstr ""
+
+#~ msgid "View LinkedIn Profile"
+#~ msgstr ""
+
+#~ msgid "Contact Information"
+#~ msgstr ""
+
+#~ msgid "Additional Information"
+#~ msgstr ""
+
+#~ msgid "Mobile"
+#~ msgstr ""
+
+#~ msgid "Send Message"
+#~ msgstr ""
+
+#~ msgid "Connect"
+#~ msgstr ""
+
+#~ msgid "No contacts available"
+#~ msgstr ""
+
+#~ msgid "No contacts were found for this lead."
+#~ msgstr ""
+
+#~ msgid "General Information"
+#~ msgstr ""
+
+#~ msgid "Foundation Year"
+#~ msgstr ""
+
+#~ msgid "years"
+#~ msgstr ""
+
+#~ msgid "View Profile"
+#~ msgstr ""
+
+#~ msgid "Financial Information"
+#~ msgstr ""
+
+#~ msgid "Rental Amount"
+#~ msgstr ""
+
+#~ msgid "month"
+#~ msgstr ""
+
+#~ msgid "Budget Indication"
+#~ msgstr ""
+
+#~ msgid "Status"
+#~ msgstr ""
+
+#~ msgid "Inactive"
+#~ msgstr ""
+
+#~ msgid "Preferred Language"
+#~ msgstr ""
+
+#~ msgid "Lead Source"
+#~ msgstr ""
+
+#~ msgid "Location and Description"
+#~ msgstr ""
+
+#~ msgid "Address"
+#~ msgstr ""
+
+#~ msgid "Description"
+#~ msgstr ""
+
+#~ msgid "Company Details"
+#~ msgstr ""
+
+#~ msgid "Employees"
+#~ msgstr ""
+
+#~ msgid "Growing"
+#~ msgstr ""
+
+#~ msgid "Current Flex Office Provider"
+#~ msgstr ""
+
+#~ msgid "Not specified"
+#~ msgstr ""
+
+#~ msgid "Recent Funding"
+#~ msgstr ""
+
+#~ msgid "Amount"
+#~ msgstr ""
+
+#~ msgid "Date"
+#~ msgstr ""
+
+#~ msgid "Funding Round"
+#~ msgstr ""
+
+#~ msgid "Investors"
+#~ msgstr ""
+
+#~ msgid "Employee Count Increase"
+#~ msgstr ""
+
+#~ msgid "Yes"
+#~ msgstr ""
+
+#~ msgid "No"
+#~ msgstr ""
+
+#~ msgid "Discussing Hybrid Office Return"
+#~ msgstr ""
+
+#~ msgid "Existing Customer"
+#~ msgstr ""
+
+#~ msgid "Add Note"
+#~ msgstr ""
+
+#~ msgid "Write your note here..."
+#~ msgstr ""
+
+#~ msgid "Save Note"
+#~ msgstr ""
+
+#~ msgid "Delete"
+#~ msgstr ""
+
+#~ msgid "No notes"
+#~ msgstr ""
+
+#~ msgid "No notes have been added for this lead."
+#~ msgstr ""
+
+#~ msgid "Edit Lead List"
+#~ msgstr ""
+
+#~ msgid "Basic Information"
+#~ msgstr ""
+
+#~ msgid "Enter list name"
+#~ msgstr ""
+
+#~ msgid "Location Selection"
+#~ msgstr ""
+
+#~ msgid "Select one or more locations"
+#~ msgstr ""
+
+#~ msgid "Dynamic Scraping"
+#~ msgstr ""
+
+#~ msgid "Static Scraping"
+#~ msgstr ""
+
+#~ msgid "Archived"
+#~ msgstr ""
+
+#~ msgid "Enter estimated cost"
+#~ msgstr ""
+
+#~ msgid "Lead Warming Settings"
+#~ msgstr ""
+
+#~ msgid "Communication Channels"
+#~ msgstr ""
+
+#~ msgid "Sequence"
+#~ msgstr ""
+
+#~ msgid "Step"
+#~ msgstr ""
+
+#~ msgid "Channel"
+#~ msgstr ""
+
+#~ msgid "Select channel"
+#~ msgstr ""
+
+#~ msgid "Delay (days)"
+#~ msgstr ""
+
+#~ msgid "Message Template"
+#~ msgstr ""
+
+#~ msgid "Remove"
+#~ msgstr ""
+
+#~ msgid "Add Step"
+#~ msgstr ""
+
+#~ msgid "Language Preference"
+#~ msgstr ""
+
+#~ msgid "Removing..."
+#~ msgstr ""
+
+#~ msgid "New Lead List"
+#~ msgstr ""
+
+#~ msgid "Create a new list for lead scraping"
+#~ msgstr ""
+
+#~ msgid "Enter total cost"
+#~ msgstr ""
+
+#~ msgid "Create List"
+#~ msgstr ""
+
+#~ msgid "Company Information"
+#~ msgstr ""
+
+#~ msgid "Add industry"
+#~ msgstr ""
+
+#~ msgid "Employee Range"
+#~ msgstr ""
+
+#~ msgid "Minimum"
+#~ msgstr ""
+
+#~ msgid "Maximum"
+#~ msgstr ""
+
+#~ msgid "Company Age"
+#~ msgstr ""
+
+#~ msgid "Budget Range"
+#~ msgstr ""
+
+#~ msgid "Geographic Filters"
+#~ msgstr ""
+
+#~ msgid "Countries"
+#~ msgstr ""
+
+#~ msgid "Add country"
+#~ msgstr ""
+
+#~ msgid "Cities"
+#~ msgstr ""
+
+#~ msgid "Add city"
+#~ msgstr ""
+
+#~ msgid "Radius (km)"
+#~ msgstr ""
+
+#~ msgid "Additional Filters"
+#~ msgstr ""
+
+#~ msgid "Exclude Companies"
+#~ msgstr ""
+
+#~ msgid "Add company to exclude"
+#~ msgstr ""
+
+#~ msgid "Current Flex Workspace Providers"
+#~ msgstr ""
+
+#~ msgid "Add provider"
+#~ msgstr ""
+
+#~ msgid "Currently in Flexible Workspace"
+#~ msgstr ""
+
+#~ msgid "Scraping Configuration"
+#~ msgstr ""
+
+#~ msgid "Auto"
+#~ msgstr ""
+
+#~ msgid "Maximum Leads per Day"
+#~ msgstr ""
+
+#~ msgid "Keywords"
+#~ msgstr ""
+
+#~ msgid "Add keyword"
+#~ msgstr ""
+
+#~ msgid "Funding Status"
+#~ msgstr ""
+
+#~ msgid "Add funding status"
+#~ msgstr ""
+
+#~ msgid "Purchase Signals"
+#~ msgstr ""
+
+#~ msgid "Add purchase signal"
+#~ msgstr ""
+
+#~ msgid "Selected Leads for Warming"
+#~ msgstr ""
+
+#~ msgid "Select Status"
+#~ msgstr ""
+
+#~ msgid "Scraping"
+#~ msgstr ""
+
+#~ msgid "Visited"
+#~ msgstr ""
+
+#~ msgid "Ready to Heat"
+#~ msgstr ""
+
+#~ msgid "Warm Up"
+#~ msgstr ""
+
+#~ msgid "Apply Status"
+#~ msgstr ""
+
+#~ msgid "Please select at least one lead to start warming."
+#~ msgstr ""
+
+#~ msgid "Total Selected"
+#~ msgstr ""
+
+#~ msgid "Remove from Selection"
+#~ msgstr ""
+
+#~ msgid "Synchronize with nexudus"
+#~ msgstr ""
+
+#~ msgid "Search for locations..."
+#~ msgstr ""
+
+#~ msgid "All"
+#~ msgstr ""
+
+#~ msgid "Add New Location"
+#~ msgstr ""
+
+#~ msgid "Workspaces"
+#~ msgstr ""
+
+#~ msgid "Occupation Rate"
+#~ msgstr ""
+
+#~ msgid "Integrations"
+#~ msgstr ""
+
+#~ msgid "Nexudus"
+#~ msgstr ""
+
+#~ msgid "Connected"
+#~ msgstr ""
+
+#~ msgid "Unlinked"
+#~ msgstr ""
+
+#~ msgid "HubSpot"
+#~ msgstr ""
+
+#~ msgid "Not Connected"
+#~ msgstr ""
+
+#~ msgid "View Workspaces"
+#~ msgstr ""
+
+#~ msgid "More Info"
+#~ msgstr ""
+
+#~ msgid "Synchronizing with Nexudus"
+#~ msgstr ""
+
+#~ msgid "Processing all users in the background"
+#~ msgstr ""
+
+#~ msgid "Synchronization Started"
+#~ msgstr ""
+
+#~ msgid "OK"
+#~ msgstr ""
+
+#~ msgid "Sync failed"
+#~ msgstr ""
+
+#~ msgid "Synchronization Error"
+#~ msgstr ""
+
+#~ msgid "An error occurred while synchronizing with Nexudus"
+#~ msgstr ""
+
+#~ msgid "No locations found matching the search."
+#~ msgstr ""
+
+#~ msgid "Loading locations..."
+#~ msgstr ""
+
+#~ msgid "Select a Nexudus Location"
+#~ msgstr ""
+
+#~ msgid "Nexudus Location 1"
+#~ msgstr ""
+
+#~ msgid "Nexudus Location 2"
+#~ msgstr ""
+
+#~ msgid "Nexudus Location 3"
+#~ msgstr ""
+
+#~ msgid "Error loading locations:"
+#~ msgstr ""
+
+#~ msgid "Error loading locations"
+#~ msgstr ""
+
+#~ msgid "Workspace Management"
+#~ msgstr ""
+
+#~ msgid "Search for workspaces..."
+#~ msgstr ""
+
+#~ msgid "Office"
+#~ msgstr ""
+
+#~ msgid "Hot Desk"
+#~ msgstr ""
+
+#~ msgid "Dedicated Desk"
+#~ msgstr ""
+
+#~ msgid "Other"
+#~ msgstr ""
+
+#~ msgid "Available"
+#~ msgstr ""
+
+#~ msgid "Add New Workspace"
+#~ msgstr ""
+
+#~ msgid "Price"
+#~ msgstr ""
+
+#~ msgid "Start"
+#~ msgstr ""
+
+#~ msgid "End"
+#~ msgstr ""
+
+#~ msgid "Included"
+#~ msgstr ""
+
+#~ msgid "View"
+#~ msgstr ""
+
+#~ msgid "No workspaces found at this location."
+#~ msgstr ""
+
+#~ msgid "Loading more workspaces..."
+#~ msgstr ""
+
+#~ msgid "No results found"
+#~ msgstr ""
+
+#~ msgid "It seems that there are no workspaces matching your search criteria."
+#~ msgstr ""
+
+#~ msgid "Try adjusting your search:"
+#~ msgstr ""
+
+#~ msgid "Check for typos in your search term"
+#~ msgstr ""
+
+#~ msgid "Try using different filters"
+#~ msgstr ""
+
+#~ msgid "Use more general search terms"
+#~ msgstr ""
+
+#~ msgid "Associate with an Existing Lead List"
+#~ msgstr ""
+
+#~ msgid "Lead List"
+#~ msgstr ""
+
+#~ msgid "Select a Lead List"
+#~ msgstr ""
+
+#~ msgid "Save Lead List"
+#~ msgstr ""
+
+#~ msgid "Loading lead lists..."
+#~ msgstr ""
+
+#~ msgid "Error loading Lead Lists"
+#~ msgstr ""
+
+#~ msgid "Create a new list for location"
+#~ msgstr ""
+
+#~ msgid "List Name"
+#~ msgstr ""
+
+#~ msgid "Scraping Type"
+#~ msgstr ""
+
+#~ msgid "Estimated Monthly Costs"
+#~ msgstr ""
+
+#~ msgid "Total Actual Costs"
+#~ msgstr ""
+
+#~ msgid "Associate with Nexudus"
+#~ msgstr ""
+
+#~ msgid "Nexudus Location"
+#~ msgstr ""
+
+#~ msgid "Select nexudus location"
+#~ msgstr ""
+
+#~ msgid "Associate"
+#~ msgstr ""
+
+#~ msgid "Details"
+#~ msgstr ""
+
+#~ msgid "Postal Code"
+#~ msgstr ""
+
+#~ msgid "Total Size"
+#~ msgstr ""
+
+#~ msgid "m"
+#~ msgstr ""
+
+#~ msgid "Total Size Measurement Unit"
+#~ msgstr ""
+
+#~ msgid "Latitude"
+#~ msgstr ""
+
+#~ msgid "Longitude"
+#~ msgstr ""
+
+#~ msgid "Total Spaces"
+#~ msgstr ""
+
+#~ msgid "Location coordinates not available"
+#~ msgstr ""
+
+#~ msgid "New Location"
+#~ msgstr ""
+
+#~ msgid "Add a new location to your portfolio"
+#~ msgstr ""
+
+#~ msgid "Enter location name"
+#~ msgstr ""
+
+#~ msgid "Enter address"
+#~ msgstr ""
+
+#~ msgid "Location Details"
+#~ msgstr ""
+
+#~ msgid "Enter city"
+#~ msgstr ""
+
+#~ msgid "Enter postal code"
+#~ msgstr ""
+
+#~ msgid "Enter country"
+#~ msgstr ""
+
+#~ msgid "Coordinates"
+#~ msgstr ""
+
+#~ msgid "Enter longitude (-180 to 180)"
+#~ msgstr ""
+
+#~ msgid "Enter latitude (-90 to 90)"
+#~ msgstr ""
+
+#~ msgid "Size Information"
+#~ msgstr ""
+
+#~ msgid "Enter total size"
+#~ msgstr ""
+
+#~ msgid "1 for m², 2 for ft²"
+#~ msgstr ""
+
+#~ msgid "Enter description"
+#~ msgstr ""
+
+#~ msgid "Save Location"
+#~ msgstr ""
+
+#~ msgid "Location Lead Lists"
+#~ msgstr ""
+
+#~ msgid "Error loading lead lists"
+#~ msgstr ""
+
+#~ msgid "Retry"
+#~ msgstr ""
+
+#~ msgid "No lead lists available"
+#~ msgstr ""
+
+#~ msgid "Create New List"
+#~ msgstr ""
+
+#~ msgid "Monthly Cost"
+#~ msgstr ""
+
+#~ msgid "Total Costs"
+#~ msgstr ""
+
+#~ msgid "Last Update"
+#~ msgstr ""
+
+#~ msgid "Add Existing List"
+#~ msgstr ""
+
+#~ msgid "System"
+#~ msgstr ""
+
+#~ msgid "Not Set"
+#~ msgstr ""
+
+#~ msgid "Delete List"
+#~ msgstr ""
+
+#~ msgid "Change Status"
+#~ msgstr ""
+
+#~ msgid "Availability Status"
+#~ msgstr ""
+
+#~ msgid "Exclude from Scraping"
+#~ msgstr ""
+
+#~ msgid "Edit Workspace"
+#~ msgstr ""
+
+#~ msgid "Public Name"
+#~ msgstr ""
+
+#~ msgid "Internal Code"
+#~ msgstr ""
+
+#~ msgid "Floor"
+#~ msgstr ""
+
+#~ msgid "Desk Count"
+#~ msgstr ""
+
+#~ msgid "Capacity"
+#~ msgstr ""
+
+#~ msgid "Pricing"
+#~ msgstr ""
+
+#~ msgid "Price (per month)"
+#~ msgstr ""
+
+#~ msgid "Additional Properties"
+#~ msgstr ""
+
+#~ msgid "Enter additional properties here"
+#~ msgstr ""
+
+#~ msgid "Workspace Details"
+#~ msgstr ""
+
+#~ msgid "List Price"
+#~ msgstr ""
+
+#~ msgid "Availability"
+#~ msgstr ""
+
+#~ msgid "Occupied until"
+#~ msgstr ""
+
+#~ msgid "Scraping Status"
+#~ msgstr ""
+
+#~ msgid "New Workspace"
+#~ msgstr ""
+
+#~ msgid "Add a new workspace to"
+#~ msgstr ""
+
+#~ msgid "Letters and numbers only"
+#~ msgstr ""
+
+#~ msgid "Size and Capacity"
+#~ msgstr ""
+
+#~ msgid "Number of Desks"
+#~ msgstr ""
+
+#~ msgid "Minimum Price"
+#~ msgstr ""
+
+#~ msgid "Authentication error: {}"
+#~ msgstr ""
+
+#~ msgid "Registration successful"
+#~ msgstr ""
+
+#~ msgid "Error creating user: {}"
+#~ msgstr ""
+
+#~ msgid "Settings updated successfully"
+#~ msgstr ""
+
+#~ msgid "Error updating settings: {}"
+#~ msgstr ""
+
+#~ msgid "{{ _('Accediendo a la página principal del dashboard') }}"
+#~ msgstr ""
+
+#~ msgid "{{ _('Accediendo a la página de análisis') }}"
+#~ msgstr ""
+
+#~ msgid "{{ _('Accediendo a la página de reportes') }}"
+#~ msgstr ""
+
+#~ msgid "Unauthorized access: {}"
+#~ msgstr ""
+
+#~ msgid "Access forbidden: {}"
+#~ msgstr ""
+
+#~ msgid "Error 404: {}"
+#~ msgstr ""
+
+#~ msgid "Username or Email"
+#~ msgstr ""
+
+#~ msgid "OR"
+#~ msgstr ""
+
+#~ msgid "Don't have an account?"
+#~ msgstr ""
+
+#~ msgid "Sign Up"
+#~ msgstr ""
+
+#~ msgid "An unexpected error occurred. Please try again."
+#~ msgstr ""
+
+#~ msgid "Invalid credentials. Please try again."
+#~ msgstr ""
+
+#~ msgid "Login cancelled. Please try again."
+#~ msgstr ""
+
+#~ msgid "Popup blocked. Please allow popups for this site."
+#~ msgstr ""
+
+#~ msgid "User Image"
+#~ msgstr ""
+
+#~ msgid "Role"
+#~ msgstr ""
+
+#~ msgid "Time zone"
+#~ msgstr ""
+
+#~ msgid "User Analytics"
+#~ msgstr ""
+
+#~ msgid "Key Metrics"
+#~ msgstr ""
+
+#~ msgid "Sessions"
+#~ msgstr ""
+
+#~ msgid "Bounce Rate"
+#~ msgstr ""
+
+#~ msgid "Session Duration"
+#~ msgstr ""
+
+#~ msgid "Active Users"
+#~ msgstr ""
+
+#~ msgid "Total Users"
+#~ msgstr ""
+
+#~ msgid "Active"
+#~ msgstr ""
+
+#~ msgid "Total Revenue"
+#~ msgstr ""
+
+#~ msgid "Growth"
+#~ msgstr ""
+
+#~ msgid "Daily Active"
+#~ msgstr ""
+
+#~ msgid "Weekly"
+#~ msgstr ""
+
+#~ msgid "Conversion Rate"
+#~ msgstr ""
+
+#~ msgid "Monthly Users"
+#~ msgstr ""
+
+#~ msgid "Recent Activities"
+#~ msgstr ""
+
+#~ msgid "Performance Overview"
+#~ msgstr ""
+
+#~ msgid "Date Range"
+#~ msgstr ""
+
+#~ msgid "Last 7 days"
+#~ msgstr ""
+
+#~ msgid "Last 30 days"
+#~ msgstr ""
+
+#~ msgid "Last 90 days"
+#~ msgstr ""
+
+#~ msgid "Custom"
+#~ msgstr ""
+
+#~ msgid "Report Type"
+#~ msgstr ""
+
+#~ msgid "User Activity"
+#~ msgstr ""
+
+#~ msgid "Performance"
+#~ msgstr ""
+
+#~ msgid "Revenue"
+#~ msgstr ""
+
+#~ msgid "Format"
+#~ msgstr ""
+
+#~ msgid "Generate Report"
+#~ msgstr ""
+
+#~ msgid "Recent Reports"
+#~ msgstr ""
+
+#~ msgid "Report Name"
+#~ msgstr ""
+
+#~ msgid "Type"
+#~ msgstr ""
+
+#~ msgid "Date Generated"
+#~ msgstr ""
+
+#~ msgid "Size"
+#~ msgstr ""
+
+#~ msgid "Actions"
+#~ msgstr ""
+
+#~ msgid "User Activity Report"
+#~ msgstr ""
+
+#~ msgid "Activity"
+#~ msgstr ""
+
+#~ msgid "Monthly Performance"
+#~ msgstr ""
+
+#~ msgid "Revenue Analysis"
+#~ msgstr ""
+
+#~ msgid "Reports Generated Over Time"
+#~ msgstr ""
+
+#~ msgid "Reports Generated"
+#~ msgstr ""
+
+#~ msgid "WeAreBeyond logo"
+#~ msgstr ""
+
